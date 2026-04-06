@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cutis Institute | Clinical & Aesthetic Dermatology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --beige: #F5EFE6; --beige-dark: #ede1d2; --white: #FFFFFF;
+            --sage: #4A7c3f; --sage-light: #E8F4E8; --charcoal: #1C1C1E;
+            --gold: #C9A96E; --shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; font-family: 'DM Sans', sans-serif; color: var(--charcoal); background: var(--beige); overflow-x:hidden;}
+        h1,h2,h3,h4,.serif { font-family: 'Cormorant Garamond', serif; font-weight:600; color:var(--charcoal); }
+        a { text-decoration:none; color:inherit; }
+        .container { max-width:1300px; margin:0 auto; padding:0 30px; }
+        .section { padding: 100px 0; }
+        .bg-white { background: var(--white); }
+        .bg-sage { background: var(--sage-light); }
+        
+        /* Floating Action Button (FAB) */
+        .fab-btn {
+            position: fixed; bottom: 40px; right: 40px; z-index: 1000;
+            width: 60px; height: 60px; background: var(--gold); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 30px rgba(201, 169, 110, 0.4);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulse-fab 2s infinite;
+        }
+        .fab-btn:hover { transform: scale(1.1); animation: none; }
+        @keyframes pulse-fab { 0%{box-shadow:0 0 0 0 rgba(201,169,110,0.4);} 70%{box-shadow:0 0 0 15px rgba(201,169,110,0);} 100%{box-shadow:0 0 0 0 rgba(201,169,110,0);} }
+        
+        /* Utilities */
+        .reveal { opacity:0; transform:translateY(40px); transition:all 1s cubic-bezier(0.2,0.8,0.2,1); }
+        .reveal.active { opacity:1; transform:translateY(0); }
+        .slide-in-right { opacity:0; transform:translateX(50px); transition:all 1s ease; }
+        .slide-in-right.active { opacity:1; transform:translateX(0); }
+        .slide-in-left { opacity:0; transform:translateX(-50px); transition:all 1s ease; }
+        .slide-in-left.active { opacity:1; transform:translateX(0); }
+        
+        .card { background: var(--white); border-radius: 20px; padding:40px; box-shadow: var(--shadow); transition: transform 0.4s ease, box-shadow 0.4s ease; border-top: 3px solid transparent;}
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 50px rgba(0,0,0,0.1); border-top: 3px solid var(--sage); }
+        
+        .btn { display:inline-block; padding:15px 35px; background:var(--sage); color:var(--white); border-radius:30px; font-weight:500; transition:all 0.3s ease; border:1px solid var(--sage); cursor:pointer;}
+        .btn:hover { background:transparent; color:var(--sage); }
+        .btn-outline { background:transparent; color:var(--charcoal); border:1px solid var(--charcoal); }
+        .btn-outline:hover { background:var(--charcoal); color:var(--white); }
+
+        /* Noise Texture */
+        body::before {
+            content:''; position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999;
+            background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)" opacity="0.04"/%3E%3C/svg%3E');
+            opacity:0.8;
+        }
+
+        /* Nav */
+        nav { position:fixed; top:0; width:100%; padding:20px 0; z-index:1000; transition:all 0.4s; }
+        nav.scrolled { background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); box-shadow:var(--shadow); padding:15px 0; }
+        .nav-inner { display:flex; justify-content:space-between; align-items:center; }
+        .logo h1 { font-size:28px; line-height:1; }
+        .logo p { font-size:11px; color:var(--gold); letter-spacing:1px; text-transform:uppercase;}
+        .nav-links { display:flex; gap:30px; list-style:none; }
+        .nav-links a:hover { color:var(--gold); }
+        .hamburger { display:none; font-size:24px; cursor:pointer;}
+
+        /* Hero Parallax */
+        .hero { position:relative; min-height:100vh; display:flex; align-items:center; background:var(--beige); overflow:hidden;}
+        .hero-parallax-bg { position:absolute; top:-10%; left:0; width:100%; height:120%; background:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; opacity:0.15; z-index:0; transition: transform 0.1s linear;}
+        .hero::before { content:''; position:absolute; inset:0; background: linear-gradient(180deg, transparent, var(--beige)); z-index:1;}
+        .hero-content { position:relative; z-index:2; max-width:800px; }
+        .hero h1 { font-size:5.5rem; line-height:1.1; margin-bottom:20px; }
+        .hero h2 { font-size:1.5rem; color:var(--gold); font-family:'DM Sans'; font-weight:400; margin-bottom:20px; letter-spacing:1px; }
+        .hero p { font-size:1.1rem; color:#555; margin-bottom:40px; line-height:1.8; }
+        .hero-btns { display:flex; gap:20px; }
+        .scroll-down { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); animation:bounce 2s infinite; color:var(--charcoal); font-size:24px; z-index:10;}
+        @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0) translateX(-50%);} 40%{transform:translateY(-15px) translateX(-50%);} 60%{transform:translateY(-7px) translateX(-50%);} }
+        .word { display:inline-block; opacity:0; transform:translateY(20px); animation: fadeUpWord 0.8s forwards; }
+        @keyframes fadeUpWord { to { opacity:1; transform:translateY(0); } }
+
+        /* Stats */
+        .stats { background:var(--beige-dark); padding:60px 0; border-top:1px solid rgba(201, 169, 110, 0.3); border-bottom:1px solid rgba(201, 169, 110, 0.3); }
+        .stats-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:20px; text-align:center; }
+        .stat-item { border-right:1px solid var(--sage-light); }
+        .stat-item:last-child { border-right:none; }
+        .stat-num { font-size:3rem; font-family:'Cormorant Garamond'; color:var(--gold); line-height:1; margin-bottom:10px; }
+        .stat-label { font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; color:#555; }
+
+        /* About (Real Images) */
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .about-content h2 { font-size:3.5rem; margin-bottom:25px; }
+        .about-content p { color:#555; margin-bottom:20px; line-height:1.8; font-size:1.1rem; }
+        .link-hover { color:var(--gold); font-weight:500; font-family:'Cormorant Garamond'; font-size:1.2rem; cursor:pointer; position:relative; }
+        .link-hover::after { content:''; display:block; width:0; height:1px; background:var(--gold); transition:width 0.3s; }
+        .link-hover:hover::after { width:100%; }
+        .about-img { height:600px; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); }
+        .about-img img { width:100%; height:100%; object-fit:cover; filter:contrast(1.1); }
+
+        /* Why Cutis (Custom SVGs) */
+        .why-header { text-align:center; margin-bottom:60px; }
+        .why-header h2 { font-size:3.5rem; }
+        .why-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:30px; }
+        .why-card { padding:40px; }
+        .icon-circle { width:60px; height:60px; display:flex; align-items:center; margin-bottom:20px; color:var(--gold); }
+        .icon-circle svg { width:45px; height:45px; stroke:var(--gold); stroke-width:1.5; fill:none; }
+        .why-card h3 { font-size:1.5rem; margin-bottom:15px; }
+        .why-card p { color:#666; line-height:1.6; }
+
+        /* Core Services */
+        .services-grid { display:flex; flex-direction:column; gap:40px; }
+        .service-row { display:flex; background:var(--white); border-radius:20px; box-shadow:var(--shadow); overflow:hidden; transition:transform 0.4s; }
+        .service-row:hover { transform:scale(1.02); }
+        .service-row:nth-child(even) { background:var(--beige); flex-direction:row-reverse; }
+        .srv-img { width:35%; min-height:400px; overflow:hidden; }
+        .srv-img img { width:100%; height:100%; object-fit:cover; }
+        .srv-content { padding:60px; width:65%; display:flex; flex-direction:column; justify-content:center;}
+        .srv-content h3 { font-size:2.5rem; margin-bottom:15px; }
+        .srv-content p { color:#555; margin-bottom:25px; line-height:1.7; font-size:1.1rem; }
+
+        /* Centres (Draggable Carousel) */
+        /* Changed from Grid to Drag Carousel to maximize interactivity */
+        .carousel-wrap {
+            position: relative;
+            cursor: grab;
+            overflow: hidden;
+            padding-bottom: 20px;
+        }
+        .carousel-wrap:active { cursor: grabbing; }
+        .centres-carousel { display:flex; gap:30px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:10px 40px; -webkit-overflow-scrolling:touch; }
+        .centres-carousel::-webkit-scrollbar { display:none; }
+        .centre-card { flex: 0 0 400px; scroll-snap-align:start; display:flex; flex-direction:column; gap:20px; padding:40px; pointer-events:none;} /* pointer-events none on child to allow drag on wrap */
+        .c-icon { display:flex; align-items:center; }
+        .c-icon svg { width:50px; height:50px; stroke:var(--gold); fill:none; stroke-width:1.5; }
+        .c-info h3 { font-size:1.8rem; margin-bottom:15px; color:var(--sage); font-family: 'Cormorant Garamond'; }
+
+        /* Tech & Infra */
+        .tech-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .tech-list { list-style:none; margin-top:30px; }
+        .tech-list li { margin-bottom:15px; display:flex; align-items:center; gap:15px; font-size:1.1rem; }
+        .tech-list li::before { content:'✔'; color:var(--gold); }
+        .tech-img { height:500px; border-radius:20px; overflow:hidden; box-shadow:var(--shadow);}
+        .tech-img img { width:100%; height:100%; object-fit:cover; }
+
+        /* Eco Parallax */
+        .eco { position:relative; overflow:hidden; background:var(--charcoal); color:var(--white); }
+        .eco-parallax { position:absolute; top:-20%; left:0; width:100%; height:140%; background:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; opacity:0.1; z-index:0; transition: transform 0.1s linear;}
+        .eco .container { position:relative; z-index:2; }
+        .eco-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; text-align:center; }
+        .eco-card { padding:40px; background:rgba(255,255,255,0.05); backdrop-filter:blur(5px); border-radius:20px; border:1px solid rgba(255,255,255,0.1); }
+        .eco h2,.eco h3 { color:var(--gold); }
+
+        /* Team */
+        .team-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
+        .team-member { text-align:center; }
+        .avatar { width:150px; height:150px; border-radius:50%; margin:0 auto 20px; overflow:hidden; box-shadow:var(--shadow); }
+        .avatar img { width:100%; height:100%; object-fit:cover; filter:grayscale(30%); transition:all 0.3s; }
+        .team-member:hover .avatar img { filter:grayscale(0%); transform:scale(1.05); }
+        .team-member h4 { font-size:1.4rem; margin-bottom:5px; }
+        .team-member p { font-size:0.9rem; color:var(--gold); text-transform:uppercase; letter-spacing:1px;}
+
+        /* Training */
+        .training-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+
+        /* Testimonials */
+        .testi-carousel { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:30px; padding-bottom:20px; scrollbar-width:none;}
+        .testi-card { min-width:400px; scroll-snap-align:center; background:var(--beige); padding:40px; border-radius:20px; position:relative; }
+        .testi-card::before { content:'"'; font-size:80px; font-family:'Cormorant Garamond'; color:var(--sage); position:absolute; top:10px; left:20px; opacity:0.3; }
+        .stars { color:var(--gold); margin-bottom:15px; }
+        .testi-card p { font-style:italic; margin-bottom:20px; line-height:1.6;}
+
+        /* Booking */
+        .booking { background: linear-gradient(135deg, var(--beige-dark), var(--sage-light)); text-align:center; }
+        .booking-form { max-width:600px; margin:40px auto 0; background:var(--white); padding:50px; border-radius:20px; box-shadow:var(--shadow); text-align:left; }
+        .form-group { position:relative; margin-bottom:30px; }
+        .form-control { width:100%; padding:15px 0; border:none; border-bottom:2px solid #ddd; outline:none; background:transparent; font-family:'DM Sans'; font-size:1rem; transition:border-color 0.3s; }
+        .form-control:focus { border-bottom-color:var(--sage); }
+        .form-label { position:absolute; top:15px; left:0; color:#999; transition:all 0.3s; pointer-events:none; }
+        .form-control:focus ~ .form-label, .form-control:valid ~ .form-label { top:-10px; font-size:0.8rem; color:var(--sage); }
+        .btn-submit { width:100%; text-align:center; padding:18px; }
+
+        /* Contact */
+        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+        .contact-info-box p { font-size:1.1rem; margin-bottom:20px; display:flex; align-items:center; gap:15px; }
+        .map-box { height:400px; border-radius:20px; background:var(--sage-light); display:flex; align-items:center;justify-content:center; color:var(--sage); font-family:'Cormorant Garamond'; font-size:24px;}
+
+        /* Footer */
+        footer { background:var(--charcoal); color:var(--beige); padding:80px 0 30px; }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:40px; margin-bottom:40px; }
+        .footer-logo { font-family:'Cormorant Garamond'; font-size:2rem; margin-bottom:20px; color:var(--white); }
+        .footer-col h4 { color:var(--gold); margin-bottom:25px; font-size:1.2rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:12px; }
+        .footer-col a:hover { color:var(--sage); }
+        .footer-bottom { text-align:center; padding-top:30px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.9rem; color:#888; }
+
+        /* Tech 2.0 Plugins */
+        .tech2-header { padding:0 0 40px; text-align:center; }
+        .tech2-header h2 { font-size:3.5rem; color:var(--charcoal); border-left:4px solid var(--gold); display:inline-block; padding-left:20px; margin-bottom:15px; }
+        .tech2-header p { font-family:'DM Sans'; color:var(--sage); font-size:1.1rem; letter-spacing:1px; text-transform:uppercase; }
+        .filter-bar { padding:0 0 50px; display:flex; justify-content:center; flex-wrap:wrap; gap:15px; }
+        .filter-btn { font-family:'DM Sans'; padding:10px 25px; border-radius:30px; border:1px solid var(--sage); background:transparent; color:var(--charcoal); cursor:pointer; font-size:1rem; transition:all 0.3s ease; }
+        .filter-btn:hover { background:var(--sage-light); }
+        .filter-btn.active { background:var(--gold); color:var(--white); border-color:var(--gold); }
+        .tech-grid-2 { display:grid; grid-template-columns:repeat(3, 1fr); gap:30px; min-height:400px; }
+        .t-card { background:var(--beige); border-radius:12px; overflow:hidden; box-shadow:0 6px 16px rgba(28,28,30,0.06); transition:transform 0.3s ease, opacity 0.3s ease; display:flex; flex-direction:column; border:1px solid transparent; }
+        .t-card:hover { transform:translateY(-8px); background:var(--white); border-color:var(--sage-light); }
+        .t-card.hidden { opacity:0; transform:scale(0.97); pointer-events:none; }
+        .t-card-img { width:100%; height:240px; background:#f9f7f4; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; font-family:'Cormorant Garamond'; color:var(--sage); text-align:center; padding:10px; }
+        .t-card-img img { height:100%; width:100%; object-fit:contain; object-position:center; position:absolute; inset:0; padding:10px; background:#f9f7f4; }
+        .t-info { padding:30px; }
+        .t-info h3 { font-family:'Cormorant Garamond'; font-size:20px; color:var(--gold); margin-bottom:5px; }
+        .t-brand { font-family:'DM Sans'; font-size:12px; color:var(--sage); letter-spacing:1px; text-transform:uppercase; margin-bottom:15px; display:block; font-weight:500;}
+        .t-desc { font-family:'DM Sans'; font-size:14px; color:var(--charcoal); line-height:1.7; margin:0; }
+
+        @media(max-width:900px){
+            .nav-links { display:none; }
+            .hamburger { display:block; }
+            .hero h1 { font-size:4rem; }
+            .stats-grid, .about-grid, .tech-grid, .training-grid, .contact-grid { grid-template-columns:1fr; }
+            .why-grid, .eco-grid { grid-template-columns:1fr; }
+            .team-grid { grid-template-columns:repeat(2,1fr); }
+            .tech-grid-2 { grid-template-columns:repeat(2,1fr); padding:60px 20px;}
+            .service-row, .service-row:nth-child(even) { flex-direction:column; }
+            .srv-img, .srv-content { width:100%; }
+            .srv-img { min-height:250px; }
+            .footer-grid { grid-template-columns:1fr; }
+            .fab-btn { right: 20px; bottom: 20px; width: 50px; height: 50px; }
+        }
+        @media(max-width:600px){
+            .tech-grid-2 { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FAB: Floating WhatsApp / Contact Action -->
+    <a href="#contact" class="fab-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <div class="logo" style="display:flex; align-items:center;">
+                <a href="#">
+                    <img src="images/brand%20logo.png" alt="Cutis Institute Logo" style="height: 60px; width: auto; object-fit: contain;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Treatments</a></li>
+                <li><a href="#centres">Specialities</a></li>
+                <li><a href="#tech">Technologies</a></li>
+            </ul>
+            <a href="#contact" class="btn nav-btn">Contact Us</a>
+            <div class="hamburger">☰</div>
+        </div>
+    </nav>
+
+    <!-- HERO PARALLAX -->
+    <header class="hero">
+        <div class="hero-parallax-bg" id="heroBg"></div>
+        <div class="container hero-content">
+            <h2 id="hero-sub" class="reveal">Centre of Excellence in Dermatology</h2>
+            <h1 id="hero-title">The Complete Skin Hospital.</h1>
+            <p class="reveal">One of India's largest skin institutes, spanning over 20,000 sq ft, where cutting-edge technology meets expert compassionate care right in Calicut, Kerala.</p>
+            <div class="hero-btns reveal">
+                <a href="#contact" class="btn">Contact Us</a>
+                <a href="#services" class="btn btn-outline">Explore Services</a>
+            </div>
+        </div>
+        <div class="scroll-down">↓</div>
+    </header>
+
+    <!-- STATS -->
+    <div class="stats reveal">
+        <div class="container stats-grid">
+            <div class="stat-item"><div class="stat-num" data-val="100">0</div><div class="stat-label">% Quality Commitment</div></div>
+            <div class="stat-item"><div class="stat-num" data-val="20000">0</div><div class="stat-label">Sq Ft Facility</div></div>
+            <div class="stat-item"><div class="stat-num" data-val="10">0</div><div class="stat-label">Laser Theatres</div></div>
+            <div class="stat-item"><div class="stat-num" data-val="3">0</div><div class="stat-label">Operating Suites</div></div>
+            <div class="stat-item"><div class="stat-num" data-val="5">0</div><div class="stat-label">Expert Doctors</div></div>
+            <div class="stat-item"><div class="stat-num" data-val="15">0</div><div class="stat-label">Years of Excellence</div></div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="section bg-white">
+        <div class="container about-grid">
+            <div class="about-content slide-in-left">
+                <h2>Welcome to Cutis Institute</h2>
+                <p>Cutis Institute of Dermatology & Aesthetic Sciences in Calicut, India is a leading skin clinic and skin hospital specializing in skincare, cosmetology, and plastic surgery.</p>
+                <p>Located in a 20,000 square feet standalone building, we provide world-class care in Clinical, Cosmetic, and Surgical Dermatology through an expert team of specialists.</p>
+                <a class="link-hover">Learn More About Us →</a>
+            </div>
+            <!-- REAL HIGH-END PHOTOGRAPHY -->
+            <div class="about-img slide-in-right">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" alt="Premium Clinic Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CUTIS (Custom SVGs added) -->
+    <section class="section">
+        <div class="container">
+            <div class="why-header reveal">
+                <h2>What Makes Cutis Exceptional</h2>
+            </div>
+            <div class="why-grid">
+                <div class="card reveal">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4M12 7v4M10 9h4"/></svg></div>
+                    <h3>World-Class Infrastructure</h3><p>FDA, CE, and CDSCO approved devices. 10 exclusive laser theatres and 3 operating suites.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></div>
+                    <h3>Expert Medical Team</h3><p>Internationally trained specialists in dermatology and plastic surgery.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Team-Based Approach</h3><p>Multidisciplinary collaboration integrating cosmetology, plastic surgery, and trichology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE SERVICES (Real Images) -->
+    <section id="services" class="section bg-white">
+        <div class="container">
+            <h2 class="section-header reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Our Core Specialities</h2>
+            <div class="services-grid">
+                <div class="service-row reveal">
+                    <div class="srv-img"><img src="https://images.unsplash.com/photo-1604902396830-aca29e19b067?q=80&w=800&auto=format&fit=crop" alt="Clinical Dermatology"></div>
+                    <div class="srv-content">
+                        <h3>Clinical Dermatology</h3>
+                        <p>Complete diagnosis and treatment of all skin conditions and disorders using evidence-based clinical methods tailored to individual patient needs.</p>
+                        <a class="link-hover">Explore →</a>
+                    </div>
+                </div>
+                <div class="service-row reveal">
+                    <div class="srv-img"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" alt="Cosmetic Dermatology"></div>
+                    <div class="srv-content">
+                        <h3>Cosmetic Dermatology</h3>
+                        <p>Advanced sub-specialities including Pigment Clinic, Acne Clinic, Anti-Aging Clinic (Botox, fillers, face lift, stem cell therapies), Hair Clinic, and Nail Clinic.</p>
+                        <a class="link-hover">Explore →</a>
+                    </div>
+                </div>
+                <div class="service-row reveal">
+                    <div class="srv-img"><img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop" alt="Plastic Surgery"></div>
+                    <div class="srv-content">
+                        <h3>Plastic Surgery</h3>
+                        <p>Advanced surgical solutions for reconstruction, aesthetic enhancement, and corrective procedures by expert boarded surgeons.</p>
+                        <a class="link-hover">Explore →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE DRAG CAROUSEL FOR CENTRES -->
+    <section id="centres" class="section bg-sage">
+        <div class="why-header reveal" style="padding-top:40px;">
+            <h2>Specialized Treatment Centres</h2>
+            <p style="text-align:center; max-width:600px; margin:0 auto; color:#555;">(Click and drag to scroll)</p>
+        </div>
+        <div class="carousel-wrap" id="centresCarouselWrap">
+            <div class="centres-carousel" id="centresCarousel">
+                <div class="card centre-card">
+                    <div class="c-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+                    <div class="c-info"><h3>Chromeclinique</h3><p>Dedicated to managing all pigmentary disorders — from depigmentation to hyperpigmentation.</p></div>
+                </div>
+                <div class="card centre-card">
+                    <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/></svg></div>
+                    <div class="c-info"><h3>Eraze Scar Center</h3><p>Advanced care for acne scars, burn scars, keloids. Cutting-edge treatments to restore skin health.</p></div>
+                </div>
+                <div class="card centre-card">
+                    <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><line x1="12" y1="14" x2="12" y2="4"/></svg></div>
+                    <div class="c-info"><h3>Capeli Clinique</h3><p>Specializes in trichology, dermoscopy, and precise diagnosis for hair loss treatments.</p></div>
+                </div>
+                <div class="card centre-card">
+                    <div class="c-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="c-info"><h3>Rejuvenize</h3><p>Comprehensive anti-aging. Targets aging with botox, fillers, face lifts, and stem cell therapies.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH 2.0 -->
+    <section id="tech" class="section bg-white">
+        <div class="tech2-header reveal">
+            <div class="container">
+                <h2>Our Technologies</h2>
+                <p>20+ World-Class Devices from 6 Countries</p>
+            </div>
+        </div>
+        
+        <div class="filter-bar reveal">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="hair-removal">Hair Removal</button>
+            <button class="filter-btn" data-filter="skin-resurfacing">Skin Resurfacing</button>
+            <button class="filter-btn" data-filter="pigmentation">Pigmentation</button>
+            <button class="filter-btn" data-filter="anti-aging">Anti-Aging</button>
+            <button class="filter-btn" data-filter="phototherapy">Phototherapy</button>
+            <button class="filter-btn" data-filter="body">Body</button>
+        </div>
+
+        <div class="container">
+            <div class="tech-grid-2" id="techGrid">
+                <!-- Hair Removal -->
+                <div class="t-card" data-category="hair-removal">
+                    <div class="t-card-img">Soprano Titanium<img src="images/sopranio%20titanium%20hair%20reduction%20laser.jpeg" alt="Soprano Titanium" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Soprano Titanium</h3><span class="t-brand">ALMA Lasers, Israel</span><p class="t-desc">Painless permanent full-body hair removal for all skin types</p></div>
+                </div>
+                <div class="t-card" data-category="hair-removal">
+                    <div class="t-card-img">Lightsheer Diode System<img src="images/lumenis%20lightsheer%20hair%20laser%20(2)%20(1).jpeg" alt="Lightsheer Diode System" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Lightsheer Diode Laser System</h3><span class="t-brand">Lumenis, Israel</span><p class="t-desc">Fast and effective laser hair removal with minimal discomfort</p></div>
+                </div>
+
+                <!-- Skin Resurfacing -->
+                <div class="t-card" data-category="skin-resurfacing">
+                    <div class="t-card-img">UltraPulse CO2<img src="images/ultra%20pulse.jpeg" alt="UltraPulse" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>UltraPulse CO2 Laser</h3><span class="t-brand">Lumenis, Israel</span><p class="t-desc">World's most powerful CO2 laser for scar removal, wrinkles and skin resurfacing</p></div>
+                </div>
+                <div class="t-card" data-category="skin-resurfacing">
+                    <div class="t-card-img">UNIXEL RF CO2<img src="images/technologies/unixel.jpg" alt="UNIXEL" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>UNIXEL RF CO2 Laser</h3><span class="t-brand">UNIXEL</span><p class="t-desc">Advanced radiofrequency CO2 system for skin renewal and scar treatment</p></div>
+                </div>
+                <div class="t-card" data-category="skin-resurfacing">
+                    <div class="t-card-img">Ellman Surgitron<img src="images/technologies/ellman.jpg" alt="Ellman Surgitron" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Ellman Surgitron Dual RF 120</h3><span class="t-brand">Cynosure, USA</span><p class="t-desc">Precise radiofrequency unit for surgical skin procedures</p></div>
+                </div>
+                <div class="t-card" data-category="skin-resurfacing">
+                    <div class="t-card-img">Ecleris<img src="images/technologies/ecleris.jpg" alt="Ecleris" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Ecleris Mesoporation</h3><span class="t-brand">Ecleris</span><p class="t-desc">Delivers active ingredients deep into the skin without needles</p></div>
+                </div>
+                <div class="t-card" data-category="skin-resurfacing">
+                    <div class="t-card-img">Oxy Peel<img src="images/technologies/oxypeel.jpg" alt="Oxy Peel" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Oxy Peel</h3><span class="t-brand">Aesthetic Systems</span><p class="t-desc">Oxygen-infused peel for instant skin brightening and renewal</p></div>
+                </div>
+
+                <!-- Pigmentation -->
+                <div class="t-card" data-category="pigmentation">
+                    <div class="t-card-img">Spectra XT<img src="images/Spectra%20xtq%20switched%20nd%20YAG%20laser.jpeg" alt="Spectra XT" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Spectra XT Nd-YAG Laser</h3><span class="t-brand">Lutronic</span><p class="t-desc">Advanced laser for pigmentation, dark spots, tattoo removal and skin brightening</p></div>
+                </div>
+                <div class="t-card" data-category="pigmentation">
+                    <div class="t-card-img">Pastella Cosjet<img src="images/technologies/pastella.jpg" alt="Pastella Cosjet" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Pastella Cosjet Q-Switched</h3><span class="t-brand">VonTech, South Korea</span><p class="t-desc">High-energy laser targeting deep pigmentation and uneven skin tone</p></div>
+                </div>
+                <div class="t-card" data-category="pigmentation">
+                    <div class="t-card-img">Synchro VasQ<img src="images/synchro%20vasque%20pulsed%20dye%20laser.jpeg" alt="Synchro VasQ" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Synchro VasQ Pulsed Dye Laser</h3><span class="t-brand">DEKA, Italy</span><p class="t-desc">Treats vascular lesions, redness and port wine stains with precision</p></div>
+                </div>
+                <div class="t-card" data-category="pigmentation">
+                    <div class="t-card-img">Formatk<img src="images/technologies/formatk.jpg" alt="Formatk" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Formatk Intense Pulsed Light</h3><span class="t-brand">Israel</span><p class="t-desc">Broad-spectrum light therapy for pigmentation, redness and skin texture</p></div>
+                </div>
+
+                <!-- Anti-Aging -->
+                <div class="t-card" data-category="anti-aging">
+                    <div class="t-card-img">Endymed 3DEEP<img src="images/wndymed%20skin%20tightening%20system%20and%20microneeding%20radiofrequency.jpeg" alt="Endymed 3DEEP" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Endymed 3DEEP RF</h3><span class="t-brand">Endymed, USA</span><p class="t-desc">Non-surgical skin tightening and wrinkle reduction using deep radiofrequency</p></div>
+                </div>
+                <div class="t-card" data-category="anti-aging">
+                    <div class="t-card-img">Dr. Arnold TOP FMS<img src="images/Dr%20arnold%20functional%20muscle%20stimulation%20unit.jpeg" alt="Dr. Arnold TOP FMS" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Dr. Arnold TOP FMS</h3><span class="t-brand">DEKA, Italy</span><p class="t-desc">Flat magnetic stimulation for facial muscle toning and skin lifting</p></div>
+                </div>
+                <div class="t-card" data-category="anti-aging">
+                    <div class="t-card-img">Lumera Targeted<img src="images/ultracell%20Q+HIFU.jpeg" alt="Lumera Targeted" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Lumera Targeted Light System</h3><span class="t-brand">Daavlin, USA</span><p class="t-desc">Targeted light therapy for skin rejuvenation and collagen stimulation</p></div>
+                </div>
+
+                <!-- Phototherapy -->
+                <div class="t-card" data-category="phototherapy">
+                    <div class="t-card-img">Exciplex Excimer<img src="images/technologies/exciplex.jpg" alt="Exciplex" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Exciplex Excimer System</h3><span class="t-brand">Clarteis, France</span><p class="t-desc">Targeted UV light therapy for vitiligo, psoriasis and eczema</p></div>
+                </div>
+                <div class="t-card" data-category="phototherapy">
+                    <div class="t-card-img">Daavlin Phototherapy<img src="images/technologies/daavlin.jpg" alt="Daavlin Phototherapy" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Daavlin Whole Body Phototherapy</h3><span class="t-brand">Daavlin, USA</span><p class="t-desc">Full-body UVA and NbUVB treatment for psoriasis, vitiligo and skin conditions</p></div>
+                </div>
+
+                <!-- Body -->
+                <div class="t-card" data-category="body">
+                    <div class="t-card-img">Zimmer Cryo 7<img src="images/technologies/zimmer.jpg" alt="Zimmer Cryo 7" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Zimmer Cryo 7</h3><span class="t-brand">Zimmer MedizinSysteme, Germany</span><p class="t-desc">Advanced cooling system that ensures patient comfort during laser treatments</p></div>
+                </div>
+                <div class="t-card" data-category="body">
+                    <div class="t-card-img">Brymill Cry-Ac<img src="images/technologies/brymill.jpg" alt="Brymill Cry-Ac" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Brymill Cry-Ac Unit</h3><span class="t-brand">Brymill Cryogenic Systems, USA</span><p class="t-desc">Precise cryotherapy unit for removal of skin lesions and warts</p></div>
+                </div>
+                <div class="t-card" data-category="body">
+                    <div class="t-card-img">Conmed Hyfrecator<img src="images/technologies/conmed.jpg" alt="Conmed Hyfrecator" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Conmed Hyfrecator</h3><span class="t-brand">Cynosure, USA</span><p class="t-desc">Electrosurgical system for precise removal of skin tags and minor lesions</p></div>
+                </div>
+                <div class="t-card" data-category="body">
+                    <div class="t-card-img">Chemical Peels<img src="images/technologies/peels.jpg" alt="Chemical Peels" onerror="this.style.display='none'"></div>
+                    <div class="t-info"><h3>Chemical Peels</h3><span class="t-brand">Neo Strata, Cosmoderm...</span><p class="t-desc">Medical-grade chemical peels for skin renewal, acne and pigmentation</p></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ECO PARALLAX -->
+    <section id="eco" class="section eco">
+        <div class="eco-parallax" id="ecoBg"></div>
+        <div class="container">
+            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Healing in Harmony</h2>
+            <div class="eco-grid">
+                <div class="eco-card reveal"><h3>Refreshing Ambiance</h3><p>Thoughtfully designed interiors and serene outdoor landscapes for ultimate healing comfort.</p></div>
+                <div class="eco-card reveal"><h3>Eco-Friendly</h3><p>Green building running on solar energy, rainwater harvesting, and low-impact clinical systems.</p></div>
+                <div class="eco-card reveal"><h3>Lush Environment</h3><p>Surrounded by greenery. Sustainable practices supporting a healthier, greener future for Calicut.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM (Real Avatar Images) -->
+    <section id="team" class="section bg-white">
+        <div class="container">
+            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Our Expert Team</h2>
+            <div class="team-grid reveal">
+                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=300" alt="Doc 1"></div><h4>Dr. Salim</h4><p>Dermatologist</p></div>
+                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=300" alt="Doc 2"></div><h4>Dr. Prasannakumar</h4><p>Plastic Surgeon</p></div>
+                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1594824432258-294c7ab4bfef?q=80&w=300" alt="Doc 3"></div><h4>Dr. Laila</h4><p>Dermatologist</p></div>
+                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=300" alt="Doc 4"></div><h4>Dr. Hafiz</h4><p>Cosmetologist</p></div>
+                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=300" alt="Doc 5"></div><h4>Dr. Kader</h4><p>Plastic Surgeon</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAINING -->
+    <section class="section bg-sage">
+        <div class="container training-grid">
+            <div class="img-placeholder reveal" style="height:400px; border-radius:20px; overflow:hidden;"><img src="https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?q=80&w=800&auto=format&fit=crop" alt="Training Center" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="reveal">
+                <h2 style="font-size:3rem; margin-bottom:20px;">Cutis Research & Training</h2>
+                <p style="margin-bottom:20px; color:#555; line-height:1.6;">Advanced training in aesthetic medicine and cosmetic dermatology. We empower future professionals with world-class standard teaching, hands-on learning, live demos, and industry-relevant skill development.</p>
+                <a class="btn">Explore Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Patient Stories</h2>
+            <div class="testi-carousel reveal">
+                <div class="testi-card"><div class="stars">★★★★★</div><p>The acne scar treatment completely changed my life. Dr. Salim is incredibly skilled and the facility is genuinely world-class.</p><h4>- Ayesha R.</h4></div>
+                <div class="testi-card"><div class="stars">★★★★★</div><p>Professional, hygienic, and highly advanced. The Rejuvenize center gave me natural, glowing results.</p><h4>- Nithin M.</h4></div>
+                <div class="testi-card"><div class="stars">★★★★★</div><p>Best skin hospital in Kerala. The eco-friendly atmosphere immediately puts you at ease.</p><h4>- Sarah J.</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Latest from Our Experts</h2>
+            <div class="why-grid reveal">
+                <div class="card blog-card" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=400" style="width:100%; height:200px; object-fit:cover;"><div style="padding:30px;"><span style="color:var(--sage); font-size:0.9rem; font-weight:bold;">Treatments</span><h3 style="margin:10px 0;">Vitiligo Treatment in Calicut</h3><p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Causes, Myths & Advanced Solutions</p><a class="link-hover">Read More →</a></div></div>
+                <div class="card blog-card" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=400" style="width:100%; height:200px; object-fit:cover;"><div style="padding:30px;"><span style="color:var(--sage); font-size:0.9rem; font-weight:bold;">Education</span><h3 style="margin:10px 0;">Understanding Pigmentation</h3><p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Types and Treatment Options</p><a class="link-hover">Read More →</a></div></div>
+                <div class="card blog-card" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1580828369019-2228b434c14e?q=80&w=400" style="width:100%; height:200px; object-fit:cover;"><div style="padding:30px;"><span style="color:var(--sage); font-size:0.9rem; font-weight:bold;">Lifestyle</span><h3 style="margin:10px 0;">Hair Loss in Kerala</h3><p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Climate, Causes & Clinical Solutions</p><a class="link-hover">Read More →</a></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- (Booking Section Removed as requested) -->
+
+    <!-- CONTACT -->
+    <section id="contact" class="section bg-white">
+        <div class="container contact-grid">
+            <div class="reveal">
+                <h2 style="font-size:3.5rem; margin-bottom:30px;">Find Us</h2>
+                <div class="contact-info-box">
+                    <p>📍 Nellikkode, Vishnu Temple Rd, Bypass Junction, Thondayad, Kozhikode, Kerala 673017</p>
+                    <p>📞 +91 8281865151</p>
+                    <p>📧 cutisinstitute@gmail.com</p>
+                    <p>⏰ Monday – Saturday: 9:00 AM – 7:00 PM</p>
+                </div>
+            </div>
+            <div class="map-box reveal" style="overflow:hidden;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15651.980641170796!2d75.8016!3d11.2588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4727%3A0x334407b46955fc18!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#"><img src="images/brand%20logo.png" alt="Cutis Logo" style="height: 60px; width: auto; object-fit: contain; margin-bottom: 20px;"></a>
+                    <p style="color:#aaa; line-height:1.6; max-width:80%;">India's premium 20,000 sq ft skin hospital integrating world-class technology with compassionate aesthetic care.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul><li><a href="#about" style="color:var(--beige);">About Cutis</a></li><li><a href="#services" style="color:var(--beige);">Core Services</a></li><li><a href="#centres" style="color:var(--beige);">Centres</a></li><li><a href="#contact" style="color:var(--beige);">Contact</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Specialities</h4>
+                    <ul><li><a href="#" style="color:var(--beige);">Chromeclinique</a></li><li><a href="#" style="color:var(--beige);">Eraze</a></li><li><a href="#" style="color:var(--beige);">Capeli Clinique</a></li><li><a href="#" style="color:var(--beige);">Rejuvenize</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p style="color:#aaa; margin-bottom:10px;">+91 8281865151</p>
+                    <p style="color:#aaa; line-height:1.5;">Nellikkode, Bypass Junction<br>Kozhikode, Kerala</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Cutis Institute of Dermatology & Aesthetic Sciences. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Hero Word Stagger Animation
+        const title = document.getElementById('hero-title');
+        const words = title.innerText.split(' ');
+        title.innerHTML = '';
+        words.forEach((word, idx) => {
+            const span = document.createElement('span');
+            span.className = 'word'; span.innerHTML = word + '&nbsp;';
+            span.style.animationDelay = (idx * 0.15) + 's';
+            title.appendChild(span);
+        });
+
+        // Parallax Effects & Navbar Scroll
+        const nav = document.getElementById('navbar');
+        const heroBg = document.getElementById('heroBg');
+        const ecoBg = document.getElementById('ecoBg');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // Navbar
+            if(scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+            
+            // Hero Parallax
+            if(heroBg && scrollY < window.innerHeight) { heroBg.style.transform = `translateY(${scrollY * 0.4}px)`; }
+            
+            // Eco Parallax
+            const ecoSection = document.querySelector('.eco');
+            if(ecoBg && ecoSection) {
+                const rect = ecoSection.getBoundingClientRect();
+                if(rect.top < window.innerHeight && rect.bottom > 0) {
+                    const offset = window.innerHeight - rect.top;
+                    ecoBg.style.transform = `translateY(${offset * 0.2}px)`;
+                }
+            }
+        });
+
+        // Intersection Observer for Reveals
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, .slide-in-left, .slide-in-right').forEach(el => observer.observe(el));
+
+        // Drag to scroll for Carousel
+        const carouselWrap = document.getElementById('centresCarouselWrap');
+        const carousel = document.getElementById('centresCarousel');
+        let isDown = false; let startX; let scrollLeft;
+        
+        carouselWrap.addEventListener('mousedown', (e) => {
+            isDown = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft;
+        });
+        carouselWrap.addEventListener('mouseleave', () => isDown = false);
+        carouselWrap.addEventListener('mouseup', () => isDown = false);
+        carouselWrap.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2;
+            carousel.scrollLeft = scrollLeft - walk;
+        });
+
+        // Count Up Stats
+        const stats = document.querySelectorAll('.stat-num');
+        let hasCounted = false;
+        const statObserver = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && !hasCounted) {
+                hasCounted = true;
+                stats.forEach(st => {
+                    const target = +st.getAttribute('data-val');
+                    const inc = target / (2000 / 16); let cur = 0;
+                    const update = () => {
+                        cur += inc;
+                        if(cur < target) { st.innerText = Math.ceil(cur).toLocaleString(); requestAnimationFrame(update); } 
+                        else { st.innerText = target.toLocaleString() + (target > 500 ? '+' : ''); }
+                    }; update();
+                });
+            }
+        }, { threshold: 0.5 });
+        statObserver.observe(document.querySelector('.stats'));
+        // Technology JS Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const techCards = document.querySelectorAll('.t-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                techCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                        setTimeout(() => card.classList.remove('hidden'), 50);
+                    } else {
+                        card.classList.add('hidden');
+                        setTimeout(() => { 
+                            if(card.classList.contains('hidden')) card.style.display = 'none'; 
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
