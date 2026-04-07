@@ -59,8 +59,9 @@
         nav { position:fixed; top:0; width:100%; padding:20px 0; z-index:1000; transition:all 0.4s; }
         nav.scrolled { background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); box-shadow:var(--shadow); padding:15px 0; }
         .nav-inner { display:flex; justify-content:space-between; align-items:center; }
-        .logo h1 { font-size:28px; line-height:1; }
-        .logo p { font-size:11px; color:var(--gold); letter-spacing:1px; text-transform:uppercase;}
+        .logo .logo-link { display:flex; align-items:center; text-decoration:none; }
+        .logo img { height: 60px; width: auto; transition: 0.3s; }
+        nav.scrolled .logo img { height: 50px; }
         .nav-links { display:flex; gap:30px; list-style:none; }
         .nav-links a:hover { color:var(--gold); }
         .hamburger { display:none; font-size:24px; cursor:pointer;}
@@ -242,9 +243,9 @@
     <!-- NAV -->
     <nav id="navbar">
         <div class="container nav-inner">
-            <div class="logo" style="display:flex; align-items:center;">
-                <a href="#">
-                    <img src="images/brand%20logo.png" alt="Cutis Institute Logo" style="height: 60px; width: auto; object-fit: contain;">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="images/brand_logo_new.png" alt="Cutis Institute">
                 </a>
             </div>
             <ul class="nav-links">
