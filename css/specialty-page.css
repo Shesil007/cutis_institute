@@ -1,0 +1,271 @@
+/* ==========================================
+   SPECIALTY PAGE STYLES
+   Shared across all 5 specialty pages
+   ========================================== */
+
+/* Hero */
+.sp-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    padding-bottom: 80px;
+    overflow: hidden;
+}
+
+.sp-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(28,28,30,0.2) 0%, rgba(28,28,30,0.65) 100%);
+    z-index: 1;
+}
+
+.sp-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 120px;
+}
+
+.sp-back-link {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 20px;
+    transition: color 0.3s;
+    letter-spacing: 0.5px;
+}
+
+.sp-back-link:hover {
+    color: var(--gold);
+}
+
+.sp-hero-content .spec-eyebrow {
+    color: var(--gold);
+    border-color: rgba(201,169,110,0.5);
+    margin-bottom: 20px;
+}
+
+.sp-hero-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    line-height: 1.05;
+    color: var(--white);
+    margin: 0 0 16px;
+}
+
+.sp-hero-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+}
+
+/* Lead Section */
+.sp-lead-section {
+    padding: 60px 0;
+    background: var(--white);
+}
+
+.sp-lead-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.sp-lead-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Stats Block */
+.sp-stats-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 40px;
+    background: var(--beige);
+    border-radius: 20px;
+    border-left: 3px solid var(--gold);
+}
+
+.sp-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sp-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.sp-stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #777;
+}
+
+/* Content Sections */
+.sp-content-section {
+    padding: 60px 0;
+    background: var(--white);
+}
+
+.sp-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.sp-content-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sp-content-block h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--charcoal);
+    margin: 0;
+}
+
+.sp-content-block p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.85;
+    margin: 0;
+}
+
+/* Section heading for tech list */
+.sp-section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+}
+
+.sp-section-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 50px;
+    line-height: 1.7;
+}
+
+/* Tech / Treatment List */
+.sp-tech-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.sp-tech-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 30px;
+    background: var(--beige);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sp-tech-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(28,28,30,0.08);
+}
+
+.sp-tech-icon {
+    font-size: 1.4rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.sp-tech-item strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+}
+
+.sp-tech-item p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CTA Section */
+.sp-cta-section {
+    padding: 70px 0;
+    background: linear-gradient(135deg, var(--charcoal) 0%, #2a2a2e 100%);
+    text-align: center;
+}
+
+.sp-cta-inner {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.sp-cta-inner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.sp-cta-inner p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.sp-cta-inner .btn {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+}
+
+.sp-cta-inner .btn:hover {
+    background: transparent;
+    color: var(--gold);
+}
+
+.sp-cta-inner .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.sp-cta-inner .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .sp-hero-content h1 { font-size: 3.2rem; }
+    .sp-lead-grid,
+    .sp-split-grid { grid-template-columns: 1fr; gap: 40px; }
+    .sp-stats-block { flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
+    .sp-tech-list { grid-template-columns: 1fr; }
+    .sp-cta-inner h2 { font-size: 2.2rem; }
+    .sp-cta-inner .btn-outline { margin-left: 0 !important; margin-top: 12px; }
+}
