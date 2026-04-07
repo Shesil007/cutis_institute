@@ -47,6 +47,36 @@
         .btn:hover { background:transparent; color:var(--sage); }
         .btn-outline { background:transparent; color:var(--charcoal); border:1px solid var(--charcoal); }
         .btn-outline:hover { background:var(--charcoal); color:var(--white); }
+        .t-btn:hover { background: var(--sage); color: var(--white); }
+
+        /* Modal Styles */
+        .modal-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); 
+            display: flex; align-items: center; justify-content: center; 
+            z-index: 2000; opacity: 0; pointer-events: none; transition: 0.4s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-content { 
+            background: var(--beige); width: 90%; max-width: 800px; padding: 60px; 
+            border-radius: 20px; position: relative; transform: translateY(30px); transition: 0.5s cubic-bezier(0.2,0.8,0.2,1); 
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .modal-close { 
+            position: absolute; top: 25px; right: 25px; font-size: 2rem; 
+            cursor: pointer; color: var(--charcoal); opacity: 0.5; transition: 0.3s;
+        }
+        .modal-close:hover { opacity: 1; transform: rotate(90deg); }
+        .modal-body h2 { font-size: 3rem; margin-bottom: 20px; color: var(--sage); font-family: 'Cormorant Garamond', serif; }
+        .modal-body p { font-size: 1.15rem; line-height: 1.8; color: #555; margin-bottom: 30px; }
+        .modal-features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; list-style: none; }
+        .modal-features li { padding-left: 30px; position: relative; font-weight: 500; font-size: 1.1rem; }
+        .modal-features li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
+        body.modal-open { overflow: hidden; }
+        @media(max-width: 700px) {
+            .modal-content { padding: 40px 30px; }
+            .modal-features { grid-template-columns: 1fr; }
+        }
 
         /* Noise Texture */
         body::before {
@@ -223,11 +253,6 @@
             transition: all 0.3s;
             cursor: pointer;
             text-decoration: none;
-        }
-
-        .t-btn:hover {
-            background: var(--sage);
-            color: var(--white);
         }
 
         /* Centres (Draggable Carousel) */
@@ -457,7 +482,7 @@
                             <li>Infection Management</li>
                             <li>Hair Loss Treatments</li>
                         </ul>
-                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
+                        <button class="t-btn learn-more-btn" data-treatment="clinical">Explore More</button>
                     </div>
                 </div>
 
@@ -476,7 +501,7 @@
                             <li>Medical-Grade Facials</li>
                             <li>Scar Revision</li>
                         </ul>
-                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
+                        <button class="t-btn learn-more-btn" data-treatment="cosmetic">Explore More</button>
                     </div>
                 </div>
 
@@ -495,7 +520,7 @@
                             <li>Vascular Lesion Therapy</li>
                             <li>Laser Pigment Removal</li>
                         </ul>
-                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
+                        <button class="t-btn learn-more-btn" data-treatment="laser">Explore More</button>
                     </div>
                 </div>
 
@@ -514,13 +539,12 @@
                             <li>Corrective Surgery</li>
                             <li>Scar Management</li>
                         </ul>
-                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
+                        <button class="t-btn learn-more-btn" data-treatment="plastic">Explore More</button>
                     </div>
                 </div>
 
             </div>
         </div>
-    </section>
     </section>
 
     <!-- INTERACTIVE DRAG CAROUSEL FOR CENTRES -->
@@ -731,8 +755,6 @@
         </div>
     </section>
 
-    <!-- (Booking Section Removed as requested) -->
-
     <!-- CONTACT -->
     <section id="contact" class="section bg-white">
         <div class="container contact-grid">
@@ -755,19 +777,19 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="#"><img src="images/brand%20logo.png" alt="Cutis Logo" style="height: 60px; width: auto; object-fit: contain; margin-bottom: 20px;"></a>
+                <div class="footer-col reveal">
+                    <a><img src="images/brand%20logo.png" alt="Cutis Logo" style="height: 60px; width: auto; object-fit: contain; margin-bottom: 20px;"></a>
                     <p style="color:#aaa; line-height:1.6; max-width:80%;">India's premium 20,000 sq ft skin hospital integrating world-class technology with compassionate aesthetic care.</p>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col reveal">
                     <h4>Quick Links</h4>
                     <ul><li><a href="#about" style="color:var(--beige);">About Cutis</a></li><li><a href="treatments.html" style="color:var(--beige);">Core Services</a></li><li><a href="#centres" style="color:var(--beige);">Centres</a></li><li><a href="#contact" style="color:var(--beige);">Contact</a></li></ul>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col reveal">
                     <h4>Specialities</h4>
                     <ul><li><a href="#" style="color:var(--beige);">Chromeclinique</a></li><li><a href="#" style="color:var(--beige);">Eraze</a></li><li><a href="#" style="color:var(--beige);">Capeli Clinique</a></li><li><a href="#" style="color:var(--beige);">Rejuvenize</a></li></ul>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col reveal">
                     <h4>Contact Info</h4>
                     <p style="color:#aaa; margin-bottom:10px;">+91 8281865151</p>
                     <p style="color:#aaa; line-height:1.5;">Nellikkode, Bypass Junction<br>Kozhikode, Kerala</p>
@@ -779,68 +801,124 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- TREATMENT MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <h2 id="modalTitle">Treatment Detail</h2>
+                <p id="modalDesc">Detailed description goes here...</p>
+                <ul class="modal-features" id="modalFeatures"></ul>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Hero Word Stagger Animation
-        const title = document.getElementById('hero-title');
-        const words = title.innerText.split(' ');
-        title.innerHTML = '';
-        words.forEach((word, idx) => {
-            const span = document.createElement('span');
-            span.className = 'word'; span.innerHTML = word + '&nbsp;';
-            span.style.animationDelay = (idx * 0.15) + 's';
-            title.appendChild(span);
-        });
-
-        // Parallax Effects & Navbar Scroll
-        const nav = document.getElementById('navbar');
-        const heroBg = document.getElementById('heroBg');
-        const ecoBg = document.getElementById('ecoBg');
-
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            
-            // Navbar
-            if(scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-            
-            // Hero Parallax
-            if(heroBg && scrollY < window.innerHeight) { heroBg.style.transform = `translateY(${scrollY * 0.4}px)`; }
-            
-            // Eco Parallax
-            const ecoSection = document.querySelector('.eco');
-            if(ecoBg && ecoSection) {
-                const rect = ecoSection.getBoundingClientRect();
-                if(rect.top < window.innerHeight && rect.bottom > 0) {
-                    const offset = window.innerHeight - rect.top;
-                    ecoBg.style.transform = `translateY(${offset * 0.2}px)`;
-                }
+        // Modal Content Database
+        const treatmentDetails = {
+            clinical: {
+                title: "Clinical Dermatology",
+                desc: "Medical conditions of the skin, hair, and nails require expert diagnostic precision. At Cutis, we treat everything from common acne to complex auto-immune skin disorders using evidence-based protocols.",
+                features: ["Acne & Acne Vulgaris", "Eczema & Dermatitis", "Psoriasis Management", "Hair Loss & Alopecia", "Fungal Infections", "Pediatric Dermatology", "Mole Mapping", "Vitiligo Treatment"]
+            },
+            cosmetic: {
+                title: "Cosmetic Dermatology",
+                desc: "Aesthetic science aimed at enhancing your natural features. We use the latest injectable and topical technologies to rejuvenate your skin, focusing on natural-looking outcomes and patient safety.",
+                features: ["Botox & Anti-Wrinkle", "Dermal Fillers", "Chemical Peels", "Hydrafacials", "Skin Tightening", "Micro-needling", "Lip Augmentation", "Face Contouring"]
+            },
+            laser: {
+                title: "Laser Medicine",
+                text: "Our laser center is one of India's most advanced. We offer precise target light therapy for permanent results with minimal downtime, powered by world-class platforms like UltraPulse and Spectra XT.",
+                features: ["Laser Hair Reduction", "Acne Scar Revision", "Pigment Removal", "Safe Tattoo Removal", "Vascular Lesions", "Carbon Peel", "Skin Resurfacing", "Stretch Marks"]
+            },
+            plastic: {
+                title: "Plastic Surgery",
+                desc: "Surgical excellence combining function and aesthetics. Our certified surgeons prioritize safety and natural-looking outcomes for both reconstructive and aesthetic procedures.",
+                features: ["Natural Facelifts", "Rhinoplasty", "Liposuction", "Blepharoplasty", "Breast Augmentation", "Scar Revision", "Abdominoplasty", "Hand Surgery"]
             }
+        };
+
+        const overlay = document.getElementById('modalOverlay');
+        const closeBtn = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalFeatures = document.getElementById('modalFeatures');
+
+        document.querySelectorAll('.learn-more-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.getAttribute('data-treatment');
+                const data = treatmentDetails[type];
+                
+                modalTitle.innerText = data.title;
+                modalDesc.innerText = data.desc || data.text; // Handling both naming variants
+                
+                modalFeatures.innerHTML = '';
+                data.features.forEach(f => {
+                    const li = document.createElement('li');
+                    li.innerText = f;
+                    modalFeatures.appendChild(li);
+                });
+
+                overlay.classList.add('active');
+                document.body.classList.add('modal-open');
+            });
         });
 
-        // Intersection Observer for Reveals
+        const closeModal = () => {
+            overlay.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', (e) => {
+            if(e.target === overlay) closeModal();
+        });
+
+        // Transition handler on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+            
+            const scrolled = window.scrollY;
+            const heroBg = document.querySelector('.hero-parallax-bg');
+            if(heroBg) heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+
+        // Reveal animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal, .slide-in-left, .slide-in-right').forEach(el => observer.observe(el));
 
-        // Drag to scroll for Carousel
-        const carouselWrap = document.getElementById('centresCarouselWrap');
-        const carousel = document.getElementById('centresCarousel');
-        let isDown = false; let startX; let scrollLeft;
+        document.querySelectorAll('.reveal, .slide-in-right, .slide-in-left').forEach(el => observer.observe(el));
+
+        // Horizontal Carousel Logic
+        const wrap = document.getElementById('centresCarouselWrap');
+        if(wrap) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            wrap.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - wrap.offsetLeft;
+                scrollLeft = wrap.scrollLeft;
+            });
+            wrap.addEventListener('mouseleave', () => isDown = false);
+            wrap.addEventListener('mouseup', () => isDown = false);
+            wrap.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - wrap.offsetLeft;
+                const walk = (x - startX) * 2;
+                wrap.scrollLeft = scrollLeft - walk;
+            });
+        }
         
-        carouselWrap.addEventListener('mousedown', (e) => {
-            isDown = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft;
-        });
-        carouselWrap.addEventListener('mouseleave', () => isDown = false);
-        carouselWrap.addEventListener('mouseup', () => isDown = false);
-        carouselWrap.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - startX) * 2;
-            carousel.scrollLeft = scrollLeft - walk;
-        });
-
         // Count Up Stats
         const stats = document.querySelectorAll('.stat-num');
         let hasCounted = false;
