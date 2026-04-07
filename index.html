@@ -108,16 +108,127 @@
         .why-card h3 { font-size:1.5rem; margin-bottom:15px; }
         .why-card p { color:#666; line-height:1.6; }
 
-        /* Core Services */
-        .services-grid { display:flex; flex-direction:column; gap:40px; }
-        .service-row { display:flex; background:var(--white); border-radius:20px; box-shadow:var(--shadow); overflow:hidden; transition:transform 0.4s; }
-        .service-row:hover { transform:scale(1.02); }
-        .service-row:nth-child(even) { background:var(--beige); flex-direction:row-reverse; }
-        .srv-img { width:35%; min-height:400px; overflow:hidden; }
-        .srv-img img { width:100%; height:100%; object-fit:cover; }
-        .srv-content { padding:60px; width:65%; display:flex; flex-direction:column; justify-content:center;}
-        .srv-content h3 { font-size:2.5rem; margin-bottom:15px; }
-        .srv-content p { color:#555; margin-bottom:25px; line-height:1.7; font-size:1.1rem; }
+        /* Treatments Grid Styles */
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .treatment-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            text-decoration: none; /* For the link wrap */
+            color: inherit;
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .t-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .t-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: contrast(1.05);
+        }
+
+        .treatment-card:hover .t-img img {
+            transform: scale(1.05);
+        }
+
+        .t-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--sage);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            z-index: 2;
+        }
+
+        .t-content {
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .t-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .t-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .t-list {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .t-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .t-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .t-btn {
+            display: inline-block;
+            text-align: center;
+            margin-top: auto;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--sage);
+            color: var(--sage);
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .t-btn:hover {
+            background: var(--sage);
+            color: var(--white);
+        }
 
         /* Centres (Draggable Carousel) */
         /* Changed from Grid to Drag Carousel to maximize interactivity */
@@ -219,12 +330,10 @@
             .hamburger { display:block; }
             .hero h1 { font-size:4rem; }
             .stats-grid, .about-grid, .tech-grid, .training-grid, .contact-grid { grid-template-columns:1fr; }
-            .why-grid, .eco-grid { grid-template-columns:1fr; }
+            .why-grid, .eco-grid, .treatments-grid { grid-template-columns:1fr; }
+            .treatments-grid { gap: 20px; }
             .team-grid { grid-template-columns:repeat(2,1fr); }
             .tech-grid-2 { grid-template-columns:repeat(2,1fr); padding:60px 20px;}
-            .service-row, .service-row:nth-child(even) { flex-direction:column; }
-            .srv-img, .srv-content { width:100%; }
-            .srv-img { min-height:250px; }
             .footer-grid { grid-template-columns:1fr; }
             .fab-btn { right: 20px; bottom: 20px; width: 50px; height: 50px; }
         }
@@ -325,37 +434,93 @@
         </div>
     </section>
 
-    <!-- CORE SERVICES (Real Images) -->
+    <!-- CORE SERVICES (Premium Treatments Grid) -->
     <section id="services" class="section bg-white">
         <div class="container">
-            <h2 class="section-header reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Our Core Specialities</h2>
-            <div class="services-grid">
-                <div class="service-row reveal">
-                    <div class="srv-img"><img src="https://images.unsplash.com/photo-1604902396830-aca29e19b067?q=80&w=800&auto=format&fit=crop" alt="Clinical Dermatology"></div>
-                    <div class="srv-content">
-                        <h3>Clinical Dermatology</h3>
-                        <p>Complete diagnosis and treatment of all skin conditions and disorders using evidence-based clinical methods tailored to individual patient needs.</p>
-                        <a class="link-hover">Explore →</a>
+            <h2 class="section-header reveal" style="text-align:center; font-size:3.5rem; margin-bottom:20px;">Our Specialized Care</h2>
+            <p class="reveal" style="text-align:center; color:#666; max-width:600px; margin:0 auto 60px;">World-class dermatological and surgical solutions delivered with medical precision.</p>
+            
+            <div class="treatments-grid">
+
+                <!-- Clinical Dermatology -->
+                <div class="treatment-card reveal">
+                    <div class="t-img">
+                        <span class="t-badge">Medical Care</span>
+                        <img src="https://media.istockphoto.com/id/514880133/photo/dermatologist-examining-patient-for-signs-of-skin-cancer.jpg?s=612x612&w=0&k=20&c=8eOTKwhzQzmVE4zgmgr1Ham6Ge2L9GbLx_-szh_Cn5I=" alt="Clinical Dermatology">
+                    </div>
+                    <div class="t-content">
+                        <h2>Clinical Dermatology</h2>
+                        <p>Specialized diagnosis and treatment for persistent skin, hair, and nail concerns.</p>
+                        <ul class="t-list">
+                            <li>Acne & Breakout Solutions</li>
+                            <li>Eczema & Psoriasis Care</li>
+                            <li>Infection Management</li>
+                            <li>Hair Loss Treatments</li>
+                        </ul>
+                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
                     </div>
                 </div>
-                <div class="service-row reveal">
-                    <div class="srv-img"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" alt="Cosmetic Dermatology"></div>
-                    <div class="srv-content">
-                        <h3>Cosmetic Dermatology</h3>
-                        <p>Advanced sub-specialities including Pigment Clinic, Acne Clinic, Anti-Aging Clinic (Botox, fillers, face lift, stem cell therapies), Hair Clinic, and Nail Clinic.</p>
-                        <a class="link-hover">Explore →</a>
+
+                <!-- Cosmetic Dermatology -->
+                <div class="treatment-card reveal" style="transition-delay: 0.1s;">
+                    <div class="t-img">
+                        <span class="t-badge">Aesthetics</span>
+                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop" alt="Cosmetic Dermatology">
+                    </div>
+                    <div class="t-content">
+                        <h2>Cosmetic Dermatology</h2>
+                        <p>Artfully delivered aesthetic enhancements to highlight your natural radiance.</p>
+                        <ul class="t-list">
+                            <li>Anti-Aging & Injectables</li>
+                            <li>Pigmentation Correction</li>
+                            <li>Medical-Grade Facials</li>
+                            <li>Scar Revision</li>
+                        </ul>
+                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
                     </div>
                 </div>
-                <div class="service-row reveal">
-                    <div class="srv-img"><img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop" alt="Plastic Surgery"></div>
-                    <div class="srv-content">
-                        <h3>Plastic Surgery</h3>
-                        <p>Advanced surgical solutions for reconstruction, aesthetic enhancement, and corrective procedures by expert boarded surgeons.</p>
-                        <a class="link-hover">Explore →</a>
+
+                <!-- Laser Medicine -->
+                <div class="treatment-card reveal" style="transition-delay: 0.2s;">
+                    <div class="t-img">
+                        <span class="t-badge">Advanced Tech</span>
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop" alt="Laser Medicine">
+                    </div>
+                    <div class="t-content">
+                        <h2>Laser Medicine</h2>
+                        <p>The latest in FDA-approved laser technology for precision resurfacing and hair removal.</p>
+                        <ul class="t-list">
+                            <li>Laser Hair Reduction</li>
+                            <li>Skin Resurfacing (CO2)</li>
+                            <li>Vascular Lesion Therapy</li>
+                            <li>Laser Pigment Removal</li>
+                        </ul>
+                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
                     </div>
                 </div>
+
+                <!-- Plastic Surgery -->
+                <div class="treatment-card reveal" style="transition-delay: 0.3s;">
+                    <div class="t-img">
+                        <span class="t-badge">Surgical Excellence</span>
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop" alt="Plastic Surgery">
+                    </div>
+                    <div class="t-content">
+                        <h2>Plastic Surgery</h2>
+                        <p>Expert-led surgical procedures for reconstruction and structural aesthetic transformation.</p>
+                        <ul class="t-list">
+                            <li>Facial Reconstruction</li>
+                            <li>Body Contouring</li>
+                            <li>Corrective Surgery</li>
+                            <li>Scar Management</li>
+                        </ul>
+                        <a href="treatments.html" class="t-btn">Explore Treatment</a>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </section>
     </section>
 
     <!-- INTERACTIVE DRAG CAROUSEL FOR CENTRES -->
