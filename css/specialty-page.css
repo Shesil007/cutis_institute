@@ -12,14 +12,14 @@
     padding-bottom: 80px;
     overflow: hidden;
     background:
-        radial-gradient(circle at top center, rgba(201,169,110,0.16), transparent 32%),
+        radial-gradient(circle at top center, rgba(109, 102, 84,0.16), transparent 32%),
         linear-gradient(180deg, #f3ecdf 0%, #e7dcc9 100%);
 }
 
 .sp-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(28,28,30,0.2) 0%, rgba(28,28,30,0.65) 100%);
+    background: linear-gradient(180deg, rgba(43, 47, 32,0.2) 0%, rgba(43, 47, 32,0.65) 100%);
     z-index: 1;
 }
 
@@ -45,7 +45,7 @@
 
 .sp-hero-content .spec-eyebrow {
     color: var(--gold);
-    border-color: rgba(201,169,110,0.5);
+    border-color: rgba(109, 102, 84,0.5);
     margin-bottom: 20px;
 }
 
@@ -186,7 +186,7 @@
 
 .sp-tech-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(28,28,30,0.08);
+    box-shadow: 0 12px 30px rgba(43, 47, 32,0.08);
 }
 
 .sp-tech-icon {
@@ -271,4 +271,12 @@
     .sp-tech-list { grid-template-columns: 1fr; }
     .sp-cta-inner h2 { font-size: 2.2rem; }
     .sp-cta-inner .btn-outline { margin-left: 0 !important; margin-top: 12px; }
+}
+
+@media (max-width: 620px) {
+    .sp-hero-content h1 { font-size: 2.5rem; }
+    .sp-hero-tag { letter-spacing: 1.8px; }
+    .sp-stats-block { padding: 28px 22px; gap: 22px; }
+    .sp-tech-item { padding: 22px; }
+    .sp-section-heading { font-size: 2.2rem; }
 }

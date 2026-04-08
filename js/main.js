@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initHeroAnimation();
     initNavbarScroll();
+    initMobileMenu();
     initParallax();
     initRevealObserver();
     initCarouselDrag();
@@ -43,6 +44,44 @@ function initNavbarScroll() {
         } else {
             nav.classList.remove('scrolled');
         }
+    });
+}
+
+/**
+ * Mobile Navigation Toggle
+ */
+function initMobileMenu() {
+    const nav = document.getElementById('navbar');
+    const toggle = document.querySelector('.hamburger');
+    const links = document.querySelector('.nav-links');
+
+    if (!nav || !toggle || !links) return;
+
+    const closeMenu = () => {
+        links.classList.remove('mobile-open');
+        toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.setAttribute('role', 'button');
+    toggle.setAttribute('aria-label', 'Toggle navigation menu');
+    toggle.setAttribute('aria-expanded', 'false');
+
+    toggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = links.classList.toggle('mobile-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    links.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!nav.contains(event.target)) closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMenu();
     });
 }
 
@@ -193,4 +232,3 @@ function initTechFilter() {
         });
     });
 }
-

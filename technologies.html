@@ -7,18 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --beige: #F5EFE6;
-            --beige-dark: #ede1d2;
-            --white: #FFFFFF;
-            --sage: #4A7c3f;
-            --sage-light: #E8F4E8;
-            --charcoal: #1C1C1E;
-            --gold: #C9A96E;
+            --beige: #D6D0BE;
+            --beige-dark: #C4B89E;
+            --white: #EEE8D8;
+            --sage: #8F957D;
+            --sage-light: #AEB79A;
+            --charcoal: #2B2F20;
+            --gold: #6D6654;
             --shadow: 0 10px 40px rgba(0,0,0,0.06);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-family: 'DM Sans', sans-serif; color: var(--charcoal); background: var(--beige); }
+        html { scroll-behavior: smooth; font-family: 'DM Sans', sans-serif; color: var(--charcoal); background: var(--beige); overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--charcoal); }
         a { text-decoration: none; color: inherit; }
 
@@ -42,7 +42,7 @@
         .logo .logo-link { display: flex; align-items: center; text-decoration: none; }
         .logo img { height: 60px; width: auto; transition: 0.3s; }
         #navbar.scrolled .logo img { height: 50px; }
-        .nav-links { display: flex; gap: 30px; list-style: none; justify-content: center; }
+        .nav-links { display: flex; gap: 30px; list-style: none; justify-content: flex-start; }
         .nav-links a:hover { color: var(--gold); }
         .btn {
             display: inline-block;
@@ -68,8 +68,8 @@
             text-align: center;
             padding: 32px;
             border-radius: 18px;
-            background: linear-gradient(135deg, rgba(233, 245, 233, 0.75), rgba(245, 239, 230, 0.95));
-            border: 1px solid rgba(74, 124, 63, 0.18);
+            background: linear-gradient(135deg, rgba(174, 183, 154, 0.75), rgba(214, 208, 190, 0.95));
+            border: 1px solid rgba(143, 149, 125, 0.18);
         }
         .tech-intro p { color: #555; line-height: 1.8; font-size: 1.05rem; }
 
@@ -93,11 +93,11 @@
             background: var(--white);
             border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 8px 22px rgba(28, 28, 30, 0.08);
+            box-shadow: 0 8px 22px rgba(43, 47, 32, 0.08);
             transition: transform 0.3s ease, opacity 0.3s ease;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(74, 124, 63, 0.1);
+            border: 1px solid rgba(143, 149, 125, 0.1);
         }
         .t-card:hover { transform: translateY(-8px); }
         .t-card.hidden { opacity: 0; transform: scale(0.97); pointer-events: none; }
@@ -148,17 +148,20 @@
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #888; }
 
         @media (max-width: 900px) {
-            .nav-inner { grid-template-columns: auto 1fr; gap: 22px; }
-            .nav-links { gap: 20px; }
+            .container { padding: 0 20px; }
+            .nav-inner { grid-template-columns: 1fr; gap: 10px; }
+            .nav-links { gap: 10px 16px; justify-content: flex-start; flex-wrap: wrap; }
             .nav-btn { display: none; }
             .page-header h1 { font-size: 3rem; }
+            .page-header { padding-top: 180px; }
             .tech-grid-2 { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 620px) {
             .tech-grid-2 { grid-template-columns: 1fr; }
-            .page-header { padding-top: 140px; }
+            .page-header { padding-top: 190px; }
             .page-header h1 { font-size: 2.5rem; }
+            .nav-links { gap: 8px 12px; font-size: 0.92rem; }
         }
     </style>
 </head>
@@ -270,7 +273,7 @@
                 </div>
                 <div class="t-card reveal" data-category="phototherapy">
                     <div class="t-card-img">Daavlin Phototherapy<img src="images/technologies/Daavlin Whole Body Phototherapy.jpeg" alt="Daavlin Phototherapy" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Daavlin Whole Body Phototherapy</h3><span class="t-brand">Daavlin, USA</span><p class="t-desc">Whole-body UVA and NbUVB support for chronic inflammatory skin disorders.</p></div>
+                    <div class="t-info"><h3>Daavlin Whole Body Phototherapy</h3><span class="t-brand">Daavlin, USA</span><p class="t-desc">Whole-body UVA and NB-UVB support for chronic inflammatory skin disorders.</p></div>
                 </div>
 
                 <div class="t-card reveal" data-category="body">
@@ -310,7 +313,7 @@
                     </ul>
                 </div>
                 <div class="footer-col reveal">
-                    <h4>Specialities</h4>
+                    <h4>Specialties</h4>
                     <ul>
                         <li><a href="chromeclinique.html" style="color:var(--beige);">Chromeclinique</a></li>
                         <li><a href="eraze.html" style="color:var(--beige);">Eraze</a></li>

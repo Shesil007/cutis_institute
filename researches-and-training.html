@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Researches and Training | Cutis Institute</title>
+    <title>Research and Training | Cutis Institute</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --beige: #F5EFE6;
-            --beige-dark: #ede1d2;
-            --white: #FFFFFF;
-            --sage: #4A7c3f;
-            --sage-light: #E8F4E8;
-            --charcoal: #1C1C1E;
-            --gold: #C9A96E;
+            --beige: #D6D0BE;
+            --beige-dark: #C4B89E;
+            --white: #EEE8D8;
+            --sage: #8F957D;
+            --sage-light: #AEB79A;
+            --charcoal: #2B2F20;
+            --gold: #6D6654;
             --shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
         }
 
@@ -27,8 +27,8 @@
             font-family: 'DM Sans', sans-serif;
             color: var(--charcoal);
             background:
-                radial-gradient(circle at top right, rgba(232, 244, 232, 0.92), transparent 32%),
-                linear-gradient(180deg, #f7f1e8 0%, #f2ebe1 100%);
+                radial-gradient(circle at top right, rgba(174, 183, 154, 0.92), transparent 32%),
+                linear-gradient(180deg, #DDD6C6 0%, #D6D0BE 100%);
         }
 
         h1, h2, h3, h4 {
@@ -74,7 +74,7 @@
         .nav-links {
             list-style: none;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 24px;
         }
 
@@ -102,7 +102,7 @@
         .btn-outline {
             background: transparent;
             color: var(--charcoal);
-            border-color: rgba(28, 28, 30, 0.18);
+            border-color: rgba(43, 47, 32, 0.18);
         }
 
         .btn-outline:hover {
@@ -124,8 +124,8 @@
         }
 
         .hero-copy {
-            background: linear-gradient(140deg, rgba(255, 255, 255, 0.72), rgba(232, 244, 232, 0.72));
-            border: 1px solid rgba(74, 124, 63, 0.14);
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.72), rgba(174, 183, 154, 0.72));
+            border: 1px solid rgba(143, 149, 125, 0.14);
             border-radius: 28px;
             padding: 44px;
             box-shadow: var(--shadow);
@@ -184,12 +184,12 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(28, 28, 30, 0.02), rgba(28, 28, 30, 0.28));
+            background: linear-gradient(180deg, rgba(43, 47, 32, 0.02), rgba(43, 47, 32, 0.28));
         }
 
         .section-card {
             background: rgba(255, 255, 255, 0.82);
-            border: 1px solid rgba(74, 124, 63, 0.1);
+            border: 1px solid rgba(143, 149, 125, 0.1);
             border-radius: 24px;
             padding: 34px;
             box-shadow: var(--shadow);
@@ -243,7 +243,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(28, 28, 30, 0.02), rgba(28, 28, 30, 0.2));
+            background: linear-gradient(180deg, rgba(43, 47, 32, 0.02), rgba(43, 47, 32, 0.2));
         }
 
         .stats-grid {
@@ -254,8 +254,8 @@
         }
 
         .stat-card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(232, 244, 232, 0.82));
-            border: 1px solid rgba(74, 124, 63, 0.12);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(174, 183, 154, 0.82));
+            border: 1px solid rgba(143, 149, 125, 0.12);
             border-radius: 22px;
             padding: 26px;
             box-shadow: var(--shadow);
@@ -290,7 +290,7 @@
 
         .info-panel {
             background: var(--white);
-            border: 1px solid rgba(74, 124, 63, 0.1);
+            border: 1px solid rgba(143, 149, 125, 0.1);
             border-radius: 22px;
             padding: 28px;
             box-shadow: var(--shadow);
@@ -311,7 +311,7 @@
         .feature-list li {
             padding: 16px 18px;
             border-radius: 16px;
-            background: rgba(232, 244, 232, 0.7);
+            background: rgba(174, 183, 154, 0.7);
             color: #515151;
             line-height: 1.7;
         }
@@ -323,7 +323,7 @@
 
         .cta-card {
             text-align: center;
-            background: linear-gradient(135deg, rgba(245, 239, 230, 0.95), rgba(232, 244, 232, 0.95));
+            background: linear-gradient(135deg, rgba(214, 208, 190, 0.95), rgba(174, 183, 154, 0.95));
         }
 
         footer {
@@ -336,10 +336,17 @@
 
         @media (max-width: 960px) {
             .nav-inner {
-                grid-template-columns: auto 1fr;
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
 
-            .nav-links,
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px 16px;
+                justify-content: flex-start;
+            }
+
             .nav-btn {
                 display: none;
             }
@@ -349,6 +356,10 @@
             .split-grid,
             .gallery-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .page-main {
+                padding-top: 170px;
             }
 
             .hero-visual {
@@ -372,6 +383,15 @@
             .stat-card {
                 padding: 24px;
             }
+
+            .nav-links {
+                gap: 8px 12px;
+                font-size: 0.92rem;
+            }
+
+            .page-main {
+                padding-top: 186px;
+            }
         }
     </style>
 </head>
@@ -382,7 +402,7 @@
             <ul class="nav-links">
                 <li><a href="about-cutis.html">About Us</a></li>
                 <li><a href="treatments.html">Our Treatments</a></li>
-                <li><a href="index.html#centres">Our Specialities</a></li>
+                <li><a href="index.html#centres">Our Specialties</a></li>
                 <li><a href="technologies.html">Technologies</a></li>
             </ul>
             <a class="btn nav-btn" href="index.html#contact">Contact Us</a>
@@ -394,7 +414,7 @@
             <section class="hero">
                 <div class="hero-copy">
                     <span class="eyebrow">Academy @ Cutis Institute</span>
-                    <h1>Researches and Training</h1>
+                    <h1>Research and Training</h1>
                     <p>Cutis Institute in Calicut extends its commitment beyond patient care into dermatology research, clinical education, and advanced procedural training. The goal is not only to deliver world-class dermatological services, but also to shape the future of the field through evidence, teaching, and mentorship.</p>
                     <div class="hero-actions">
                         <a class="btn" href="index.html#contact">Enquire Now</a>
@@ -414,7 +434,7 @@
                 </article>
                 <article class="stat-card">
                     <span class="stat-value">300+</span>
-                    <h3>Invitation Lectures</h3>
+                    <h3>Invited Lectures</h3>
                     <p>Our faculty have delivered hundreds of talks at prestigious scientific forums and academic institutions worldwide.</p>
                 </article>
                 <article class="stat-card">

@@ -1,11 +1,11 @@
 :root {
-    --beige: #F5EFE6;
-    --beige-dark: #ede1d2;
-    --white: #FFFFFF;
-    --sage: #4A7c3f;
-    --sage-light: #E8F4E8;
-    --charcoal: #1C1C1E;
-    --gold: #C9A96E;
+    --beige: #D6D0BE;
+    --beige-dark: #C4B89E;
+    --white: #EEE8D8;
+    --sage: #8F957D;
+    --sage-light: #AEB79A;
+    --charcoal: #2B2F20;
+    --gold: #6D6654;
     --shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
 }
 
@@ -71,7 +71,7 @@ nav {
     list-style: none;
     display: flex;
     gap: 26px;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .nav-links a:hover {
@@ -101,7 +101,7 @@ nav {
 .profile-hero {
     padding: 56px 0 40px;
     background: linear-gradient(140deg, var(--beige-dark), var(--sage-light));
-    border-bottom: 1px solid rgba(74, 124, 63, 0.18);
+    border-bottom: 1px solid rgba(143, 149, 125, 0.18);
 }
 
 .back-link {
@@ -172,7 +172,7 @@ nav {
 .meta-card {
     background: var(--white);
     border-radius: 14px;
-    border: 1px solid rgba(74, 124, 63, 0.15);
+    border: 1px solid rgba(143, 149, 125, 0.15);
     padding: 14px;
 }
 
@@ -252,7 +252,7 @@ nav {
 .other-link {
     display: block;
     background: var(--white);
-    border: 1px solid rgba(74, 124, 63, 0.18);
+    border: 1px solid rgba(143, 149, 125, 0.18);
     border-radius: 14px;
     padding: 14px;
     font-size: 0.92rem;
@@ -320,12 +320,26 @@ footer {
 }
 
 @media (max-width: 700px) {
+    .nav-inner {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
     .nav-links {
-        display: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        justify-content: flex-start;
+        font-size: 0.92rem;
     }
 
     .container {
         width: min(1180px, calc(100% - 30px));
+    }
+
+    .page-main {
+        padding-top: 170px;
     }
 
     .section-card {

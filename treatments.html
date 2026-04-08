@@ -10,13 +10,13 @@
         rel="stylesheet">
     <style>
         :root {
-            --beige: #F5EFE6;
-            --beige-dark: #ede1d2;
-            --white: #FFFFFF;
-            --sage: #4A7c3f;
-            --sage-light: #E8F4E8;
-            --charcoal: #1C1C1E;
-            --gold: #C9A96E;
+            --beige: #D6D0BE;
+            --beige-dark: #C4B89E;
+            --white: #EEE8D8;
+            --sage: #8F957D;
+            --sage-light: #AEB79A;
+            --charcoal: #2B2F20;
+            --gold: #6D6654;
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
         }
 
@@ -31,6 +31,7 @@
             font-family: 'DM Sans', sans-serif;
             color: var(--charcoal);
             background: var(--beige);
+            overflow-x: hidden;
         }
 
         h1,
@@ -105,7 +106,7 @@
             display: flex;
             gap: 30px;
             list-style: none;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .nav-links a:hover {
@@ -172,29 +173,10 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
-        .t-img {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .t-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-            filter: contrast(1.05);
-        }
-
-        .treatment-card:hover .t-img img {
-            transform: scale(1.05);
-        }
-
         .t-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.95);
+            display: inline-flex;
+            align-self: flex-start;
+            background: var(--beige-dark);
             padding: 6px 15px;
             border-radius: 20px;
             font-weight: 600;
@@ -203,6 +185,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             font-family: 'DM Sans', sans-serif;
+            margin-bottom: 16px;
         }
 
         .t-content {
@@ -271,7 +254,6 @@
         .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .tech-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 30px; transition: transform 0.3s ease; }
         .tech-item:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .tech-item img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 20px; filter: contrast(1.1); }
         .tech-item h3 { color: var(--gold); font-size: 1.5rem; margin-bottom: 10px; font-family: 'Cormorant Garamond'; }
         .tech-item p { color: #ccc; font-size: 0.95rem; line-height: 1.6; }
 
@@ -289,15 +271,21 @@
             .footer-grid { grid-template-columns: 1fr; }
             .page-header h1 { font-size: 3rem; }
             .tech-showcase h2 { font-size: 2.5rem; }
+            .container { padding: 0 20px; }
             .nav-inner {
-                grid-template-columns: auto 1fr;
-                gap: 20px;
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
             .nav-links {
-                gap: 20px;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 10px 16px;
             }
             .nav-btn {
                 display: none;
+            }
+            .page-header {
+                padding-top: 180px;
             }
         }
 
@@ -356,8 +344,16 @@
         body.modal-open { overflow: hidden; }
         
         @media(max-width: 700px) {
+            .page-header h1 { font-size: 2.5rem; }
+            .tech-showcase h2 { font-size: 2.1rem; }
+            .treatments-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
             .modal-content { padding: 40px 30px; }
+            .modal-body h2 { font-size: 2.2rem; }
             .modal-features { grid-template-columns: 1fr; }
+            .nav-links { gap: 8px 12px; font-size: 0.92rem; }
         }
     </style>
 </head>
@@ -375,7 +371,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="treatments.html" style="color:var(--gold);">Our Treatments</a></li>
-                <li><a href="index.html#centres">Our Specialities</a></li>
+                <li><a href="index.html#centres">Our Specialties</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
             <a href="index.html#contact" class="btn nav-btn">Contact Us</a>
@@ -401,7 +397,7 @@
                 <div class="process-step reveal">
                     <span class="step-number">01</span>
                     <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6D6654" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </div>
                     <h3>Private Consultation</h3>
                     <p>Meet with our specialists for a deep clinical assessment and personalized skin mapping.</p>
@@ -411,7 +407,7 @@
                 <div class="process-step reveal" style="transition-delay: 0.1s;">
                     <span class="step-number">02</span>
                     <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6D6654" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
                     </div>
                     <h3>Advanced Treatment</h3>
                     <p>Precision care delivered using the world's most advanced medical laser and surgical tools.</p>
@@ -421,7 +417,7 @@
                 <div class="process-step reveal" style="transition-delay: 0.2s;">
                     <span class="step-number">03</span>
                     <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6D6654" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
                     </div>
                     <h3>Holistic Aftercare</h3>
                     <p>Curated recovery protocols and ongoing monitoring to ensure your results last a lifetime.</p>
@@ -437,12 +433,8 @@
 
                 <!-- Clinical Dermatology -->
                 <div class="treatment-card reveal">
-                    <div class="t-img">
-                        <span class="t-badge">Medical Care</span>
-                        <img src="https://media.istockphoto.com/id/514880133/photo/dermatologist-examining-patient-for-signs-of-skin-cancer.jpg?s=612x612&w=0&k=20&c=8eOTKwhzQzmVE4zgmgr1Ham6Ge2L9GbLx_-szh_Cn5I="
-                            alt="Clinical Dermatology">
-                    </div>
                     <div class="t-content">
+                        <span class="t-badge">Medical Care</span>
                         <h2>Clinical Dermatology</h2>
                         <p>Are you struggling with persistent skin problems? We diagnose and heal everyday skin, hair,
                             and nail concerns so you can feel comfortable and confident in your own skin again.</p>
@@ -458,12 +450,8 @@
 
                 <!-- Cosmetic Dermatology -->
                 <div class="treatment-card reveal">
-                    <div class="t-img">
-                        <span class="t-badge">Cosmetics</span>
-                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop"
-                            alt="Cosmetic Dermatology">
-                    </div>
                     <div class="t-content">
+                        <span class="t-badge">Cosmetics</span>
                         <h2>Cosmetic Dermatology</h2>
                         <p>Enhance your natural beauty effortlessly. From reversing signs of aging to getting that
                             flawless glow, our gentle treatments bring out the very best version of you.</p>
@@ -479,12 +467,8 @@
 
                 <!-- Laser Medicine and Surgery -->
                 <div class="treatment-card reveal">
-                    <div class="t-img">
-                        <span class="t-badge">Advanced Tech</span>
-                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop"
-                            alt="Laser Medicine and Surgery">
-                    </div>
                     <div class="t-content">
+                        <span class="t-badge">Advanced Tech</span>
                         <h2>Laser Medicine and Surgery</h2>
                         <p>We use the world's safest and most advanced lasers to tackle tough skin issues that creams
                             simply can't fix, with zero pain and maximum results.</p>
@@ -500,17 +484,13 @@
 
                 <!-- Plastic Surgery -->
                 <div class="treatment-card reveal">
-                    <div class="t-img">
-                        <span class="t-badge">Surgical Precision</span>
-                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop"
-                            alt="Plastic Surgery">
-                    </div>
                     <div class="t-content">
+                        <span class="t-badge">Surgical Precision</span>
                         <h2>Plastic Surgery</h2>
                         <p>Sometimes, achieving your desired look requires an expert touch. Our certified surgeons
                             provide safe, natural-looking procedures to help you reach your goals.</p>
                         <ul class="t-list">
-                            <li>Natural Face Lifts</li>
+                            <li>Natural Facelifts</li>
                             <li>Body Contouring (Fat Loss)</li>
                             <li>Expert Scar Minimization</li>
                             <li>Reconstructive Procedures</li>
@@ -531,32 +511,26 @@
             
             <div class="tech-grid">
                 <div class="tech-item reveal">
-                    <img src="images/ultra%20pulse.jpeg" alt="UltraPulse CO2 Laser">
                     <h3>UltraPulse CO2 Laser</h3>
                     <p>The gold standard for deep skin resurfacing and scar revision. Delivers incredible results with unmatched precision.</p>
                 </div>
                 <div class="tech-item reveal">
-                    <img src="images/Spectra%20xtq%20switched%20nd%20YAG%20laser.jpeg" alt="Spectra XT">
                     <h3>Spectra XT Laser</h3>
                     <p>The latest in Q-switched technology for treating pigmentation, melasma, and safe tattoo removal across all skin types.</p>
                 </div>
                 <div class="tech-item reveal">
-                    <img src="images/sopranio%20titanium%20hair%20reduction%20laser.jpeg" alt="Soprano Titanium">
                     <h3>Soprano Titanium</h3>
                     <p>Award-winning laser hair removal technology. Faster, stronger, and virtually painless hair reduction for all skin tones.</p>
                 </div>
                 <div class="tech-item reveal">
-                    <img src="images/ultracell%20Q+HIFU.jpeg" alt="Ultracel Q+">
                     <h3>Ultracel Q+ (HIFU)</h3>
-                    <p>Advanced non-surgical face lifting and skin tightening using High-Intensity Focused Ultrasound technology.</p>
+                    <p>Advanced non-surgical facial lifting and skin tightening using High-Intensity Focused Ultrasound technology.</p>
                 </div>
                 <div class="tech-item reveal">
-                    <img src="images/wndymed%20skin%20tightening%20system%20and%20microneeding%20radiofrequency.jpeg" alt="Endymed PRO">
                     <h3>Endymed PRO</h3>
                     <p>3DEEP Radiofrequency technology for skin tightening, wrinkle reduction, and fractional skin resurfacing.</p>
                 </div>
                 <div class="tech-item reveal">
-                    <img src="images/Dr%20arnold%20functional%20muscle%20stimulation%20unit.jpeg" alt="Dr Arnold">
                     <h3>Dr. Arnold FMS</h3>
                     <p>Revolutionary pelvic floor strengthening and core toning using Functional Magnetic Stimulation.</p>
                 </div>
@@ -582,7 +556,7 @@
                     </ul>
                 </div>
                 <div class="footer-col reveal">
-                    <h4>Specialities</h4>
+                    <h4>Specialties</h4>
                     <ul>
                         <li><a href="#" style="color:var(--beige);">Chromeclinique</a></li>
                         <li><a href="#" style="color:var(--beige);">Eraze</a></li>

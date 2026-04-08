@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --beige: #F5EFE6;
-            --beige-dark: #ede1d2;
-            --white: #FFFFFF;
-            --sage: #4A7c3f;
-            --charcoal: #1C1C1E;
-            --gold: #C9A96E;
+            --beige: #D6D0BE;
+            --beige-dark: #C4B89E;
+            --white: #EEE8D8;
+            --sage: #8F957D;
+            --charcoal: #2B2F20;
+            --gold: #6D6654;
             --shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
         }
 
@@ -71,7 +71,7 @@
         .nav-links {
             list-style: none;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 24px;
         }
 
@@ -101,7 +101,7 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--beige-dark), #e8f4e8);
+            background: linear-gradient(135deg, var(--beige-dark), #AEB79A);
             border-radius: 22px;
             padding: 42px;
             box-shadow: var(--shadow);
@@ -188,15 +188,23 @@
 
         @media (max-width: 900px) {
             .nav-inner {
-                grid-template-columns: auto 1fr;
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
 
             .nav-links {
-                display: none;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px 16px;
+                justify-content: flex-start;
             }
 
             .nav-btn {
                 display: none;
+            }
+
+            .page-main {
+                padding-top: 168px;
             }
         }
 
@@ -208,6 +216,15 @@
             .hero,
             .policy-card {
                 padding: 24px;
+            }
+
+            .nav-links {
+                gap: 8px 12px;
+                font-size: 0.92rem;
+            }
+
+            .page-main {
+                padding-top: 182px;
             }
         }
     </style>
@@ -222,7 +239,7 @@
                 <li><a href="technologies.html">Technologies</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <a class="btn nav-btn" href="index.html#contact">Book Appointment</a>
+            <a class="btn nav-btn" href="index.html#contact">Book an Appointment</a>
         </div>
     </nav>
 

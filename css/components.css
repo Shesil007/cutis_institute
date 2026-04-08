@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(201, 169, 110, 0.4);
+    box-shadow: 0 10px 30px rgba(109, 102, 84, 0.4);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     animation: pulse-fab 2s infinite;
 }
@@ -27,13 +27,13 @@
 
 @keyframes pulse-fab {
     0% {
-        box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.4);
+        box-shadow: 0 0 0 0 rgba(109, 102, 84, 0.4);
     }
     70% {
-        box-shadow: 0 0 0 15px rgba(201, 169, 110, 0);
+        box-shadow: 0 0 0 15px rgba(109, 102, 84, 0);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(201, 169, 110, 0);
+        box-shadow: 0 0 0 0 rgba(109, 102, 84, 0);
     }
 }
 
@@ -56,8 +56,8 @@ nav.scrolled {
 
 .nav-inner {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 24px;
 }
 
 
@@ -79,6 +79,10 @@ nav.scrolled {
     list-style: none;
 }
 
+.nav-btn {
+    margin-left: auto;
+}
+
 .nav-links a:hover {
     color: var(--gold);
 }
@@ -87,6 +91,7 @@ nav.scrolled {
     display: none;
     font-size: 24px;
     cursor: pointer;
+    margin-left: auto;
 }
 
 /* Hero Section */
@@ -105,7 +110,7 @@ nav.scrolled {
     left: 0;
     width: 100%;
     height: 120%;
-    background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+    background: url('../images/nature_gallery_1.jpg') center/cover no-repeat;
     opacity: 0.15;
     z-index: 0;
     transition: transform 0.1s linear;
@@ -193,8 +198,8 @@ nav.scrolled {
 .stats {
     background: var(--beige-dark);
     padding: 60px 0;
-    border-top: 1px solid rgba(201, 169, 110, 0.3);
-    border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+    border-top: 1px solid rgba(109, 102, 84, 0.3);
+    border-bottom: 1px solid rgba(109, 102, 84, 0.3);
 }
 
 .stats-grid {
@@ -380,11 +385,40 @@ footer {
 
 /* Responsive */
 @media(max-width:900px) {
+    .nav-inner {
+        position: relative;
+    }
     .nav-links {
         display: none;
     }
+    .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        padding: 16px 18px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(143, 149, 125, 0.2);
+        box-shadow: 0 14px 28px rgba(43, 47, 32, 0.12);
+        z-index: 1100;
+    }
     .hamburger {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        border: 1px solid rgba(143, 149, 125, 0.3);
+        background: rgba(255, 255, 255, 0.8);
+    }
+    .nav-btn {
+        display: none;
     }
     .hero h1 {
         font-size: 4rem;
@@ -438,7 +472,7 @@ footer {
     left: 0;
     width: 100%;
     height: 140%;
-    background: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+    background: url('../images/nature_gallery_2.jpg') center/cover no-repeat;
     opacity: 0.1;
     z-index: 0;
     transition: transform 0.1s linear;
