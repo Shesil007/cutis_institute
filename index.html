@@ -236,13 +236,46 @@
         .eco h2,.eco h3 { color:var(--gold); }
 
         /* Team */
-        .team-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
-        .team-member { text-align:center; }
-        .avatar { width:150px; height:150px; border-radius:50%; margin:0 auto 20px; overflow:hidden; box-shadow:var(--shadow); }
+        .team-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; align-items:start; }
+        .team-member {
+            text-align:center;
+            background:var(--beige);
+            border-radius:18px;
+            padding:22px 16px;
+            box-shadow:0 12px 28px rgba(28, 28, 30, 0.08);
+            border:1px solid transparent;
+            transition:transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+        .team-member:hover {
+            transform:translateY(-5px);
+            box-shadow:0 16px 32px rgba(28, 28, 30, 0.12);
+            border-color:rgba(74, 124, 63, 0.25);
+        }
+        .avatar { width:145px; height:145px; border-radius:50%; margin:0 auto 18px; overflow:hidden; box-shadow:var(--shadow); }
         .avatar img { width:100%; height:100%; object-fit:cover; filter:grayscale(30%); transition:all 0.3s; }
         .team-member:hover .avatar img { filter:grayscale(0%); transform:scale(1.05); }
-        .team-member h4 { font-size:1.4rem; margin-bottom:5px; }
-        .team-member p { font-size:0.9rem; color:var(--gold); text-transform:uppercase; letter-spacing:1px;}
+        .team-member h4 { font-size:1.3rem; margin-bottom:6px; }
+        .team-role { font-size:0.82rem; color:var(--sage); letter-spacing:0.2px; font-weight:600; line-height:1.45; margin-bottom:8px; min-height:72px; }
+        .team-qualification { font-size:0.88rem; color:#555; line-height:1.5; margin-bottom:16px; }
+        .profile-trigger {
+            display:inline-block;
+            margin-top:auto;
+            padding:8px 14px;
+            border-radius:22px;
+            border:1px solid var(--sage);
+            color:var(--sage);
+            font-size:0.75rem;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            font-weight:600;
+            transition:all 0.3s ease;
+        }
+        .profile-trigger:hover { background:var(--sage); color:var(--white); }
+        .team-member:hover .profile-trigger { background:var(--sage); color:var(--white); }
 
         /* Training */
         .training-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
@@ -354,6 +387,7 @@
         }
         @media(max-width:600px){
             .tech-grid-2 { grid-template-columns:1fr; }
+            .team-grid { grid-template-columns:1fr; }
         }
     </style>
 </head>
@@ -683,11 +717,48 @@
         <div class="container">
             <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Our Expert Team</h2>
             <div class="team-grid reveal">
-                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=300" alt="Doc 1"></div><h4>Dr. Salim</h4><p>Dermatologist</p></div>
-                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=300" alt="Doc 2"></div><h4>Dr. Prasannakumar</h4><p>Plastic Surgeon</p></div>
-                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1594824432258-294c7ab4bfef?q=80&w=300" alt="Doc 3"></div><h4>Dr. Laila</h4><p>Dermatologist</p></div>
-                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=300" alt="Doc 4"></div><h4>Dr. Hafiz</h4><p>Cosmetologist</p></div>
-                <div class="team-member"><div class="avatar"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=300" alt="Doc 5"></div><h4>Dr. Kader</h4><p>Plastic Surgeon</p></div>
+                <article class="team-member">
+                    <div class="avatar"><img src="images/doctors/dr-t-salim.webp" alt="Dr. T. Salim"></div>
+                    <h4>Dr. T. Salim</h4>
+                    <p class="team-role">Clinical Head &amp; Senior Consultant in Clinical, Surgical &amp; Aesthetic Dermatology</p>
+                    <p class="team-qualification">MD, DNB, MNAMS</p>
+                    <a class="profile-trigger" href="dr-t-salim.html">Read More</a>
+                </article>
+                <article class="team-member">
+                    <div class="avatar"><img src="images/doctors/dr-s-prasannakumar.webp" alt="Dr. S. Prasannakumar"></div>
+                    <h4>Dr. S. Prasannakumar</h4>
+                    <p class="team-role">Senior Consultant in Dermatology</p>
+                    <p class="team-qualification">MD, DVD</p>
+                    <a class="profile-trigger" href="dr-s-prasannakumar.html">Read More</a>
+                </article>
+                <article class="team-member">
+                    <div class="avatar"><img src="images/doctors/dr-laila-arif.webp" alt="Dr. Laila Arif"></div>
+                    <h4>Dr. Laila Arif</h4>
+                    <p class="team-role">Consultant in Clinical &amp; Aesthetic Dermatology</p>
+                    <p class="team-qualification">M.B.B.S., DVD</p>
+                    <a class="profile-trigger" href="dr-laila-arif.html">Read More</a>
+                </article>
+                <article class="team-member">
+                    <div class="avatar"><img src="images/doctors/dr-amit-kerure.webp" alt="Dr. Amit Kerure"></div>
+                    <h4>Dr. Amit Kerure</h4>
+                    <p class="team-role">Visiting Consultant in Dermatology &amp; Hair Transplant Surgery</p>
+                    <p class="team-qualification">MBBS, MD, DVL</p>
+                    <a class="profile-trigger" href="dr-amit-kerure.html">Read More</a>
+                </article>
+                <article class="team-member">
+                    <div class="avatar"><img src="images/doctors/dr-hafiz-muhammed.webp" alt="Dr. Hafiz Muhammed Koyappathody"></div>
+                    <h4>Dr. Hafiz Muhammed Koyappathody</h4>
+                    <p class="team-role">Senior Consultant in Plastic, Reconstructive &amp; Aesthetic Surgery</p>
+                    <p class="team-qualification">MS, FRCS Ed, MCh.</p>
+                    <a class="profile-trigger" href="dr-hafiz-muhammed.html">Read More</a>
+                </article>
+                <article class="team-member">
+                    <div class="avatar"><img src="images/doctors/dr-kader-kalathingal.webp" alt="Dr. Kader Kalathingal"></div>
+                    <h4>Dr. Kader Kalathingal</h4>
+                    <p class="team-role">Senior Consultant in Plastic, Reconstructive &amp; Aesthetic Surgery</p>
+                    <p class="team-qualification">MS, MCH</p>
+                    <a class="profile-trigger" href="dr-kader-kalathingal.html">Read More</a>
+                </article>
             </div>
         </div>
     </section>
