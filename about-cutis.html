@@ -108,10 +108,27 @@
             margin-bottom: 24px;
         }
 
+        .hero-title-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
         .hero h1 {
             font-size: clamp(2.2rem, 4vw, 3.6rem);
             line-height: 1.1;
-            margin-bottom: 12px;
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .hero-mark {
+            width: clamp(72px, 10vw, 110px);
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
         .hero p {
@@ -195,6 +212,15 @@
             .content-card {
                 padding: 24px;
             }
+
+            .hero-title-row {
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .hero-mark {
+                width: 72px;
+            }
         }
     </style>
 </head>
@@ -215,7 +241,10 @@
     <main class="page-main">
         <div class="container">
             <section class="hero">
-                <h1>Cutis Institute of Dermatology &amp; Aesthetic Sciences</h1>
+                <div class="hero-title-row">
+                    <h1>Cutis Institute of Dermatology &amp; Aesthetic Sciences</h1>
+                    <img class="hero-mark" src="images/about/complete-skin-hospital-logo.jpg" alt="The Complete Skin Hospital logo">
+                </div>
                 <p>Best Skin Specialists in Calicut</p>
             </section>
 
@@ -230,10 +259,21 @@
                 <p>At Cutis, we combine cutting-edge technology with compassionate care, delivering transformative results in skin health and aesthetic beauty. Experience trusted skin and aesthetic care at Cutis Institute, your destination for healthy, radiant skin in Calicut.</p>
                 <p>Our team of board-certified dermatologists and plastic surgeons, skilled technicians, and compassionate staff are dedicated to delivering personalized care in a comfortable and welcoming environment. Our commitment lies in offering comprehensive and advanced therapies that combine medical expertise with procedural interventions. We understand that each patient is unique, which is why we prioritize individualized treatment plans to achieve optimal results.</p>
                 <p>Beyond our commitment to advanced technology, we prioritize patient education and transparency. Our team takes the time to thoroughly explain procedures, discuss expectations, and address any concerns you may have, ensuring you feel confident and informed throughout your journey with us.</p>
-                <div class="back-wrap">
-                    <a class="back-link" href="index.html#about">← Back to Home</a>
-                </div>
             </article>
+
+            <article class="content-card">
+                <h2>Mission</h2>
+                <p>To provide and promote world-class scientific skin care through the latest advancements in dermatology, laser treatments, cosmetology, and plastic surgery. We are committed to delivering exceptional care for a wide range of skin conditions including acne, scars, vitiligo, melasma, pigmentation, and white patches, using cutting-edge solutions like exosome therapy, PRP, GFC, stem cell therapy, and advanced laser technologies such as carbon laser, Excimer, and phototherapy. We also aim to be a center of excellence for education by offering advanced dermatology training to skincare professionals, dermatology residents, and aspiring skin specialists, ensuring the highest standards in clinical practice, aesthetic dermatology, trichology, and regenerative medicine.</p>
+            </article>
+
+            <article class="content-card">
+                <h2>Vision</h2>
+                <p>To be the most trusted and advanced skin clinic and aesthetic dermatology center, delivering world-class care for all skin, hair, and aesthetic concerns. Guided by renowned experts like Dr. Salim, Dr. Prasannakumar, Dr. Laila, Dr. Hafiz, and Dr. Kadhar, we envision a future where everyone has access to cutting-edge treatments for acne, scars, burns, vitiligo, melasma, pigmentation, and white patches. We aim to lead with innovation through services like PRP, GFC, hair transplant, trichology, Botox, fillers, face lift, body contouring, cosmetology, and plastic surgery, powered by the latest in exosome therapy, stem cell therapy, Regenera, carbon laser, Excimer, and phototherapy.</p>
+            </article>
+
+            <div class="back-wrap">
+                <a class="back-link" href="index.html#about">← Back to Home</a>
+            </div>
         </div>
     </main>
 
