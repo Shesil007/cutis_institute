@@ -9,7 +9,7 @@
     <style>
         :root {
             --beige: #D6D0BE; --beige-dark: #C4B89E; --white: #EEE8D8;
-            --sage: #8F957D; --sage-light: #AEB79A; --charcoal: #2B2F20;
+            --sage: #355f2d; --sage-light: #AEB79A; --charcoal: #2B2F20;
             --gold: #6D6654; --shadow: 0 10px 40px rgba(0,0,0,0.06);
         }
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -24,23 +24,32 @@
         /* Floating Action Button (FAB) */
         .fab-btn {
             position: fixed; bottom: 40px; right: 40px; z-index: 1000;
-            width: 60px; height: 60px; background: var(--gold); border-radius: 50%;
+            width: 60px; height: 60px; background: #355f2d; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 30px rgba(109, 102, 84, 0.4);
+            box-shadow: 0 10px 30px rgba(53, 95, 45, 0.38);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: pulse-fab 2s infinite;
         }
         .fab-btn:hover { transform: scale(1.1); animation: none; }
-        @keyframes pulse-fab { 0%{box-shadow:0 0 0 0 rgba(109, 102, 84,0.4);} 70%{box-shadow:0 0 0 15px rgba(109, 102, 84,0);} 100%{box-shadow:0 0 0 0 rgba(109, 102, 84,0);} }
+        @keyframes pulse-fab { 0%{box-shadow:0 0 0 0 rgba(53, 95, 45,0.38);} 70%{box-shadow:0 0 0 15px rgba(53, 95, 45,0);} 100%{box-shadow:0 0 0 0 rgba(53, 95, 45,0);} }
         
         .fab-btn-ig {
-            position: fixed; bottom: 120px; right: 40px; z-index: 1000;
+            position: fixed; bottom: 200px; right: 40px; z-index: 1000;
             width: 60px; height: 60px; background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             box-shadow: 0 10px 30px rgba(220, 39, 67, 0.3);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .fab-btn-ig:hover { transform: scale(1.1); }
+        .fab-btn-wa {
+            position: fixed; bottom: 120px; right: 40px; z-index: 1000;
+            width: 60px; height: 60px; background: #25d366; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.32);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .fab-btn-wa:hover { transform: scale(1.1); }
+        .fab-btn-wa svg { display: block; }
         
         /* Utilities */
         .reveal { opacity:0; transform:translateY(40px); transition:all 1s cubic-bezier(0.2,0.8,0.2,1); }
@@ -300,6 +309,64 @@
 
         /* Training */
         .training-grid { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
+        .training-slider {
+            position: relative;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            isolation: isolate;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: grab;
+            touch-action: pan-y;
+            user-select: none;
+        }
+        .training-slider.is-dragging { cursor: grabbing; }
+        .training-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .training-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+            background:
+                radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 52%),
+                rgba(214, 208, 190, 0.9);
+            will-change: opacity;
+        }
+        .training-slide.active {
+            opacity: 1;
+        }
+        .training-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            padding: 0;
+            transform: scale(1.06);
+            transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+        .training-slide.active img {
+            animation: trainingZoomOut 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .training-slider::after {
+            content: '';
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 36%;
+            background: linear-gradient(180deg, rgba(43, 47, 32, 0), rgba(43, 47, 32, 0.28));
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes trainingZoomOut {
+            from { transform: scale(1.06); }
+            to { transform: scale(1); }
+        }
 
         /* Booking */
         .booking { background: linear-gradient(135deg, var(--beige-dark), var(--sage-light)); text-align:center; }
@@ -524,7 +591,8 @@
             .tech-grid-2 { grid-template-columns:repeat(2,1fr); padding:60px 20px;}
             .footer-grid { grid-template-columns:1fr; }
             .fab-btn { right: 20px; bottom: 20px; width: 50px; height: 50px; }
-            .fab-btn-ig { right: 20px; bottom: 90px; width: 50px; height: 50px; }
+            .fab-btn-wa { right: 20px; bottom: 90px; width: 50px; height: 50px; }
+            .fab-btn-ig { right: 20px; bottom: 160px; width: 50px; height: 50px; }
         }
         @media(max-width:600px){
             .hero h1 { font-size:3rem; }
@@ -538,6 +606,14 @@
     <!-- FAB: Floating Phone Action -->
     <a href="tel:+918281865151" class="fab-btn" aria-label="Call Cutis Institute">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+
+    <!-- FAB: Floating WhatsApp Action -->
+    <a href="https://wa.me/919497515555" target="_blank" rel="noopener noreferrer" class="fab-btn-wa" aria-label="Chat with Cutis Institute on WhatsApp">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16.02 5.33c-5.85 0-10.59 4.69-10.59 10.47 0 1.85.49 3.66 1.42 5.25L5 27l6.12-1.6a10.67 10.67 0 0 0 4.9 1.18c5.85 0 10.59-4.69 10.59-10.48 0-5.78-4.74-10.47-10.59-10.47Z" fill="#fff"/>
+            <path d="M21.42 18.56c-.22-.11-1.31-.64-1.51-.71-.2-.07-.35-.11-.5.11-.14.22-.57.71-.7.86-.13.14-.26.16-.48.05-.22-.11-.95-.34-1.81-1.09-.67-.59-1.12-1.31-1.25-1.53-.13-.22-.01-.34.1-.45.1-.1.22-.25.34-.37.12-.13.16-.22.24-.37.08-.15.04-.28-.02-.39-.06-.11-.5-1.2-.69-1.64-.18-.43-.37-.38-.5-.39h-.43c-.15 0-.39.05-.59.27-.2.22-.78.76-.78 1.85 0 1.09.8 2.13.92 2.27.11.15 1.56 2.39 3.78 3.35 2.23.96 2.23.64 2.63.6.4-.04 1.29-.53 1.48-1.05.18-.51.18-.96.13-1.05-.06-.08-.2-.14-.42-.25Z" fill="#25d366"/>
+        </svg>
     </a>
 
     <!-- FAB: Floating Instagram Action -->
@@ -559,7 +635,7 @@
                 <li><a href="#centres">Our Specialties</a></li>
                 <li><a href="technologies.html">Technologies</a></li>
             </ul>
-            <a href="#contact" class="btn nav-btn">Contact Us</a>
+                <a href="tel:+918281865151" class="btn nav-btn">Contact Us</a>
             <div class="hamburger">☰</div>
         </div>
     </nav>
@@ -575,7 +651,7 @@
             <h1 id="hero-title">The Complete Skin Hospital.</h1>
             <p class="reveal">One of India's largest skin institutes, spanning over 20,000 sq ft, where cutting-edge technology meets expert, compassionate care right in Calicut, Kerala.</p>
             <div class="hero-btns reveal">
-                <a href="#contact" class="btn">Contact Us</a>
+                    <a href="tel:+918281865151" class="btn">Contact Us</a>
                 <a href="#services" class="btn btn-outline">Explore Services</a>
             </div>
         </div>
@@ -901,7 +977,25 @@
     <!-- TRAINING -->
     <section class="section bg-sage">
         <div class="container training-grid">
-            <div class="img-placeholder reveal" style="height:400px; border-radius:20px; overflow:hidden;"><img src="images/training/research-main.jpg" alt="Training Center" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="training-slider reveal" id="trainingSlider" aria-label="Cutis Research and Training gallery">
+                <div class="training-slides">
+                    <figure class="training-slide active">
+                        <img src="images/training/research-3.webp" alt="Live demo during Cutis research and training program">
+                    </figure>
+                    <figure class="training-slide">
+                        <img src="images/training/research-main.jpg" alt="Cutis Research and Training participants group photo">
+                    </figure>
+                    <figure class="training-slide">
+                        <img src="images/training/research-4.webp" alt="Cutis faculty leading an advanced dermatology workshop">
+                    </figure>
+                    <figure class="training-slide">
+                        <img src="images/training/research-6.webp" alt="Participants during a Cutis professional education session">
+                    </figure>
+                    <figure class="training-slide">
+                        <img src="images/training/research-7.webp" alt="Collaborative learning moment from Cutis research and training">
+                    </figure>
+                </div>
+            </div>
             <div class="reveal">
                 <h2 style="font-size:3rem; margin-bottom:20px;">Cutis Research & Training</h2>
                 <p style="margin-bottom:20px; color:#555; line-height:1.6;">Advanced training in aesthetic medicine and cosmetic dermatology. We empower future professionals with world-class teaching standards, hands-on learning, live demos, and industry-relevant skill development.</p>
@@ -917,7 +1011,7 @@
                 <h2 style="font-size:3.5rem; margin-bottom:30px;">Find Us</h2>
                 <div class="contact-info-box">
                     <p>📍 Nellikkode, Vishnu Temple Rd, Bypass Junction, Thondayad, Kozhikode, Kerala 673017</p>
-                    <p>📞 +91 8281865151</p>
+                    <p>📞 +91 8281865151 / +91 9497515555</p>
                     <p>📧 cutisinstitute@gmail.com</p>
                     <p>⏰ Monday – Saturday: 9:00 AM – 7:00 PM</p>
                     <a class="privacy-policy-link" href="privacy-policy.html">Privacy Policy</a>
@@ -958,7 +1052,7 @@
                 </div>
                 <div class="footer-col reveal">
                     <h4>Contact Info</h4>
-                    <p style="color:#aaa; margin-bottom:10px;">+91 8281865151</p>
+                    <p style="color:#aaa; margin-bottom:10px;">+91 8281865151 / +91 9497515555</p>
                     <p style="color:#aaa; line-height:1.5;">Nellikkode, Bypass Junction<br>Kozhikode, Kerala</p>
                 </div>
             </div>
@@ -1071,6 +1165,98 @@
             setTimeout(showSlides, 5000); // Change image every 5 seconds
         }
         showSlides();
+
+        // Research and Training Slider
+        const trainingSlider = document.getElementById('trainingSlider');
+        if (trainingSlider) {
+            const trainingSlides = Array.from(trainingSlider.querySelectorAll('.training-slide'));
+            let trainingActiveIndex = 0;
+            let trainingAutoRotateId = null;
+            let trainingDragStartX = null;
+
+            const setTrainingSlide = (index) => {
+                trainingActiveIndex = (index + trainingSlides.length) % trainingSlides.length;
+                trainingSlides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle('active', slideIndex === trainingActiveIndex);
+                });
+            };
+
+            const startTrainingAutoRotate = () => {
+                if (trainingAutoRotateId || trainingSlides.length < 2) return;
+                trainingAutoRotateId = setInterval(() => {
+                    setTrainingSlide(trainingActiveIndex + 1);
+                }, 5000);
+            };
+
+            const stopTrainingAutoRotate = () => {
+                if (!trainingAutoRotateId) return;
+                clearInterval(trainingAutoRotateId);
+                trainingAutoRotateId = null;
+            };
+
+            trainingSlider.addEventListener('mouseenter', stopTrainingAutoRotate);
+            trainingSlider.addEventListener('mouseleave', startTrainingAutoRotate);
+            trainingSlider.addEventListener('focusin', stopTrainingAutoRotate);
+            trainingSlider.addEventListener('focusout', startTrainingAutoRotate);
+
+            const beginTrainingDrag = (clientX) => {
+                trainingDragStartX = clientX;
+                trainingSlider.classList.add('is-dragging');
+                stopTrainingAutoRotate();
+            };
+
+            const endTrainingDrag = (clientX) => {
+                if (trainingDragStartX === null) return;
+                const deltaX = clientX - trainingDragStartX;
+                trainingSlider.classList.remove('is-dragging');
+                trainingDragStartX = null;
+
+                if (Math.abs(deltaX) > 40) {
+                    if (deltaX < 0) {
+                        setTrainingSlide(trainingActiveIndex + 1);
+                    } else {
+                        setTrainingSlide(trainingActiveIndex - 1);
+                    }
+                }
+
+                startTrainingAutoRotate();
+            };
+
+            trainingSlider.addEventListener('mousedown', (event) => {
+                beginTrainingDrag(event.clientX);
+            });
+
+            trainingSlider.addEventListener('mouseup', (event) => {
+                endTrainingDrag(event.clientX);
+            });
+
+            trainingSlider.addEventListener('mouseleave', (event) => {
+                endTrainingDrag(event.clientX);
+            });
+
+            trainingSlider.addEventListener('touchstart', (event) => {
+                beginTrainingDrag(event.touches[0].clientX);
+            }, { passive: true });
+
+            trainingSlider.addEventListener('touchend', (event) => {
+                const touch = event.changedTouches[0];
+                if (touch) endTrainingDrag(touch.clientX);
+            }, { passive: true });
+
+            trainingSlider.addEventListener('wheel', (event) => {
+                if (Math.abs(event.deltaX) < 12 && Math.abs(event.deltaY) < 12) return;
+                stopTrainingAutoRotate();
+                if (Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX > 0 : event.deltaY > 0) {
+                    setTrainingSlide(trainingActiveIndex + 1);
+                } else {
+                    setTrainingSlide(trainingActiveIndex - 1);
+                }
+                startTrainingAutoRotate();
+            }, { passive: true });
+
+            setTrainingSlide(0);
+            startTrainingAutoRotate();
+        }
 
         // Horizontal Carousel Logic
         const wrap = document.getElementById('centresCarouselWrap');
