@@ -231,8 +231,28 @@
         .eco { position:relative; overflow:hidden; background:var(--charcoal); color:var(--white); }
         .eco-parallax { position:absolute; top:-20%; left:0; width:100%; height:140%; background:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; opacity:0.1; z-index:0; transition: transform 0.1s linear;}
         .eco .container { position:relative; z-index:2; }
-        .eco-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; text-align:center; }
-        .eco-card { padding:40px; background:rgba(255,255,255,0.05); backdrop-filter:blur(5px); border-radius:20px; border:1px solid rgba(255,255,255,0.1); }
+        .eco-subline {
+            max-width: 780px;
+            margin: 0 auto 34px;
+            text-align: center;
+            color: #e2dfd8;
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+        .eco-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; text-align:center; }
+        .eco-card {
+            padding: 22px;
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.14);
+        }
+        .eco-card h3 { margin-bottom: 10px; }
+        .eco-card p {
+            color: #f1f1f1;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
         .eco h2,.eco h3 { color:var(--gold); }
 
         /* Team */
@@ -736,11 +756,21 @@
     <section id="eco" class="section eco">
         <div class="eco-parallax" id="ecoBg"></div>
         <div class="container">
-            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Healing in Harmony</h2>
+            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:14px;">The 3R Skin Method</h2>
+            <p class="eco-subline reveal">A complete path to healthier, clearer, and more confident skin.</p>
             <div class="eco-grid">
-                <div class="eco-card reveal"><h3>Refreshing Ambiance</h3><p>Thoughtfully designed interiors and serene outdoor landscapes for ultimate healing comfort.</p></div>
-                <div class="eco-card reveal"><h3>Eco-Friendly</h3><p>Green building running on solar energy, rainwater harvesting, and low-impact clinical systems.</p></div>
-                <div class="eco-card reveal"><h3>Lush Environment</h3><p>Surrounded by greenery. Sustainable practices supporting a healthier, greener future for Calicut.</p></div>
+                <article class="eco-card reveal">
+                    <h3>Reset</h3>
+                    <p>We start with expert diagnosis to understand your skin, scalp, and concern patterns.</p>
+                </article>
+                <article class="eco-card reveal">
+                    <h3>Repair</h3>
+                    <p>Targeted medical, cosmetic, and procedural treatments restore skin health safely.</p>
+                </article>
+                <article class="eco-card reveal">
+                    <h3>Radiate</h3>
+                    <p>Maintenance plans and follow-ups help you keep long-term glow and confidence.</p>
+                </article>
             </div>
         </div>
     </section>
