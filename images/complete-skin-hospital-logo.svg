@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 420" role="img" aria-labelledby="title desc">
+  <title id="title">The Complete Skin Hospital</title>
+  <desc id="desc">Display wordmark reading The Complete Skin Hospital.</desc>
+  <rect width="1500" height="420" fill="none"/>
+  <g fill="#1c1c1e">
+    <text x="12" y="165" font-family="Cormorant Garamond, Georgia, serif" font-size="128" font-weight="600" letter-spacing="0">The Complete Skin</text>
+    <text x="12" y="345" font-family="Cormorant Garamond, Georgia, serif" font-size="128" font-weight="600" letter-spacing="0">Hospital.</text>
+  </g>
+</svg>

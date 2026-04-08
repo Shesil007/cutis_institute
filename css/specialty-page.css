@@ -11,6 +11,9 @@
     position: relative;
     padding-bottom: 80px;
     overflow: hidden;
+    background:
+        radial-gradient(circle at top center, rgba(201,169,110,0.16), transparent 32%),
+        linear-gradient(180deg, #f3ecdf 0%, #e7dcc9 100%);
 }
 
 .sp-hero-overlay {

@@ -17,7 +17,7 @@
         h1,h2,h3,h4,.serif { font-family: 'Cormorant Garamond', serif; font-weight:600; color:var(--charcoal); }
         a { text-decoration:none; color:inherit; }
         .container { max-width:1300px; margin:0 auto; padding:0 30px; }
-        .section { padding: 100px 0; }
+        .section { padding: 78px 0; }
         .bg-white { background: var(--white); }
         .bg-sage { background: var(--sage-light); }
         
@@ -145,14 +145,14 @@
             transition: opacity 1.6s ease, transform 0.1s linear;
             will-change: opacity, transform;
         }
-        .hero-parallax-bg.is-visible { opacity: 0.42; }
+        .hero-parallax-bg.is-visible { opacity: 0.52; }
         .hero::before {
             content:'';
             position:absolute;
             inset:0;
             background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(245, 239, 230, 0.58)),
-                radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(245, 239, 230, 0.22) 100%);
+                linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(245, 239, 230, 0.46)),
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 0%, rgba(245, 239, 230, 0.16) 100%);
             z-index:1;
         }
         .hero-content {
@@ -160,12 +160,12 @@
             z-index:2;
             max-width:800px;
             padding: 36px 42px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.42);
             border-radius: 36px;
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            box-shadow: 0 24px 80px rgba(28, 28, 30, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 24px 80px rgba(28, 28, 30, 0.1);
         }
         .hero h1 { font-size:5.5rem; line-height:1.1; margin-bottom:20px; }
         .hero h2 { font-size:1.5rem; color:var(--gold); font-family:'DM Sans'; font-weight:400; margin-bottom:20px; letter-spacing:1px; }
@@ -177,7 +177,7 @@
         @keyframes fadeUpWord { to { opacity:1; transform:translateY(0); } }
 
         /* Stats */
-        .stats { background:var(--beige-dark); padding:60px 0; border-top:1px solid rgba(201, 169, 110, 0.3); border-bottom:1px solid rgba(201, 169, 110, 0.3); }
+        .stats { background:var(--beige-dark); padding:48px 0; border-top:1px solid rgba(201, 169, 110, 0.3); border-bottom:1px solid rgba(201, 169, 110, 0.3); }
         .stats-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:20px; text-align:center; }
         .stat-item { border-right:1px solid var(--sage-light); }
         .stat-item:last-child { border-right:none; }
@@ -185,7 +185,7 @@
         .stat-label { font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; color:#555; }
 
         /* About (Real Images) */
-        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
         .about-content h2 { font-size:3.5rem; margin-bottom:25px; }
         .about-content p { color:#555; margin-bottom:20px; line-height:1.8; font-size:1.1rem; }
         .link-hover { color:var(--gold); font-weight:500; font-family:'Cormorant Garamond'; font-size:1.2rem; cursor:pointer; position:relative; }
@@ -195,7 +195,7 @@
         .about-img img { width:100%; height:100%; object-fit:cover; filter:contrast(1.1); }
 
         /* Why Cutis (Custom SVGs) */
-        .why-header { text-align:center; margin-bottom:60px; }
+        .why-header { text-align:center; margin-bottom:28px; }
         .why-header h2 { font-size:3.5rem; }
         .why-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:30px; }
         .why-card { padding:40px; }
@@ -220,7 +220,7 @@
         .c-info h3 { font-size:1.8rem; margin-bottom:15px; color:var(--sage); font-family: 'Cormorant Garamond'; }
 
         /* Tech & Infra */
-        .tech-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .tech-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
         .tech-list { list-style:none; margin-top:30px; }
         .tech-list li { margin-bottom:15px; display:flex; align-items:center; gap:15px; font-size:1.1rem; }
         .tech-list li::before { content:'✔'; color:var(--gold); }
@@ -298,7 +298,7 @@
         .team-member:hover .profile-trigger { background:var(--sage); color:var(--white); }
 
         /* Training */
-        .training-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .training-grid { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
 
         /* Booking */
         .booking { background: linear-gradient(135deg, var(--beige-dark), var(--sage-light)); text-align:center; }
@@ -311,8 +311,27 @@
         .btn-submit { width:100%; text-align:center; padding:18px; }
 
         /* Contact */
-        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:44px; }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
         .contact-info-box p { font-size:1.1rem; margin-bottom:20px; display:flex; align-items:center; gap:15px; }
+        .contact-map {
+            min-height: 320px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(74, 124, 63, 0.12);
+            background: var(--sage-light);
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
         .contact-form-card {
             background: #f2f2f2;
             border: 1px solid #dedede;
@@ -370,45 +389,65 @@
         .tech2-header h2 { font-size:3.5rem; color:var(--charcoal); border-left:4px solid var(--gold); display:inline-block; padding-left:20px; margin-bottom:15px; }
         .tech2-header p { font-family:'DM Sans'; color:var(--sage); font-size:1.1rem; letter-spacing:1px; text-transform:uppercase; }
         .tech-intro {
-            max-width: 880px;
-            margin: 0 auto 50px;
-            text-align: center;
-        }
-        .tech-intro p {
-            color: #555;
-            line-height: 1.8;
-            font-size: 1.08rem;
-            margin-bottom: 32px;
-        }
-        .tech-preview-grid {
+            max-width: 1120px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+            gap: 28px;
+            align-items: start;
         }
-        .tech-preview-card {
-            background: var(--beige);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 8px 22px rgba(28, 28, 30, 0.08);
-            transition: transform 0.3s ease;
+        .tech-intro-main,
+        .tech-intro-side {
+            background: rgba(255, 255, 255, 0.64);
+            border: 1px solid rgba(74, 124, 63, 0.12);
+            border-radius: 28px;
+            box-shadow: 0 14px 34px rgba(28, 28, 30, 0.06);
+            backdrop-filter: blur(10px);
         }
-        .tech-preview-card:hover { transform: translateY(-6px); }
-        .tech-preview-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
+        .tech-intro-main {
+            padding: 28px 32px;
         }
-        .tech-preview-copy { padding: 22px; }
-        .tech-preview-copy h3 {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-        .tech-preview-copy p {
+        .tech-intro-main p {
             color: #555;
+            line-height: 1.75;
+            font-size: 1.04rem;
+            margin: 0 0 14px;
+        }
+        .tech-intro-strong {
+            font-size: 1.18rem;
             line-height: 1.6;
+            color: var(--charcoal);
+        }
+        .tech-intro-side {
+            padding: 28px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 16px;
+            background:
+                radial-gradient(circle at top right, rgba(201, 169, 110, 0.16), transparent 40%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(232, 244, 232, 0.82));
+        }
+        .tech-side-label {
+            font-size: 0.82rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--sage);
+            font-weight: 600;
+        }
+        .tech-intro-side h3 {
+            font-size: 2.1rem;
+            line-height: 1.05;
+            margin: 2px 0 8px;
+        }
+        .tech-intro-side p {
+            color: #555;
+            line-height: 1.65;
             font-size: 0.98rem;
+            margin: 0 0 10px;
+        }
+        .tech-intro-side .btn {
+            width: fit-content;
         }
         .filter-bar { padding:0 0 50px; display:flex; justify-content:center; flex-wrap:wrap; gap:15px; }
         .filter-btn { font-family:'DM Sans'; padding:10px 25px; border-radius:30px; border:1px solid var(--sage); background:transparent; color:var(--charcoal); cursor:pointer; font-size:1rem; transition:all 0.3s ease; }
@@ -432,7 +471,17 @@
             .stats-grid, .about-grid, .tech-grid, .training-grid, .contact-grid { grid-template-columns:1fr; }
             .why-grid, .eco-grid { grid-template-columns:1fr; }
             .team-grid { grid-template-columns:repeat(2,1fr); }
-            .tech-preview-grid { grid-template-columns: 1fr; }
+            .tech-intro {
+                grid-template-columns: 1fr;
+            }
+            .tech-intro-main,
+            .tech-intro-side {
+                padding: 26px 24px;
+            }
+            .tech-intro-side .btn {
+                width: 100%;
+                text-align: center;
+            }
             .tech-grid-2 { grid-template-columns:repeat(2,1fr); padding:60px 20px;}
             .footer-grid { grid-template-columns:1fr; }
             .fab-btn { right: 20px; bottom: 20px; width: 50px; height: 50px; }
@@ -446,8 +495,8 @@
 </head>
 <body>
 
-    <!-- FAB: Floating WhatsApp / Contact Action -->
-    <a href="#contact" class="fab-btn">
+    <!-- FAB: Floating Phone Action -->
+    <a href="tel:+918281865151" class="fab-btn" aria-label="Call Cutis Institute">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
     </a>
 
@@ -465,9 +514,9 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="treatments.html">Treatments</a></li>
-                <li><a href="#centres">Specialities</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="treatments.html">Our Treatments</a></li>
+                <li><a href="#centres">Our Specialities</a></li>
                 <li><a href="technologies.html">Technologies</a></li>
             </ul>
             <a href="#contact" class="btn nav-btn">Contact Us</a>
@@ -500,7 +549,7 @@
             <div class="stat-item"><div class="stat-num" data-val="20000">0</div><div class="stat-label">Sq Ft Facility</div></div>
             <div class="stat-item"><div class="stat-num" data-val="10">0</div><div class="stat-label">Laser Theatres</div></div>
             <div class="stat-item"><div class="stat-num" data-val="3">0</div><div class="stat-label">Operating Suites</div></div>
-            <div class="stat-item"><div class="stat-num" data-val="5">0</div><div class="stat-label">Expert Doctors</div></div>
+            <div class="stat-item"><div class="stat-num" data-val="6">0</div><div class="stat-label">Expert Doctors</div></div>
             <div class="stat-item"><div class="stat-num" data-val="15">0</div><div class="stat-label">Years of Excellence</div></div>
         </div>
     </div>
@@ -538,7 +587,7 @@
     </section>
 
     <!-- WHY CUTIS (Custom SVGs added) -->
-    <section class="section">
+    <section class="section" style="padding-top:60px; padding-bottom:70px;">
         <div class="container">
             <div class="why-header reveal">
                 <h2>What Makes Cutis Exceptional</h2>
@@ -718,36 +767,19 @@
 
         <div class="container">
             <div class="tech-intro reveal">
-                <p>
-                    Just like our treatment pathways, our technology ecosystem is curated with clinical intent.
-                    Explore our complete platform lineup to see how each device is selected for precision,
-                    safety, and measurable outcomes.
-                </p>
-                <a href="technologies.html" class="btn" style="padding: 20px 40px; font-size: 1.1rem; letter-spacing: 1px;">Explore All Technologies →</a>
-            </div>
-
-            <div class="tech-preview-grid">
-                <article class="tech-preview-card reveal">
-                    <img src="images/ultra%20pulse.jpeg" alt="Resurfacing Technology">
-                    <div class="tech-preview-copy">
-                        <h3>Resurfacing &amp; Renewal</h3>
-                        <p>CO2 and RF-assisted platforms designed for scar revision, textural correction, and advanced skin renewal.</p>
+                <div class="tech-intro-main">
+                    <p class="tech-intro-strong">Cutis Institute is powered by a strong portfolio of imported, high-end technologies selected to support precision dermatology, aesthetic medicine, laser procedures, and advanced skin rejuvenation.</p>
+                    <p>Each platform is chosen for clinical relevance, treatment accuracy, and the ability to deliver safer, more refined outcomes across a wide spectrum of skin and aesthetic concerns.</p>
+                    <p>From corrective therapies to rejuvenation-focused protocols, our technology backbone allows us to combine innovation with expert medical judgment in every treatment journey.</p>
+                </div>
+                <div class="tech-intro-side">
+                    <div>
+                        <span class="tech-side-label">Technology Portfolio</span>
+                        <h3>Explore The Full Cutis Technology Lineup</h3>
+                        <p>Discover the advanced platforms behind our treatments and see how technology strengthens every step of care.</p>
                     </div>
-                </article>
-                <article class="tech-preview-card reveal">
-                    <img src="images/Spectra%20xtq%20switched%20nd%20YAG%20laser.jpeg" alt="Pigmentation Technology">
-                    <div class="tech-preview-copy">
-                        <h3>Pigment &amp; Tone Precision</h3>
-                        <p>High-energy laser and light systems used to manage pigment disorders, vascular concerns, and uneven tone.</p>
-                    </div>
-                </article>
-                <article class="tech-preview-card reveal">
-                    <img src="images/sopranio%20titanium%20hair%20reduction%20laser.jpeg" alt="Hair Reduction Technology">
-                    <div class="tech-preview-copy">
-                        <h3>Hair &amp; Body Systems</h3>
-                        <p>Comfort-first platforms for permanent hair reduction, body contouring support, and procedural cooling.</p>
-                    </div>
-                </article>
+                    <a href="technologies.html" class="btn" style="padding: 20px 40px; font-size: 1.1rem; letter-spacing: 1px;">Explore All Technologies →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -778,7 +810,7 @@
     <!-- TEAM (Real Avatar Images) -->
     <section id="team" class="section bg-white">
         <div class="container">
-            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Our Expert Team</h2>
+            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:36px;">Our Expert Team</h2>
             <div class="team-grid reveal">
                 <article class="team-member">
                     <div class="avatar"><img src="images/doctors/dr-t-salim.webp" alt="Dr. T. Salim"></div>
@@ -833,7 +865,7 @@
             <div class="reveal">
                 <h2 style="font-size:3rem; margin-bottom:20px;">Cutis Research & Training</h2>
                 <p style="margin-bottom:20px; color:#555; line-height:1.6;">Advanced training in aesthetic medicine and cosmetic dermatology. We empower future professionals with world-class standard teaching, hands-on learning, live demos, and industry-relevant skill development.</p>
-                <a class="btn">Explore Programs</a>
+                <a class="btn" href="researches-and-training.html">Explore Programs</a>
             </div>
         </div>
     </section>
@@ -841,13 +873,16 @@
     <!-- CONTACT -->
     <section id="contact" class="section bg-white">
         <div class="container contact-grid">
-            <div class="reveal">
+            <div class="contact-details reveal">
                 <h2 style="font-size:3.5rem; margin-bottom:30px;">Find Us</h2>
                 <div class="contact-info-box">
                     <p>📍 Nellikkode, Vishnu Temple Rd, Bypass Junction, Thondayad, Kozhikode, Kerala 673017</p>
                     <p>📞 +91 8281865151</p>
                     <p>📧 cutisinstitute@gmail.com</p>
                     <p>⏰ Monday – Saturday: 9:00 AM – 7:00 PM</p>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15651.980641170796!2d75.8016!3d11.2588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4727%3A0x334407b46955fc18!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             <div class="contact-form-card reveal">
@@ -894,10 +929,12 @@
 
     <script>
         const heroSlides = [
-            "images/Copy%20of%20IMG_1885.jpg",
-            "images/Copy%20of%20IMG_2238.jpg",
-            "images/Copy%20of%20IMG_2433.jpg",
-            "images/Copy%20of%20IMG_2771.jpg"
+            "images/Copy%20of%20IMG_3074.jpg",
+            "images/Copy%20of%20IMG_3087.jpg",
+            "images/Copy%20of%20IMG_3088.jpg",
+            "images/Copy%20of%20IMG_3089.jpg",
+            "images/Copy%20of%20IMG_3157%20(1).jpg",
+            "images/Copy%20of%20IMG_9564.jpg"
         ];
 
         const heroBgPrimary = document.getElementById('heroBgPrimary');

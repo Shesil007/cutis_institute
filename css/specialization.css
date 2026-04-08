@@ -128,24 +128,40 @@
     opacity: 0.6;
 }
 
-/* Placeholder image backgrounds per specialty */
-.chroma-bg {
-    background: linear-gradient(135deg, #e8d5c4 0%, #d4b896 40%, #c9a96e 70%, #b8956a 100%);
-}
-.eraze-bg {
-    background: linear-gradient(135deg, #d4ddd4 0%, #b8c9b8 40%, #9ab29a 70%, #7a9a7a 100%);
-}
-.capeli-bg {
-    background: linear-gradient(135deg, #e8e0d4 0%, #d4c4b0 40%, #c0a88c 70%, #a89070 100%);
-}
-.rejuvenize-bg {
-    background: linear-gradient(135deg, #ede8e0 0%, #ddd4c4 40%, #c9bca8 70%, #b4a08c 100%);
-}
-.regen-bg {
-    background: linear-gradient(135deg, #d4e8d8 0%, #b0d4b8 40%, #88b898 70%, #6a9a7c 100%);
-}
+.chroma-bg,
+.eraze-bg,
+.capeli-bg,
+.rejuvenize-bg,
+.regen-bg,
 .sculpt-bg {
-    background: linear-gradient(135deg, #e0dced 0%, #c8c0e0 40%, #a89cc8 70%, #8878a8 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #f8f5ef;
+}
+
+.chroma-bg {
+    background-image: url('../images/Copy of chrome clinique.png');
+}
+
+.eraze-bg {
+    background-image: url('../images/Copy of eraze.png');
+}
+
+.capeli-bg {
+    background-image: url('../images/Copy of capelli clinique.png');
+}
+
+.rejuvenize-bg {
+    background-image: url('../images/Copy of rejuvenize.png');
+}
+
+.regen-bg {
+    background-image: url('../images/regenerative-dermatology-logo.svg');
+}
+
+.sculpt-bg {
+    background-image: url('../images/Copy of Cutisculpt 1.png');
 }
 
 /* subtle texture on placeholders */
@@ -153,7 +169,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity="0.06"/%3E%3C/svg%3E');
+    background:
+        linear-gradient(180deg, rgba(28, 28, 30, 0.04), rgba(28, 28, 30, 0.2)),
+        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity="0.06"/%3E%3C/svg%3E');
     z-index: 0;
     pointer-events: none;
 }
