@@ -49,33 +49,52 @@
         .btn-outline:hover { background:var(--charcoal); color:var(--white); }
         .t-btn:hover { background: var(--sage); color: var(--white); }
 
-        /* Modal Styles */
-        .modal-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); 
-            display: flex; align-items: center; justify-content: center; 
-            z-index: 2000; opacity: 0; pointer-events: none; transition: 0.4s ease;
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
-        .modal-content { 
-            background: var(--beige); width: 90%; max-width: 800px; padding: 60px; 
-            border-radius: 20px; position: relative; transform: translateY(30px); transition: 0.5s cubic-bezier(0.2,0.8,0.2,1); 
+        .philosophy-img img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
         }
-        .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-close { 
-            position: absolute; top: 25px; right: 25px; font-size: 2rem; 
-            cursor: pointer; color: var(--charcoal); opacity: 0.5; transition: 0.3s;
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            width: 100%;
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
         }
-        .modal-close:hover { opacity: 1; transform: rotate(90deg); }
-        .modal-body h2 { font-size: 3rem; margin-bottom: 20px; color: var(--sage); font-family: 'Cormorant Garamond', serif; }
-        .modal-body p { font-size: 1.15rem; line-height: 1.8; color: #555; margin-bottom: 30px; }
-        .modal-features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; list-style: none; }
-        .modal-features li { padding-left: 30px; position: relative; font-weight: 500; font-size: 1.1rem; }
-        .modal-features li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
-        body.modal-open { overflow: hidden; }
-        @media(max-width: 700px) {
-            .modal-content { padding: 40px 30px; }
-            .modal-features { grid-template-columns: 1fr; }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from { opacity: 0.4 }
+            to { opacity: 1 }
+        }
+
+        @media(max-width: 900px) {
+            .philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
+            .slideshow-container { height: 400px; }
         }
 
         /* Noise Texture */
@@ -138,125 +157,7 @@
         .why-card h3 { font-size:1.5rem; margin-bottom:15px; }
         .why-card p { color:#666; line-height:1.6; }
 
-        /* Treatments Grid Styles */
-        .treatments-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .treatment-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            text-decoration: none; /* For the link wrap */
-            color: inherit;
-        }
-
-        .treatment-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        }
-
-        .t-img {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .t-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-            filter: contrast(1.05);
-        }
-
-        .treatment-card:hover .t-img img {
-            transform: scale(1.05);
-        }
-
-        .t-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: var(--sage);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-family: 'DM Sans', sans-serif;
-            z-index: 2;
-        }
-
-        .t-content {
-            padding: 40px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .t-content h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            color: var(--charcoal);
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .t-content p {
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
-
-        .t-list {
-            list-style: none;
-            margin-bottom: 30px;
-            flex-grow: 1;
-        }
-
-        .t-list li {
-            padding-left: 25px;
-            position: relative;
-            margin-bottom: 10px;
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        .t-list li::before {
-            content: '✦';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-        }
-
-        .t-btn {
-            display: inline-block;
-            text-align: center;
-            margin-top: auto;
-            padding: 12px 30px;
-            background: transparent;
-            border: 2px solid var(--sage);
-            color: var(--sage);
-            border-radius: 30px;
-            font-weight: 500;
-            transition: all 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
         /* Centres (Draggable Carousel) */
-        /* Changed from Grid to Drag Carousel to maximize interactivity */
         .carousel-wrap {
             position: relative;
             cursor: grab;
@@ -266,7 +167,7 @@
         .carousel-wrap:active { cursor: grabbing; }
         .centres-carousel { display:flex; gap:30px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:10px 40px; -webkit-overflow-scrolling:touch; }
         .centres-carousel::-webkit-scrollbar { display:none; }
-        .centre-card { flex: 0 0 400px; scroll-snap-align:start; display:flex; flex-direction:column; gap:20px; padding:40px; pointer-events:none;} /* pointer-events none on child to allow drag on wrap */
+        .centre-card { flex: 0 0 400px; scroll-snap-align:start; display:flex; flex-direction:column; gap:20px; padding:40px; pointer-events:none;}
         .c-icon { display:flex; align-items:center; }
         .c-icon svg { width:50px; height:50px; stroke:var(--gold); fill:none; stroke-width:1.5; }
         .c-info h3 { font-size:1.8rem; margin-bottom:15px; color:var(--sage); font-family: 'Cormorant Garamond'; }
@@ -355,8 +256,7 @@
             .hamburger { display:block; }
             .hero h1 { font-size:4rem; }
             .stats-grid, .about-grid, .tech-grid, .training-grid, .contact-grid { grid-template-columns:1fr; }
-            .why-grid, .eco-grid, .treatments-grid { grid-template-columns:1fr; }
-            .treatments-grid { gap: 20px; }
+            .why-grid, .eco-grid { grid-template-columns:1fr; }
             .team-grid { grid-template-columns:repeat(2,1fr); }
             .tech-grid-2 { grid-template-columns:repeat(2,1fr); padding:60px 20px;}
             .footer-grid { grid-template-columns:1fr; }
@@ -423,15 +323,31 @@
     <!-- ABOUT -->
     <section id="about" class="section bg-white">
         <div class="container about-grid">
-            <div class="about-content slide-in-left">
-                <h2>Welcome to Cutis Institute</h2>
-                <p>Cutis Institute of Dermatology & Aesthetic Sciences in Calicut, India is a leading skin clinic and skin hospital specializing in skincare, cosmetology, and plastic surgery.</p>
-                <p>Located in a 20,000 square feet standalone building, we provide world-class care in Clinical, Cosmetic, and Surgical Dermatology through an expert team of specialists.</p>
-                <a class="link-hover">Learn More About Us →</a>
+            <div class="about-content reveal">
+                <h2 style="font-size: 3.5rem; margin-bottom: 25px;">Welcome to Cutis Institute</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 20px;">
+                    Cutis Institute of Dermatology & Aesthetic Sciences is India’s premier 20,000 sq ft skin hospital, where world-class clinical excellence meets a <strong>sanctuary of nature</strong>. 
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #666; margin-bottom: 30px;">
+                    Our clinic is uniquely integrated into a lush, botanical landscape. We believe in <em>Healing in Harmony with Nature</em>, providing a serene environment surrounded by greenery that calms the senses and enhances the recovery journey.
+                </p>
+                <a class="link-hover" style="font-weight: 600; color: var(--sage); cursor: pointer;">Discover Our Sanctuary →</a>
             </div>
-            <!-- REAL HIGH-END PHOTOGRAPHY -->
-            <div class="about-img slide-in-right">
-                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" alt="Premium Clinic Interior">
+            <div class="about-img reveal">
+                <div class="slideshow-container">
+                    <div class="slide fade">
+                        <img src="images/nature_gallery_1.jpg" alt="Nature Sanctuary 1">
+                    </div>
+                    <div class="slide fade">
+                        <img src="images/nature_gallery_2.jpg" alt="Nature Sanctuary 2">
+                    </div>
+                    <div class="slide fade">
+                        <img src="images/nature_gallery_3.jpg" alt="Nature Sanctuary 3">
+                    </div>
+                    <div class="slide fade">
+                        <img src="images/nature_gallery_4.jpg" alt="Nature Sanctuary 4">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -459,90 +375,21 @@
         </div>
     </section>
 
-    <!-- CORE SERVICES (Premium Treatments Grid) -->
+    <!-- CORE SERVICES (Unified Treatment Philosophy) -->
     <section id="services" class="section bg-white">
-        <div class="container">
-            <h2 class="section-header reveal" style="text-align:center; font-size:3.5rem; margin-bottom:20px;">Our Specialized Care</h2>
-            <p class="reveal" style="text-align:center; color:#666; max-width:600px; margin:0 auto 60px;">World-class dermatological and surgical solutions delivered with medical precision.</p>
-            
-            <div class="treatments-grid">
-
-                <!-- Clinical Dermatology -->
-                <div class="treatment-card reveal">
-                    <div class="t-img">
-                        <span class="t-badge">Medical Care</span>
-                        <img src="https://media.istockphoto.com/id/514880133/photo/dermatologist-examining-patient-for-signs-of-skin-cancer.jpg?s=612x612&w=0&k=20&c=8eOTKwhzQzmVE4zgmgr1Ham6Ge2L9GbLx_-szh_Cn5I=" alt="Clinical Dermatology">
-                    </div>
-                    <div class="t-content">
-                        <h2>Clinical Dermatology</h2>
-                        <p>Specialized diagnosis and treatment for persistent skin, hair, and nail concerns.</p>
-                        <ul class="t-list">
-                            <li>Acne & Breakout Solutions</li>
-                            <li>Eczema & Psoriasis Care</li>
-                            <li>Infection Management</li>
-                            <li>Hair Loss Treatments</li>
-                        </ul>
-                        <button class="t-btn learn-more-btn" data-treatment="clinical">Explore More</button>
-                    </div>
-                </div>
-
-                <!-- Cosmetic Dermatology -->
-                <div class="treatment-card reveal" style="transition-delay: 0.1s;">
-                    <div class="t-img">
-                        <span class="t-badge">Aesthetics</span>
-                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop" alt="Cosmetic Dermatology">
-                    </div>
-                    <div class="t-content">
-                        <h2>Cosmetic Dermatology</h2>
-                        <p>Artfully delivered aesthetic enhancements to highlight your natural radiance.</p>
-                        <ul class="t-list">
-                            <li>Anti-Aging & Injectables</li>
-                            <li>Pigmentation Correction</li>
-                            <li>Medical-Grade Facials</li>
-                            <li>Scar Revision</li>
-                        </ul>
-                        <button class="t-btn learn-more-btn" data-treatment="cosmetic">Explore More</button>
-                    </div>
-                </div>
-
-                <!-- Laser Medicine -->
-                <div class="treatment-card reveal" style="transition-delay: 0.2s;">
-                    <div class="t-img">
-                        <span class="t-badge">Advanced Tech</span>
-                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop" alt="Laser Medicine">
-                    </div>
-                    <div class="t-content">
-                        <h2>Laser Medicine</h2>
-                        <p>The latest in FDA-approved laser technology for precision resurfacing and hair removal.</p>
-                        <ul class="t-list">
-                            <li>Laser Hair Reduction</li>
-                            <li>Skin Resurfacing (CO2)</li>
-                            <li>Vascular Lesion Therapy</li>
-                            <li>Laser Pigment Removal</li>
-                        </ul>
-                        <button class="t-btn learn-more-btn" data-treatment="laser">Explore More</button>
-                    </div>
-                </div>
-
-                <!-- Plastic Surgery -->
-                <div class="treatment-card reveal" style="transition-delay: 0.3s;">
-                    <div class="t-img">
-                        <span class="t-badge">Surgical Excellence</span>
-                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop" alt="Plastic Surgery">
-                    </div>
-                    <div class="t-content">
-                        <h2>Plastic Surgery</h2>
-                        <p>Expert-led surgical procedures for reconstruction and structural aesthetic transformation.</p>
-                        <ul class="t-list">
-                            <li>Facial Reconstruction</li>
-                            <li>Body Contouring</li>
-                            <li>Corrective Surgery</li>
-                            <li>Scar Management</li>
-                        </ul>
-                        <button class="t-btn learn-more-btn" data-treatment="plastic">Explore More</button>
-                    </div>
-                </div>
-
+        <div class="container philosophy-grid">
+            <div class="philosophy-img reveal">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop" alt="Clinical Excellence" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            </div>
+            <div class="philosophy-content reveal">
+                <h2 style="font-size: 3.5rem; margin-bottom: 25px; line-height: 1.1;">Integrated Care, <span style="color: var(--sage);">Proven Excellence.</span></h2>
+                <p style="font-size: 1.25rem; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                    At Cutis Institute, we believe that skin health is the foundation of confidence. Our treatments combine medical precision, surgical expertise, and advanced laser technology to deliver transformations that are both natural and lasting. 
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #666; margin-bottom: 40px;">
+                    From diagnostic clinical care to complex aesthetic reconstructions, we provide a unified journey tailored to your unique biological needs. Discover our world-class department specialties.
+                </p>
+                <a href="treatments.html" class="btn" style="padding: 20px 40px; font-size: 1.1rem; letter-spacing: 1px;">Explore All Treatments →</a>
             </div>
         </div>
     </section>
@@ -801,79 +648,7 @@
         </div>
     </footer>
 
-    <!-- TREATMENT MODAL -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <span class="modal-close" id="modalClose">&times;</span>
-            <div class="modal-body" id="modalBody">
-                <h2 id="modalTitle">Treatment Detail</h2>
-                <p id="modalDesc">Detailed description goes here...</p>
-                <ul class="modal-features" id="modalFeatures"></ul>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Modal Content Database
-        const treatmentDetails = {
-            clinical: {
-                title: "Clinical Dermatology",
-                desc: "Medical conditions of the skin, hair, and nails require expert diagnostic precision. At Cutis, we treat everything from common acne to complex auto-immune skin disorders using evidence-based protocols.",
-                features: ["Acne & Acne Vulgaris", "Eczema & Dermatitis", "Psoriasis Management", "Hair Loss & Alopecia", "Fungal Infections", "Pediatric Dermatology", "Mole Mapping", "Vitiligo Treatment"]
-            },
-            cosmetic: {
-                title: "Cosmetic Dermatology",
-                desc: "Aesthetic science aimed at enhancing your natural features. We use the latest injectable and topical technologies to rejuvenate your skin, focusing on natural-looking outcomes and patient safety.",
-                features: ["Botox & Anti-Wrinkle", "Dermal Fillers", "Chemical Peels", "Hydrafacials", "Skin Tightening", "Micro-needling", "Lip Augmentation", "Face Contouring"]
-            },
-            laser: {
-                title: "Laser Medicine",
-                text: "Our laser center is one of India's most advanced. We offer precise target light therapy for permanent results with minimal downtime, powered by world-class platforms like UltraPulse and Spectra XT.",
-                features: ["Laser Hair Reduction", "Acne Scar Revision", "Pigment Removal", "Safe Tattoo Removal", "Vascular Lesions", "Carbon Peel", "Skin Resurfacing", "Stretch Marks"]
-            },
-            plastic: {
-                title: "Plastic Surgery",
-                desc: "Surgical excellence combining function and aesthetics. Our certified surgeons prioritize safety and natural-looking outcomes for both reconstructive and aesthetic procedures.",
-                features: ["Natural Facelifts", "Rhinoplasty", "Liposuction", "Blepharoplasty", "Breast Augmentation", "Scar Revision", "Abdominoplasty", "Hand Surgery"]
-            }
-        };
-
-        const overlay = document.getElementById('modalOverlay');
-        const closeBtn = document.getElementById('modalClose');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDesc = document.getElementById('modalDesc');
-        const modalFeatures = document.getElementById('modalFeatures');
-
-        document.querySelectorAll('.learn-more-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const type = btn.getAttribute('data-treatment');
-                const data = treatmentDetails[type];
-                
-                modalTitle.innerText = data.title;
-                modalDesc.innerText = data.desc || data.text; // Handling both naming variants
-                
-                modalFeatures.innerHTML = '';
-                data.features.forEach(f => {
-                    const li = document.createElement('li');
-                    li.innerText = f;
-                    modalFeatures.appendChild(li);
-                });
-
-                overlay.classList.add('active');
-                document.body.classList.add('modal-open');
-            });
-        });
-
-        const closeModal = () => {
-            overlay.classList.remove('active');
-            document.body.classList.remove('modal-open');
-        };
-
-        closeBtn.addEventListener('click', closeModal);
-        overlay.addEventListener('click', (e) => {
-            if(e.target === overlay) closeModal();
-        });
-
         // Transition handler on scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
@@ -895,6 +670,21 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal, .slide-in-right, .slide-in-left').forEach(el => observer.observe(el));
+
+        // Nature Slideshow Logic
+        let slideIndex = 0;
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+        showSlides();
 
         // Horizontal Carousel Logic
         const wrap = document.getElementById('centresCarouselWrap');
