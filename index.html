@@ -280,13 +280,6 @@
         /* Training */
         .training-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
 
-        /* Testimonials */
-        .testi-carousel { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:30px; padding-bottom:20px; scrollbar-width:none;}
-        .testi-card { min-width:400px; scroll-snap-align:center; background:var(--beige); padding:40px; border-radius:20px; position:relative; }
-        .testi-card::before { content:'"'; font-size:80px; font-family:'Cormorant Garamond'; color:var(--sage); position:absolute; top:10px; left:20px; opacity:0.3; }
-        .stars { color:var(--gold); margin-bottom:15px; }
-        .testi-card p { font-style:italic; margin-bottom:20px; line-height:1.6;}
-
         /* Booking */
         .booking { background: linear-gradient(135deg, var(--beige-dark), var(--sage-light)); text-align:center; }
         .booking-form { max-width:600px; margin:40px auto 0; background:var(--white); padding:50px; border-radius:20px; box-shadow:var(--shadow); text-align:left; }
@@ -300,7 +293,47 @@
         /* Contact */
         .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
         .contact-info-box p { font-size:1.1rem; margin-bottom:20px; display:flex; align-items:center; gap:15px; }
-        .map-box { height:400px; border-radius:20px; background:var(--sage-light); display:flex; align-items:center;justify-content:center; color:var(--sage); font-family:'Cormorant Garamond'; font-size:24px;}
+        .contact-form-card {
+            background: #f2f2f2;
+            border: 1px solid #dedede;
+            border-radius: 20px;
+            padding: 34px;
+            box-shadow: var(--shadow);
+        }
+        .contact-form-card h3 {
+            font-size: 2.6rem;
+            margin-bottom: 22px;
+            line-height: 1.1;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .contact-field {
+            width: 100%;
+            border: 1px solid #d3d3d3;
+            background: #ffffff;
+            padding: 15px 14px;
+            font-family: 'DM Sans';
+            font-size: 1rem;
+            color: var(--charcoal);
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-field:focus {
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(74, 124, 63, 0.12);
+        }
+        textarea.contact-field {
+            min-height: 240px;
+            resize: vertical;
+        }
+        .contact-submit {
+            width: fit-content;
+            padding: 12px 26px;
+            margin-top: 6px;
+        }
 
         /* Footer */
         footer { background:var(--charcoal); color:var(--beige); padding:80px 0 30px; }
@@ -458,12 +491,12 @@
             <div class="about-content reveal">
                 <h2 style="font-size: 3.5rem; margin-bottom: 25px;">Welcome to Cutis Institute</h2>
                 <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 20px;">
-                    Cutis Institute of Dermatology & Aesthetic Sciences is India’s premier 20,000 sq ft skin hospital, where world-class clinical excellence meets a <strong>sanctuary of nature</strong>. 
+                    <strong>Cutis Institute of Dermatology &amp; Aesthetic Sciences | Best Skin Specialists in Calicut</strong>
                 </p>
                 <p style="font-size: 1.1rem; line-height: 1.7; color: #666; margin-bottom: 30px;">
-                    Our clinic is uniquely integrated into a lush, botanical landscape. We believe in <em>Healing in Harmony with Nature</em>, providing a serene environment surrounded by greenery that calms the senses and enhances the recovery journey.
+                    Cutis is a 20,000 sq ft skin hospital in Calicut offering advanced Clinical, Cosmetic, and Surgical Dermatology with expert-led care in acne, pigmentation, scars, vitiligo, hair restoration, and aesthetic procedures.
                 </p>
-                <a class="link-hover" style="font-weight: 600; color: var(--sage); cursor: pointer;">Discover Our Sanctuary →</a>
+                <a class="link-hover" href="about-cutis.html" style="font-weight: 600; color: var(--sage); cursor: pointer;">Explore →</a>
             </div>
             <div class="about-img reveal">
                 <div class="slideshow-container">
@@ -775,30 +808,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="section">
-        <div class="container">
-            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Patient Stories</h2>
-            <div class="testi-carousel reveal">
-                <div class="testi-card"><div class="stars">★★★★★</div><p>The acne scar treatment completely changed my life. Dr. Salim is incredibly skilled and the facility is genuinely world-class.</p><h4>- Ayesha R.</h4></div>
-                <div class="testi-card"><div class="stars">★★★★★</div><p>Professional, hygienic, and highly advanced. The Rejuvenize center gave me natural, glowing results.</p><h4>- Nithin M.</h4></div>
-                <div class="testi-card"><div class="stars">★★★★★</div><p>Best skin hospital in Kerala. The eco-friendly atmosphere immediately puts you at ease.</p><h4>- Sarah J.</h4></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BLOG -->
-    <section class="section bg-white">
-        <div class="container">
-            <h2 class="reveal" style="text-align:center; font-size:3.5rem; margin-bottom:60px;">Latest from Our Experts</h2>
-            <div class="why-grid reveal">
-                <div class="card blog-card" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=400" style="width:100%; height:200px; object-fit:cover;"><div style="padding:30px;"><span style="color:var(--sage); font-size:0.9rem; font-weight:bold;">Treatments</span><h3 style="margin:10px 0;">Vitiligo Treatment in Calicut</h3><p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Causes, Myths & Advanced Solutions</p><a class="link-hover">Read More →</a></div></div>
-                <div class="card blog-card" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=400" style="width:100%; height:200px; object-fit:cover;"><div style="padding:30px;"><span style="color:var(--sage); font-size:0.9rem; font-weight:bold;">Education</span><h3 style="margin:10px 0;">Understanding Pigmentation</h3><p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Types and Treatment Options</p><a class="link-hover">Read More →</a></div></div>
-                <div class="card blog-card" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1580828369019-2228b434c14e?q=80&w=400" style="width:100%; height:200px; object-fit:cover;"><div style="padding:30px;"><span style="color:var(--sage); font-size:0.9rem; font-weight:bold;">Lifestyle</span><h3 style="margin:10px 0;">Hair Loss in Kerala</h3><p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Climate, Causes & Clinical Solutions</p><a class="link-hover">Read More →</a></div></div>
-            </div>
-        </div>
-    </section>
-
     <!-- CONTACT -->
     <section id="contact" class="section bg-white">
         <div class="container contact-grid">
@@ -811,8 +820,16 @@
                     <p>⏰ Monday – Saturday: 9:00 AM – 7:00 PM</p>
                 </div>
             </div>
-            <div class="map-box reveal" style="overflow:hidden;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15651.980641170796!2d75.8016!3d11.2588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4727%3A0x334407b46955fc18!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="contact-form-card reveal">
+                <h3>Contact Us Cutis Institute</h3>
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <input class="contact-field" type="text" name="name" placeholder="Your Name" required>
+                    <input class="contact-field" type="email" name="email" placeholder="Your Email" required>
+                    <input class="contact-field" type="tel" name="phone" placeholder="Your Phone" required>
+                    <input class="contact-field" type="text" name="subject" placeholder="Subject">
+                    <textarea class="contact-field" name="message" placeholder="Your message (optional)"></textarea>
+                    <button class="btn contact-submit" type="submit">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
