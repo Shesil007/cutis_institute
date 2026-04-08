@@ -283,6 +283,47 @@
         .tech2-header { padding:0 0 40px; text-align:center; }
         .tech2-header h2 { font-size:3.5rem; color:var(--charcoal); border-left:4px solid var(--gold); display:inline-block; padding-left:20px; margin-bottom:15px; }
         .tech2-header p { font-family:'DM Sans'; color:var(--sage); font-size:1.1rem; letter-spacing:1px; text-transform:uppercase; }
+        .tech-intro {
+            max-width: 880px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+        .tech-intro p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.08rem;
+            margin-bottom: 32px;
+        }
+        .tech-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .tech-preview-card {
+            background: var(--beige);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 22px rgba(28, 28, 30, 0.08);
+            transition: transform 0.3s ease;
+        }
+        .tech-preview-card:hover { transform: translateY(-6px); }
+        .tech-preview-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .tech-preview-copy { padding: 22px; }
+        .tech-preview-copy h3 {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .tech-preview-copy p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
         .filter-bar { padding:0 0 50px; display:flex; justify-content:center; flex-wrap:wrap; gap:15px; }
         .filter-btn { font-family:'DM Sans'; padding:10px 25px; border-radius:30px; border:1px solid var(--sage); background:transparent; color:var(--charcoal); cursor:pointer; font-size:1rem; transition:all 0.3s ease; }
         .filter-btn:hover { background:var(--sage-light); }
@@ -305,6 +346,7 @@
             .stats-grid, .about-grid, .tech-grid, .training-grid, .contact-grid { grid-template-columns:1fr; }
             .why-grid, .eco-grid { grid-template-columns:1fr; }
             .team-grid { grid-template-columns:repeat(2,1fr); }
+            .tech-preview-grid { grid-template-columns: 1fr; }
             .tech-grid-2 { grid-template-columns:repeat(2,1fr); padding:60px 20px;}
             .footer-grid { grid-template-columns:1fr; }
             .fab-btn { right: 20px; bottom: 20px; width: 50px; height: 50px; }
@@ -339,7 +381,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="treatments.html">Treatments</a></li>
                 <li><a href="#centres">Specialities</a></li>
-                <li><a href="#tech">Technologies</a></li>
+                <li><a href="technologies.html">Technologies</a></li>
             </ul>
             <a href="#contact" class="btn nav-btn">Contact Us</a>
             <div class="hamburger">☰</div>
@@ -583,114 +625,42 @@
         <div class="tech2-header reveal">
             <div class="container">
                 <h2>Our Technologies</h2>
-                <p>20+ World-Class Devices from 6 Countries</p>
+                <p>Precision Platforms Powered by Global Innovation</p>
             </div>
-        </div>
-        
-        <div class="filter-bar reveal">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="hair-removal">Hair Removal</button>
-            <button class="filter-btn" data-filter="skin-resurfacing">Skin Resurfacing</button>
-            <button class="filter-btn" data-filter="pigmentation">Pigmentation</button>
-            <button class="filter-btn" data-filter="anti-aging">Anti-Aging</button>
-            <button class="filter-btn" data-filter="phototherapy">Phototherapy</button>
-            <button class="filter-btn" data-filter="body">Body</button>
         </div>
 
         <div class="container">
-            <div class="tech-grid-2" id="techGrid">
-                <!-- Hair Removal -->
-                <div class="t-card" data-category="hair-removal">
-                    <div class="t-card-img">Soprano Titanium<img src="images/sopranio%20titanium%20hair%20reduction%20laser.jpeg" alt="Soprano Titanium" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Soprano Titanium</h3><span class="t-brand">ALMA Lasers, Israel</span><p class="t-desc">Painless permanent full-body hair removal for all skin types</p></div>
-                </div>
-                <div class="t-card" data-category="hair-removal">
-                    <div class="t-card-img">Lightsheer Diode System<img src="images/lumenis%20lightsheer%20hair%20laser%20(2)%20(1).jpeg" alt="Lightsheer Diode System" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Lightsheer Diode Laser System</h3><span class="t-brand">Lumenis, Israel</span><p class="t-desc">Fast and effective laser hair removal with minimal discomfort</p></div>
-                </div>
+            <div class="tech-intro reveal">
+                <p>
+                    Just like our treatment pathways, our technology ecosystem is curated with clinical intent.
+                    Explore our complete platform lineup to see how each device is selected for precision,
+                    safety, and measurable outcomes.
+                </p>
+                <a href="technologies.html" class="btn" style="padding: 20px 40px; font-size: 1.1rem; letter-spacing: 1px;">Explore All Technologies →</a>
+            </div>
 
-                <!-- Skin Resurfacing -->
-                <div class="t-card" data-category="skin-resurfacing">
-                    <div class="t-card-img">UltraPulse CO2<img src="images/ultra%20pulse.jpeg" alt="UltraPulse" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>UltraPulse CO2 Laser</h3><span class="t-brand">Lumenis, Israel</span><p class="t-desc">World's most powerful CO2 laser for scar removal, wrinkles and skin resurfacing</p></div>
-                </div>
-                <div class="t-card" data-category="skin-resurfacing">
-                    <div class="t-card-img">UNIXEL RF CO2<img src="images/technologies/UNIXEL RF CO2 Laser.jpg" alt="UNIXEL" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>UNIXEL RF CO2 Laser</h3><span class="t-brand">UNIXEL</span><p class="t-desc">Advanced radiofrequency CO2 system for skin renewal and scar treatment</p></div>
-                </div>
-                <div class="t-card" data-category="skin-resurfacing">
-                    <div class="t-card-img">Ellman Surgitron<img src="images/technologies/Ellman Surgitron Dual RF 120.webp" alt="Ellman Surgitron" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Ellman Surgitron Dual RF 120</h3><span class="t-brand">Cynosure, USA</span><p class="t-desc">Precise radiofrequency unit for surgical skin procedures</p></div>
-                </div>
-                <div class="t-card" data-category="skin-resurfacing">
-                    <div class="t-card-img">Ecleris<img src="images/technologies/Ecleris Mesoporation Ecleris.webp" alt="Ecleris" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Ecleris Mesoporation</h3><span class="t-brand">Ecleris</span><p class="t-desc">Delivers active ingredients deep into the skin without needles</p></div>
-                </div>
-                <div class="t-card" data-category="skin-resurfacing">
-                    <div class="t-card-img">Oxy Peel<img src="images/technologies/Oxy Peel.jpg" alt="Oxy Peel" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Oxy Peel</h3><span class="t-brand">Aesthetic Systems</span><p class="t-desc">Oxygen-infused peel for instant skin brightening and renewal</p></div>
-                </div>
-
-                <!-- Pigmentation -->
-                <div class="t-card" data-category="pigmentation">
-                    <div class="t-card-img">Spectra XT<img src="images/Spectra%20xtq%20switched%20nd%20YAG%20laser.jpeg" alt="Spectra XT" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Spectra XT Nd-YAG Laser</h3><span class="t-brand">Lutronic</span><p class="t-desc">Advanced laser for pigmentation, dark spots, tattoo removal and skin brightening</p></div>
-                </div>
-                <div class="t-card" data-category="pigmentation">
-                    <div class="t-card-img">Pastella Cosjet<img src="images/technologies/Pastella Cosjet Q-Switched .jpeg" alt="Pastella Cosjet" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Pastella Cosjet Q-Switched</h3><span class="t-brand">VonTech, South Korea</span><p class="t-desc">High-energy laser targeting deep pigmentation and uneven skin tone</p></div>
-                </div>
-                <div class="t-card" data-category="pigmentation">
-                    <div class="t-card-img">Synchro VasQ<img src="images/synchro%20vasque%20pulsed%20dye%20laser.jpeg" alt="Synchro VasQ" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Synchro VasQ Pulsed Dye Laser</h3><span class="t-brand">DEKA, Italy</span><p class="t-desc">Treats vascular lesions, redness and port wine stains with precision</p></div>
-                </div>
-                <div class="t-card" data-category="pigmentation">
-                    <div class="t-card-img">Formatk<img src="images/technologies/Formatk Intense Pulsed Light Israel .jpeg" alt="Formatk" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Formatk Intense Pulsed Light</h3><span class="t-brand">Israel</span><p class="t-desc">Broad-spectrum light therapy for pigmentation, redness and skin texture</p></div>
-                </div>
-
-                <!-- Anti-Aging -->
-                <div class="t-card" data-category="anti-aging">
-                    <div class="t-card-img">Endymed 3DEEP<img src="images/wndymed%20skin%20tightening%20system%20and%20microneeding%20radiofrequency.jpeg" alt="Endymed 3DEEP" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Endymed 3DEEP RF</h3><span class="t-brand">Endymed, USA</span><p class="t-desc">Non-surgical skin tightening and wrinkle reduction using deep radiofrequency</p></div>
-                </div>
-                <div class="t-card" data-category="anti-aging">
-                    <div class="t-card-img">Dr. Arnold TOP FMS<img src="images/Dr%20arnold%20functional%20muscle%20stimulation%20unit.jpeg" alt="Dr. Arnold TOP FMS" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Dr. Arnold TOP FMS</h3><span class="t-brand">DEKA, Italy</span><p class="t-desc">Flat magnetic stimulation for facial muscle toning and skin lifting</p></div>
-                </div>
-                <div class="t-card" data-category="anti-aging">
-                    <div class="t-card-img">Lumera Targeted<img src="images/ultracell%20Q+HIFU.jpeg" alt="Lumera Targeted" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Lumera Targeted Light System</h3><span class="t-brand">Daavlin, USA</span><p class="t-desc">Targeted light therapy for skin rejuvenation and collagen stimulation</p></div>
-                </div>
-
-                <!-- Phototherapy -->
-                <div class="t-card" data-category="phototherapy">
-                    <div class="t-card-img">Exciplex Excimer<img src="images/technologies/Exciplex Excimer System.png" alt="Exciplex" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Exciplex Excimer System</h3><span class="t-brand">Clarteis, France</span><p class="t-desc">Targeted UV light therapy for vitiligo, psoriasis and eczema</p></div>
-                </div>
-                <div class="t-card" data-category="phototherapy">
-                    <div class="t-card-img">Daavlin Phototherapy<img src="images/technologies/Daavlin Whole Body Phototherapy.jpeg" alt="Daavlin Phototherapy" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Daavlin Whole Body Phototherapy</h3><span class="t-brand">Daavlin, USA</span><p class="t-desc">Full-body UVA and NbUVB treatment for psoriasis, vitiligo and skin conditions</p></div>
-                </div>
-
-                <!-- Body -->
-                <div class="t-card" data-category="body">
-                    <div class="t-card-img">Zimmer Cryo 7<img src="images/technologies/Zimmer Cryo 7.jpg" alt="Zimmer Cryo 7" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Zimmer Cryo 7</h3><span class="t-brand">Zimmer MedizinSysteme, Germany</span><p class="t-desc">Advanced cooling system that ensures patient comfort during laser treatments</p></div>
-                </div>
-                <div class="t-card" data-category="body">
-                    <div class="t-card-img">Brymill Cry-Ac<img src="images/technologies/Brymill Cry-Ac Unit.jpeg" alt="Brymill Cry-Ac" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Brymill Cry-Ac Unit</h3><span class="t-brand">Brymill Cryogenic Systems, USA</span><p class="t-desc">Precise cryotherapy unit for removal of skin lesions and warts</p></div>
-                </div>
-                <div class="t-card" data-category="body">
-                    <div class="t-card-img">Conmed Hyfrecator<img src="images/technologies/Conmed Hyfrecator .jpeg" alt="Conmed Hyfrecator" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Conmed Hyfrecator</h3><span class="t-brand">Cynosure, USA</span><p class="t-desc">Electrosurgical system for precise removal of skin tags and minor lesions</p></div>
-                </div>
-                <div class="t-card" data-category="body">
-                    <div class="t-card-img">Chemical Peels<img src="images/technologies/Chemical Peels.jpeg" alt="Chemical Peels" onerror="this.style.display='none'"></div>
-                    <div class="t-info"><h3>Chemical Peels</h3><span class="t-brand">Neo Strata, Cosmoderm...</span><p class="t-desc">Medical-grade chemical peels for skin renewal, acne and pigmentation</p></div>
-                </div>
-
+            <div class="tech-preview-grid">
+                <article class="tech-preview-card reveal">
+                    <img src="images/ultra%20pulse.jpeg" alt="Resurfacing Technology">
+                    <div class="tech-preview-copy">
+                        <h3>Resurfacing &amp; Renewal</h3>
+                        <p>CO2 and RF-assisted platforms designed for scar revision, textural correction, and advanced skin renewal.</p>
+                    </div>
+                </article>
+                <article class="tech-preview-card reveal">
+                    <img src="images/Spectra%20xtq%20switched%20nd%20YAG%20laser.jpeg" alt="Pigmentation Technology">
+                    <div class="tech-preview-copy">
+                        <h3>Pigment &amp; Tone Precision</h3>
+                        <p>High-energy laser and light systems used to manage pigment disorders, vascular concerns, and uneven tone.</p>
+                    </div>
+                </article>
+                <article class="tech-preview-card reveal">
+                    <img src="images/sopranio%20titanium%20hair%20reduction%20laser.jpeg" alt="Hair Reduction Technology">
+                    <div class="tech-preview-copy">
+                        <h3>Hair &amp; Body Systems</h3>
+                        <p>Comfort-first platforms for permanent hair reduction, body contouring support, and procedural cooling.</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -919,29 +889,6 @@
             }
         }, { threshold: 0.5 });
         statObserver.observe(document.querySelector('.stats'));
-        // Technology JS Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const techCards = document.querySelectorAll('.t-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-                techCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'flex';
-                        setTimeout(() => card.classList.remove('hidden'), 50);
-                    } else {
-                        card.classList.add('hidden');
-                        setTimeout(() => { 
-                            if(card.classList.contains('hidden')) card.style.display = 'none'; 
-                        }, 300);
-                    }
-                });
-            });
-        });
     </script>
 </body>
 </html>
