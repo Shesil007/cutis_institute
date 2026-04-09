@@ -1,0 +1,182 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --beige: #D6D0BE;
+    --beige-dark: #C4B89E;
+    --white: #EEE8D8;
+    --sage: #355f2d;
+    --sage-light: #AEB79A;
+    --charcoal: #2B2F20;
+    --gold: #6D6654;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--charcoal);
+    background: var(--beige);
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--charcoal);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.bg-white {
+    background: var(--white);
+}
+
+.bg-sage {
+    background: var(--sage-light);
+}
+
+/* Noise Texture */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)" opacity="0.04"/%3E%3C/svg%3E');
+    opacity: 0.8;
+}
+
+/* Utilities */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s ease;
+}
+
+.slide-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease;
+}
+
+.slide-in-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-top: 3px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    border-top: 3px solid var(--sage);
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background: var(--sage);
+    color: var(--white);
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--sage);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--sage);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1px solid var(--charcoal);
+}
+
+.btn-outline:hover {
+    background: var(--charcoal);
+    color: var(--white);
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 0 22px;
+    }
+
+    .section {
+        padding: 82px 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 18px;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .card {
+        padding: 24px 20px;
+        border-radius: 18px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+    }
+}

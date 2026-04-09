@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Cutis Institute | Cutis Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --beige: #D6D0BE;
+            --beige-dark: #C4B89E;
+            --white: #EEE8D8;
+            --sage: #355f2d;
+            --charcoal: #2B2F20;
+            --gold: #6D6654;
+            --shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--charcoal);
+            background: var(--beige);
+        }
+
+        h1,
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.93);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .nav-inner {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 28px;
+            padding: 14px 0;
+        }
+
+        .logo-link img {
+            height: 56px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            gap: 24px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 24px;
+            background: var(--sage);
+            border: 1px solid var(--sage);
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--sage);
+        }
+
+        .page-main {
+            padding: 120px 0 56px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--beige-dark), #AEB79A);
+            border-radius: 22px;
+            padding: 42px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+
+        .hero-title-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.6rem);
+            line-height: 1.1;
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .hero-mark {
+            width: clamp(72px, 10vw, 110px);
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .hero p {
+            color: #575757;
+            line-height: 1.8;
+            max-width: 920px;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 34px;
+            margin-bottom: 20px;
+        }
+
+        .feature-image-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 14px;
+            margin-bottom: 20px;
+        }
+
+        .feature-image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .content-card h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .content-card p {
+            color: #565656;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .back-wrap {
+            margin-top: 8px;
+        }
+
+        .back-link {
+            color: var(--sage);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        footer {
+            background: var(--charcoal);
+            color: #c6c6c6;
+            padding: 26px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-inner {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px 16px;
+                justify-content: flex-start;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .page-main {
+                padding-top: 168px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                width: min(1120px, calc(100% - 30px));
+            }
+
+            .hero,
+            .content-card {
+                padding: 24px;
+            }
+
+            .hero-title-row {
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .hero-mark {
+                width: 72px;
+            }
+
+            .nav-links {
+                gap: 8px 12px;
+                font-size: 0.92rem;
+            }
+
+            .page-main {
+                padding-top: 182px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.03;
+            }
+
+            .hero p,
+            .content-card p {
+                font-size: 0.98rem;
+                line-height: 1.75;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(1120px, calc(100% - 24px));
+            }
+
+            .page-main {
+                padding-top: 156px;
+                padding-bottom: 40px;
+            }
+
+            .hero,
+            .content-card,
+            .feature-image-card {
+                border-radius: 18px;
+            }
+
+            .hero,
+            .content-card {
+                padding: 20px 18px;
+            }
+
+            .feature-image-card {
+                padding: 10px;
+            }
+
+            .hero-title-row {
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .hero-mark {
+                width: 58px;
+                border-radius: 8px;
+            }
+
+            .content-card h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-inner">
+            <a class="logo-link" href="index.html"><img src="images/brand_logo_new.png" alt="Cutis Institute"></a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="treatments.html">Treatments</a></li>
+                <li><a href="technologies.html">Technologies</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a class="btn nav-btn" href="index.html#contact">Book an Appointment</a>
+        </div>
+    </nav>
+
+    <main class="page-main">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-title-row">
+                    <h1>Cutis Institute of Dermatology &amp; Aesthetic Sciences</h1>
+                    <img class="hero-mark" src="images/about/complete-skin-hospital-logo.jpg" alt="The Complete Skin Hospital logo">
+                </div>
+                <p>Best Skin Specialists in Calicut</p>
+            </section>
+
+            <section class="feature-image-card">
+                <img src="images/about/explore-team-meeting.png" alt="Cutis expert team discussion">
+            </section>
+
+            <article class="content-card">
+                <h2>Complete Overview</h2>
+                <p>Cutis Institute of Dermatology &amp; Aesthetic Sciences in Calicut, India, is a leading skin clinic and skin hospital specializing in skincare, cosmetology, and plastic surgery. Located in a 20,000-square-foot standalone building, Cutis offers world-class care in Clinical, Cosmetic, and Surgical Dermatology.</p>
+                <p>Our expert team of skin specialists, dermatologists, and plastic surgeons provides advanced treatments for acne, pigmentation, scars, burn scars, vitiligo (white patches), and more. We also specialize in hair transplantation, Botox, fillers, and facelift procedures, ensuring personalized solutions for every patient.</p>
+                <p>At Cutis, we combine cutting-edge technology with compassionate care, delivering transformative results in skin health and aesthetic beauty. Experience trusted skin and aesthetic care at Cutis Institute, your destination for healthy, radiant skin in Calicut.</p>
+                <p>Our team of board-certified dermatologists and plastic surgeons, skilled technicians, and compassionate staff are dedicated to delivering personalized care in a comfortable and welcoming environment. Our commitment lies in offering comprehensive and advanced therapies that combine medical expertise with procedural interventions. We understand that each patient is unique, which is why we prioritize individualized treatment plans to achieve optimal results.</p>
+                <p>Beyond our commitment to advanced technology, we prioritize patient education and transparency. Our team takes the time to thoroughly explain procedures, discuss expectations, and address any concerns you may have, ensuring you feel confident and informed throughout your journey with us.</p>
+            </article>
+
+            <article class="content-card">
+                <h2>Mission</h2>
+                <p>To provide and promote world-class scientific skin care through the latest advancements in dermatology, laser treatments, cosmetology, and plastic surgery. We are committed to delivering exceptional care for a wide range of skin conditions including acne, scars, vitiligo, melasma, pigmentation, and white patches, using cutting-edge solutions like exosome therapy, PRP, GFC, stem cell therapy, and advanced laser technologies such as carbon laser, Excimer, and phototherapy. We also aim to be a center of excellence for education by offering advanced dermatology training to skincare professionals, dermatology residents, and aspiring skin specialists, ensuring the highest standards in clinical practice, aesthetic dermatology, trichology, and regenerative medicine.</p>
+            </article>
+
+            <article class="content-card">
+                <h2>Vision</h2>
+                <p>To be the most trusted and advanced skin clinic and aesthetic dermatology center, delivering world-class care for all skin, hair, and aesthetic concerns. Guided by renowned experts like Dr. Salim, Dr. Prasannakumar, Dr. Laila, Dr. Hafiz, and Dr. Kader, we envision a future where everyone has access to cutting-edge treatments for acne, scars, burns, vitiligo, melasma, pigmentation, and white patches. We aim to lead with innovation through services like PRP, GFC, hair transplantation, trichology, Botox, fillers, facelift, body contouring, cosmetology, and plastic surgery, powered by the latest in exosome therapy, stem cell therapy, Regenera, carbon laser, Excimer, and phototherapy.</p>
+            </article>
+
+            <div class="back-wrap">
+                <a class="back-link" href="index.html#about">← Back to Home</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Cutis Institute of Dermatology &amp; Aesthetic Sciences. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
