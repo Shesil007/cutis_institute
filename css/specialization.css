@@ -114,6 +114,7 @@
     height: 240px;
     overflow: hidden;
     flex-shrink: 0;
+    background-color: #f8f5ef;
 }
 
 .spec-img-overlay {
@@ -134,34 +135,46 @@
 .rejuvenize-bg,
 .regen-bg,
 .sculpt-bg {
-    background-position: center;
+    --spec-logo-width: 70%;
+    --spec-logo-position: center 50%;
+    background-position: var(--spec-logo-position);
     background-repeat: no-repeat;
-    background-size: contain;
-    background-color: #f8f5ef;
+    background-size: var(--spec-logo-width) auto;
+    transition: background-size 0.45s ease, transform 0.55s ease;
 }
 
 .chroma-bg {
     background-image: url('../images/Copy of chrome clinique.png');
+    --spec-logo-width: 68%;
 }
 
 .eraze-bg {
     background-image: url('../images/Copy of eraze.png');
+    --spec-logo-width: 56%;
+    --spec-logo-position: center 49%;
 }
 
 .capeli-bg {
     background-image: url('../images/Copy of capelli clinique.png');
+    --spec-logo-width: 70%;
+    --spec-logo-position: center 51%;
 }
 
 .rejuvenize-bg {
     background-image: url('../images/Copy of rejuvenize.png');
+    --spec-logo-width: 68%;
 }
 
 .regen-bg {
-    background-image: url('../images/regenerative-dermatology-logo.svg');
+    background-image: url('../images/regenerative-dermatology-logo-stacked.svg');
+    --spec-logo-width: 76%;
+    --spec-logo-position: center 48%;
 }
 
 .sculpt-bg {
     background-image: url('../images/Copy of Cutisculpt 1.png');
+    --spec-logo-width: 62%;
+    --spec-logo-position: center 50%;
 }
 
 /* subtle texture on placeholders */
@@ -180,6 +193,15 @@
 .spec-card:hover .spec-card-image {
     transform: scale(1.03);
     transition: transform 0.55s ease;
+}
+
+.spec-card:hover .chroma-bg,
+.spec-card:hover .eraze-bg,
+.spec-card:hover .capeli-bg,
+.spec-card:hover .rejuvenize-bg,
+.spec-card:hover .regen-bg,
+.spec-card:hover .sculpt-bg {
+    background-size: calc(var(--spec-logo-width) + 2%) auto;
 }
 
 /* ── Icon Badge ── */
