@@ -1058,7 +1058,7 @@
                     <a class="privacy-policy-link" href="privacy-policy.html">Privacy Policy</a>
                 </div>
                 <div class="contact-map">
-                    <iframe src="https://www.google.com/maps?q=Cutis%20Institute%2C%20Nellikkode%2C%20Vishnu%20Temple%20Rd%2C%20Bypass%20Junction%2C%20Thondayad%2C%20Kozhikode%2C%20Kerala%20673017&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe data-map-src="https://www.google.com/maps?q=Cutis%20Institute%2C%20Nellikkode%2C%20Vishnu%20Temple%20Rd%2C%20Bypass%20Junction%2C%20Thondayad%2C%20Kozhikode%2C%20Kerala%20673017&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Cutis Institute map"></iframe>
                 </div>
             </div>
             <div class="contact-form-card reveal">
@@ -1340,6 +1340,28 @@
             }
         }, { threshold: 0.5 });
         statObserver.observe(document.querySelector('.stats'));
+
+        // Lazy-load the Google map only when the contact section is near view
+        const contactMapFrame = document.querySelector('.contact-map iframe[data-map-src]');
+        if (contactMapFrame) {
+            const loadMap = () => {
+                if (!contactMapFrame.getAttribute('src')) {
+                    contactMapFrame.setAttribute('src', contactMapFrame.dataset.mapSrc);
+                }
+            };
+
+            if ('IntersectionObserver' in window) {
+                const mapObserver = new IntersectionObserver((entries, observer) => {
+                    if (entries[0].isIntersecting) {
+                        loadMap();
+                        observer.disconnect();
+                    }
+                }, { rootMargin: '220px 0px' });
+                mapObserver.observe(contactMapFrame);
+            } else {
+                loadMap();
+            }
+        }
 
         // Contact Form to WhatsApp
         const contactForm = document.getElementById('contactForm');
