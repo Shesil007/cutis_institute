@@ -342,11 +342,73 @@ footer {
         padding-top: 170px;
     }
 
+    .profile-hero {
+        padding: 36px 0 28px;
+    }
+
+    .profile-photo {
+        width: min(100%, 220px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-radius: 22px;
+    }
+
+    .profile-role {
+        font-size: 0.72rem;
+        letter-spacing: 0.9px;
+    }
+
+    .profile-name {
+        font-size: 2.3rem;
+    }
+
+    .profile-lead {
+        font-size: 0.96rem;
+        line-height: 1.72;
+    }
+
     .section-card {
         padding: 24px;
     }
 
+    .section-card h2 {
+        font-size: 1.7rem;
+    }
+
     .other-doctors {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: min(1180px, calc(100% - 24px));
+    }
+
+    .page-main {
+        padding-top: 154px;
+    }
+
+    .nav-links {
+        font-size: 0.88rem;
+        gap: 8px 10px;
+    }
+
+    .meta-card,
+    .section-card,
+    .other-link {
+        border-radius: 16px;
+    }
+
+    .meta-card {
+        padding: 12px;
+    }
+
+    .section-card {
+        padding: 20px 18px;
+    }
+
+    .bullet-list li {
+        padding-left: 16px;
     }
 }

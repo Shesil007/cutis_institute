@@ -238,6 +238,57 @@
             .page-main {
                 padding-top: 182px;
             }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.03;
+            }
+
+            .hero p,
+            .content-card p {
+                font-size: 0.98rem;
+                line-height: 1.75;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(1120px, calc(100% - 24px));
+            }
+
+            .page-main {
+                padding-top: 156px;
+                padding-bottom: 40px;
+            }
+
+            .hero,
+            .content-card,
+            .feature-image-card {
+                border-radius: 18px;
+            }
+
+            .hero,
+            .content-card {
+                padding: 20px 18px;
+            }
+
+            .feature-image-card {
+                padding: 10px;
+            }
+
+            .hero-title-row {
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .hero-mark {
+                width: 58px;
+                border-radius: 8px;
+            }
+
+            .content-card h2 {
+                font-size: 1.7rem;
+            }
         }
     </style>
 </head>

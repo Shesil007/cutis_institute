@@ -595,7 +595,41 @@
             .fab-btn-ig { right: 20px; bottom: 160px; width: 50px; height: 50px; }
         }
         @media(max-width:600px){
-            .hero h1 { font-size:3rem; }
+            .container { padding: 0 18px; }
+            .section { padding: 66px 0; }
+            .nav-inner { gap: 12px; }
+            .nav-links.mobile-open {
+                padding: 14px;
+                gap: 8px;
+                border-radius: 16px;
+            }
+            .nav-links.mobile-open li,
+            .nav-links.mobile-open a { width: 100%; }
+            .nav-links.mobile-open a { display:block; padding:10px 0; }
+            .hero { min-height: auto; padding: 120px 0 72px; }
+            .hero-content { max-width: none; }
+            .hero h1 { font-size:2.95rem; line-height:1.02; margin-bottom: 14px; }
+            .hero h2 { font-size:1rem; line-height:1.5; margin-bottom: 16px; }
+            .hero p { font-size:0.98rem; line-height:1.75; margin-bottom: 26px; }
+            .hero-btns { flex-direction:column; gap:12px; }
+            .btn { width:100%; text-align:center; padding:14px 20px; }
+            .stats { padding: 34px 0; }
+            .stats-grid { grid-template-columns:repeat(2,1fr); gap:18px 10px; }
+            .stat-item { border-right:none; padding:0 4px; }
+            .card { padding: 24px 20px; border-radius: 18px; }
+            .philosophy-grid,
+            .about-grid,
+            .tech-intro { gap: 24px; }
+            .training-grid,
+            .contact-grid { gap: 28px; }
+            .training-slider { height: 300px; border-radius: 18px; }
+            .t-info { padding:22px 18px; }
+            .contact-map { min-height: 280px; border-radius: 18px; }
+            .contact-form-card { padding: 24px 18px; border-radius: 18px; }
+            .contact-form-card h3 { font-size: 2.1rem; }
+            .contact-info-box p { align-items:flex-start; gap:10px; font-size:1rem; margin-bottom:14px; }
+            .footer-grid { gap: 26px; }
+            .footer-col p { max-width: 100% !important; }
             .tech-grid-2 { grid-template-columns:1fr; }
             .team-grid { grid-template-columns:1fr; }
         }
@@ -609,7 +643,7 @@
     </a>
 
     <!-- FAB: Floating WhatsApp Action -->
-    <a href="https://wa.me/919497515555" target="_blank" rel="noopener noreferrer" class="fab-btn-wa" aria-label="Chat with Cutis Institute on WhatsApp">
+    <a href="https://wa.me/919497515555?text=Hello%20Cutis%20Institute%2C%20I%20would%20like%20to%20know%20more%20about%20your%20treatments%20and%20book%20a%20consultation." target="_blank" rel="noopener noreferrer" class="fab-btn-wa" aria-label="Chat with Cutis Institute on WhatsApp">
         <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <path d="M16.02 5.33c-5.85 0-10.59 4.69-10.59 10.47 0 1.85.49 3.66 1.42 5.25L5 27l6.12-1.6a10.67 10.67 0 0 0 4.9 1.18c5.85 0 10.59-4.69 10.59-10.48 0-5.78-4.74-10.47-10.59-10.47Z" fill="#fff"/>
             <path d="M21.42 18.56c-.22-.11-1.31-.64-1.51-.71-.2-.07-.35-.11-.5.11-.14.22-.57.71-.7.86-.13.14-.26.16-.48.05-.22-.11-.95-.34-1.81-1.09-.67-.59-1.12-1.31-1.25-1.53-.13-.22-.01-.34.1-.45.1-.1.22-.25.34-.37.12-.13.16-.22.24-.37.08-.15.04-.28-.02-.39-.06-.11-.5-1.2-.69-1.64-.18-.43-.37-.38-.5-.39h-.43c-.15 0-.39.05-.59.27-.2.22-.78.76-.78 1.85 0 1.09.8 2.13.92 2.27.11.15 1.56 2.39 3.78 3.35 2.23.96 2.23.64 2.63.6.4-.04 1.29-.53 1.48-1.05.18-.51.18-.96.13-1.05-.06-.08-.2-.14-.42-.25Z" fill="#25d366"/>
@@ -932,21 +966,21 @@
                     <div class="avatar"><img src="images/doctors/dr-t-salim.webp" alt="Dr. T. Salim"></div>
                     <h4>Dr. T. Salim</h4>
                     <p class="team-role">Clinical Head &amp; Senior Consultant in Clinical, Surgical &amp; Aesthetic Dermatology</p>
-                    <p class="team-qualification">MD, DNB, MNAMS</p>
+                    <p class="team-qualification">MBBS, MD, DNB, MNAMS</p>
                     <a class="profile-trigger" href="dr-t-salim.html">Read More</a>
                 </article>
                 <article class="team-member">
                     <div class="avatar"><img src="images/doctors/dr-s-prasannakumar.webp" alt="Dr. S. Prasannakumar"></div>
                     <h4>Dr. S. Prasannakumar</h4>
                     <p class="team-role">Senior Consultant in Dermatology</p>
-                    <p class="team-qualification">MD, DVD</p>
+                    <p class="team-qualification">MBBS, MD, DVD</p>
                     <a class="profile-trigger" href="dr-s-prasannakumar.html">Read More</a>
                 </article>
                 <article class="team-member">
                     <div class="avatar"><img src="images/doctors/dr-laila-arif.webp" alt="Dr. Laila Arif"></div>
                     <h4>Dr. Laila Arif</h4>
                     <p class="team-role">Consultant in Clinical &amp; Aesthetic Dermatology</p>
-                    <p class="team-qualification">M.B.B.S., DVD</p>
+                    <p class="team-qualification">MBBS, DVD</p>
                     <a class="profile-trigger" href="dr-laila-arif.html">Read More</a>
                 </article>
                 <article class="team-member">
@@ -960,21 +994,21 @@
                     <div class="avatar"><img src="images/doctors/dr-hafiz-muhammed.webp" alt="Dr. Hafiz Muhammed Koyappathody"></div>
                     <h4>Dr. Hafiz Muhammed Koyappathody</h4>
                     <p class="team-role">Senior Consultant in Plastic, Reconstructive &amp; Aesthetic Surgery</p>
-                    <p class="team-qualification">MS, FRCS Ed, MCh.</p>
+                    <p class="team-qualification">MBBS, MS, FRCS Ed, MCh.</p>
                     <a class="profile-trigger" href="dr-hafiz-muhammed.html">Read More</a>
                 </article>
                 <article class="team-member">
                     <div class="avatar"><img src="images/doctors/dr-kader-kalathingal.webp" alt="Dr. Kader Kalathingal"></div>
                     <h4>Dr. Kader Kalathingal</h4>
                     <p class="team-role">Senior Consultant in Plastic, Reconstructive &amp; Aesthetic Surgery</p>
-                    <p class="team-qualification">MS, MCH</p>
+                    <p class="team-qualification">MBBS, MS, MCH</p>
                     <a class="profile-trigger" href="dr-kader-kalathingal.html">Read More</a>
                 </article>
                 <article class="team-member">
                     <div class="avatar"><img src="images/doctors/dr-niranjana-gopinath.jpg" alt="Dr. Niranjana Gopinath MP"></div>
                     <h4>Dr. Niranjana Gopinath MP</h4>
                     <p class="team-role">Consultant Dermatologist</p>
-                    <p class="team-qualification">MD (DVL)</p>
+                    <p class="team-qualification">MBBS, MD (DVL)</p>
                     <a class="profile-trigger" href="dr-niranjana-gopinath.html">Read More</a>
                 </article>
             </div>
@@ -1024,12 +1058,12 @@
                     <a class="privacy-policy-link" href="privacy-policy.html">Privacy Policy</a>
                 </div>
                 <div class="contact-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15651.980641170796!2d75.8016!3d11.2588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4727%3A0x334407b46955fc18!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps?q=Cutis%20Institute%2C%20Nellikkode%2C%20Vishnu%20Temple%20Rd%2C%20Bypass%20Junction%2C%20Thondayad%2C%20Kozhikode%2C%20Kerala%20673017&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             <div class="contact-form-card reveal">
                 <h3>Contact Cutis Institute</h3>
-                <form class="contact-form" onsubmit="event.preventDefault();">
+                <form class="contact-form" id="contactForm">
                     <input class="contact-field" type="text" name="name" placeholder="Your Name" required>
                     <input class="contact-field" type="email" name="email" placeholder="Your Email" required>
                     <input class="contact-field" type="tel" name="phone" placeholder="Your Phone" required>
@@ -1306,6 +1340,36 @@
             }
         }, { threshold: 0.5 });
         statObserver.observe(document.querySelector('.stats'));
+
+        // Contact Form to WhatsApp
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(contactForm);
+                const name = (formData.get('name') || '').toString().trim();
+                const email = (formData.get('email') || '').toString().trim();
+                const phone = (formData.get('phone') || '').toString().trim();
+                const subject = (formData.get('subject') || '').toString().trim();
+                const message = (formData.get('message') || '').toString().trim();
+
+                const whatsappMessage = [
+                    'Hello Cutis Institute,',
+                    '',
+                    'I would like to enquire about your services.',
+                    '',
+                    `Name: ${name}`,
+                    `Phone: ${phone}`,
+                    `Email: ${email}`,
+                    `Subject: ${subject || 'General enquiry'}`,
+                    `Message: ${message || 'I would like more details and an appointment.'}`
+                ].join('\n');
+
+                const whatsappUrl = `https://wa.me/919497515555?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        }
     </script>
 </body>
 </html>

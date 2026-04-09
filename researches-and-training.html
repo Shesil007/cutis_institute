@@ -392,6 +392,99 @@
             .page-main {
                 padding-top: 186px;
             }
+
+            .hero-copy h1 {
+                font-size: 2.9rem;
+            }
+
+            .hero-copy p,
+            .section-card p,
+            .stat-card p,
+            .feature-list li {
+                font-size: 0.98rem;
+                line-height: 1.75;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .gallery-card {
+                min-height: 220px;
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(1180px, calc(100% - 24px));
+            }
+
+            .page-main {
+                padding-top: 156px;
+                padding-bottom: 44px;
+            }
+
+            .hero-copy,
+            .section-card,
+            .info-panel,
+            .stat-card {
+                padding: 20px 18px;
+                border-radius: 18px;
+            }
+
+            .eyebrow {
+                margin-bottom: 12px;
+                font-size: 0.75rem;
+                letter-spacing: 1.4px;
+            }
+
+            .hero-copy h1 {
+                font-size: 2.45rem;
+                line-height: 1.02;
+                margin-bottom: 14px;
+            }
+
+            .hero-visual,
+            .gallery-card.tall {
+                min-height: 300px;
+                border-radius: 18px;
+            }
+
+            .stats-grid,
+            .split-grid,
+            .gallery-grid {
+                gap: 14px;
+            }
+
+            .stat-value {
+                font-size: 2.4rem;
+                margin-bottom: 8px;
+            }
+
+            .stat-card h3,
+            .info-panel h3 {
+                font-size: 1.55rem;
+            }
+
+            .section-card h2 {
+                font-size: 1.85rem;
+            }
+
+            .feature-list {
+                gap: 10px;
+                margin-top: 14px;
+            }
+
+            .feature-list li {
+                padding: 14px 14px;
+                border-radius: 14px;
+            }
         }
     </style>
 </head>
