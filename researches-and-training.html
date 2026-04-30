@@ -10,7 +10,7 @@
             --beige: #D6D0BE;
             --beige-dark: #C4B89E;
             --white: #EEE8D8;
-            --sage: #8F957D;
+            --sage: #355f2d;
             --sage-light: #AEB79A;
             --charcoal: #2B2F20;
             --gold: #6D6654;
@@ -392,6 +392,99 @@
             .page-main {
                 padding-top: 186px;
             }
+
+            .hero-copy h1 {
+                font-size: 2.9rem;
+            }
+
+            .hero-copy p,
+            .section-card p,
+            .stat-card p,
+            .feature-list li {
+                font-size: 0.98rem;
+                line-height: 1.75;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .gallery-card {
+                min-height: 220px;
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(1180px, calc(100% - 24px));
+            }
+
+            .page-main {
+                padding-top: 156px;
+                padding-bottom: 44px;
+            }
+
+            .hero-copy,
+            .section-card,
+            .info-panel,
+            .stat-card {
+                padding: 20px 18px;
+                border-radius: 18px;
+            }
+
+            .eyebrow {
+                margin-bottom: 12px;
+                font-size: 0.75rem;
+                letter-spacing: 1.4px;
+            }
+
+            .hero-copy h1 {
+                font-size: 2.45rem;
+                line-height: 1.02;
+                margin-bottom: 14px;
+            }
+
+            .hero-visual,
+            .gallery-card.tall {
+                min-height: 300px;
+                border-radius: 18px;
+            }
+
+            .stats-grid,
+            .split-grid,
+            .gallery-grid {
+                gap: 14px;
+            }
+
+            .stat-value {
+                font-size: 2.4rem;
+                margin-bottom: 8px;
+            }
+
+            .stat-card h3,
+            .info-panel h3 {
+                font-size: 1.55rem;
+            }
+
+            .section-card h2 {
+                font-size: 1.85rem;
+            }
+
+            .feature-list {
+                gap: 10px;
+                margin-top: 14px;
+            }
+
+            .feature-list li {
+                padding: 14px 14px;
+                border-radius: 14px;
+            }
         }
     </style>
 </head>
@@ -405,7 +498,7 @@
                 <li><a href="index.html#centres">Our Specialties</a></li>
                 <li><a href="technologies.html">Technologies</a></li>
             </ul>
-            <a class="btn nav-btn" href="index.html#contact">Contact Us</a>
+                <a class="btn nav-btn" href="tel:+918281865151">Contact Us</a>
         </div>
     </nav>
 
@@ -422,7 +515,7 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <img src="images/training/research-3.webp" alt="Cutis research and training group">
+                    <img loading="lazy" src="images/training/research-3.webp" alt="Cutis research and training group">
                 </div>
             </section>
 
@@ -479,19 +572,19 @@
                 <p>The training ecosystem at Cutis blends surgical exposure, scientific exchange, workshop participation, and academic gathering spaces. These moments reflect the institute's role as both a treatment center and a serious learning environment for modern dermatology.</p>
                 <div class="gallery-grid">
                     <div class="gallery-card tall">
-                        <img src="images/training/research-3.webp" alt="Research team in surgical training attire">
+                        <img loading="lazy" src="images/training/research-3.webp" alt="Research team in surgical training attire">
                     </div>
                     <div class="gallery-card">
-                        <img src="images/training/research-7.webp" alt="Interventional regenerative dermatology workshop stage">
+                        <img loading="lazy" src="images/training/research-7.webp" alt="Interventional regenerative dermatology workshop stage">
                     </div>
                     <div class="gallery-card">
-                        <img src="images/training/research-6.webp" alt="Audience attending a Cutis academic session">
+                        <img loading="lazy" src="images/training/research-6.webp" alt="Audience attending a Cutis academic session">
                     </div>
                     <div class="gallery-card">
-                        <img src="images/training/research-4.webp" alt="International dermatology conference presentation">
+                        <img loading="lazy" src="images/training/research-4.webp" alt="International dermatology conference presentation">
                     </div>
                     <div class="gallery-card">
-                        <img src="images/training/research-main.jpg" alt="Cutis outreach and international collaboration">
+                        <img loading="lazy" src="images/training/research-main.jpg" alt="Cutis outreach and international collaboration">
                     </div>
                 </div>
             </section>

@@ -5,7 +5,7 @@
     --beige: #D6D0BE;
     --beige-dark: #C4B89E;
     --white: #EEE8D8;
-    --sage: #8F957D;
+    --sage: #355f2d;
     --sage-light: #AEB79A;
     --charcoal: #2B2F20;
     --gold: #6D6654;
@@ -148,4 +148,35 @@ body::before {
 .btn-outline:hover {
     background: var(--charcoal);
     color: var(--white);
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 0 22px;
+    }
+
+    .section {
+        padding: 82px 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 18px;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .card {
+        padding: 24px 20px;
+        border-radius: 18px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+    }
 }

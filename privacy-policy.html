@@ -10,7 +10,7 @@
             --beige: #D6D0BE;
             --beige-dark: #C4B89E;
             --white: #EEE8D8;
-            --sage: #8F957D;
+            --sage: #355f2d;
             --charcoal: #2B2F20;
             --gold: #6D6654;
             --shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
@@ -226,6 +226,49 @@
             .page-main {
                 padding-top: 182px;
             }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.03;
+            }
+
+            .hero p,
+            .policy-section p,
+            .policy-section ul,
+            .policy-intro {
+                font-size: 0.98rem;
+                line-height: 1.75;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(1120px, calc(100% - 24px));
+            }
+
+            .page-main {
+                padding-top: 156px;
+                padding-bottom: 40px;
+            }
+
+            .hero,
+            .policy-card {
+                padding: 20px 18px;
+                border-radius: 18px;
+            }
+
+            .policy-section {
+                margin-bottom: 22px;
+            }
+
+            .policy-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .contact-box {
+                padding: 14px;
+                border-radius: 12px;
+            }
         }
     </style>
 </head>
@@ -330,7 +373,7 @@
                     <div class="contact-box">
                         <p><strong>Cutis Institute of Dermatology &amp; Aesthetic Sciences</strong></p>
                         <p>Nellikkode, Vishnu Temple Rd, Bypass Junction,<br>Thondayad, Kozhikode, Kerala 673017, India</p>
-                        <p>📞 +91 8281865151</p>
+                    <p>📞 +91 8281865151 / +91 9497515555</p>
                         <p>📧 cutisinstitute@gmail.com</p>
                     </div>
                 </section>

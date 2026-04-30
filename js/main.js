@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarouselDrag();
     initStatCounters();
     initTechFilter();
+    initTrainingSlider();
 });
 
 /**
@@ -231,4 +232,83 @@ function initTechFilter() {
             });
         });
     });
+}
+
+/**
+ * Research & Training image slider
+ */
+function initTrainingSlider() {
+    const slider = document.getElementById('trainingSlider');
+    if (!slider) return;
+
+    const slides = Array.from(slider.querySelectorAll('.training-slide'));
+    const dotsWrap = slider.querySelector('.training-slider-dots');
+    const prevBtn = slider.querySelector('.training-slider-control.prev');
+    const nextBtn = slider.querySelector('.training-slider-control.next');
+    if (!slides.length || !dotsWrap || !prevBtn || !nextBtn) return;
+
+    let activeIndex = 0;
+    let autoRotateId;
+
+    const dots = slides.map((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'training-slider-dot';
+        dot.setAttribute('aria-label', `Show training image ${index + 1}`);
+        dot.addEventListener('click', () => {
+            setActiveSlide(index);
+            restartAutoRotate();
+        });
+        dotsWrap.appendChild(dot);
+        return dot;
+    });
+
+    const setActiveSlide = (index) => {
+        activeIndex = (index + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle('active', slideIndex === activeIndex);
+        });
+        dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle('active', dotIndex === activeIndex);
+            dot.setAttribute('aria-current', dotIndex === activeIndex ? 'true' : 'false');
+        });
+    };
+
+    const goToNext = () => setActiveSlide(activeIndex + 1);
+    const goToPrev = () => setActiveSlide(activeIndex - 1);
+
+    const startAutoRotate = () => {
+        if (autoRotateId) return;
+        autoRotateId = window.setInterval(goToNext, 3500);
+    };
+
+    const stopAutoRotate = () => {
+        if (autoRotateId) {
+            window.clearInterval(autoRotateId);
+            autoRotateId = null;
+        }
+    };
+
+    const restartAutoRotate = () => {
+        stopAutoRotate();
+        startAutoRotate();
+    };
+
+    prevBtn.addEventListener('click', () => {
+        goToPrev();
+        restartAutoRotate();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        goToNext();
+        restartAutoRotate();
+    });
+
+    slider.addEventListener('mouseenter', stopAutoRotate);
+    slider.addEventListener('mouseleave', startAutoRotate);
+    slider.addEventListener('focusin', stopAutoRotate);
+    slider.addEventListener('focusout', startAutoRotate);
+
+    setActiveSlide(0);
+    startAutoRotate();
 }
